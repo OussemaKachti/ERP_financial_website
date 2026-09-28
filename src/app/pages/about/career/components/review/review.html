@@ -1,0 +1,59 @@
+<section class="bg-secondary-grad">
+
+    <h2 class="text-center mb-4 mb-sm-6 pt-8">What people say about us</h2>
+
+
+    <div class="swiper px-4 px-sm-5" data-swiper-options='{
+			"spaceBetween": 30,
+			"speed":"14000",
+			"autoplay":{
+				"delay": 0, 
+				"disableOnInteraction": false,
+				"pauseOnMouseEnter": true
+			},
+			"breakpoints": {
+				"576": {"slidesPerView": 1}, 
+				"768": {"slidesPerView": 2}, 
+				"992": {"slidesPerView": 3},
+				"1400": {"slidesPerView": 4}
+			}}'>
+
+        <swiper-container class="swiper-wrapper" [config]="swiperConfig" init="false">
+
+            @for (item of review; track $index) {
+            <swiper-slide class="swiper-slide">
+                <div class="card rounded-4 p-4 h-100">
+
+                    <div class="card-body p-0 mb-4">
+                        <ul class="list-inline mb-3">
+                            <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                            <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                            <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                            <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                            <li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+                        </ul>
+
+                        <blockquote>
+                            <p class="heading-color mb-0">{{item.text}}</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="card-footer bg-transparent p-0">
+
+                        <div class="d-flex align-items-center">
+                            <div class="avatar flex-shrink-0">
+                                <img class="avatar-img rounded-circle" [src]="item.avatar" alt="avatar">
+                            </div>
+                            <div class="ms-3">
+                                <p class="lead heading-color fw-semibold mb-0">{{item.name}}</p>
+                                <small>{{item.role}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </swiper-slide>
+            }
+        </swiper-container>
+    </div>
+
+</section>

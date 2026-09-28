@@ -1,0 +1,53 @@
+<section class="bg-secondary bg-opacity-50 overflow-hidden">
+	<div class="container">
+		<div class="row g-4">
+			<div class="col-lg-4">
+				<div class="h-100 d-flex flex-column">
+					<h2 class="mb-3">Industries we serve</h2>
+					<p class="lead mb-3">
+						Providing expert financial services across diverse industries
+					</p>
+					<div>
+						<a routerLink="/contact-v2" class="btn btn-primary mb-4 mb-lg-0">Contact us now</a>
+					</div>
+
+					<div class="d-flex gap-3 position-relative mt-auto">
+						<button type="button" class="btn btn-lg btn-white-shadow btn-icon rounded-circle mb-0 swiper-button-prev-industry">
+							<i class="bi bi-arrow-left rtl-flip"></i>
+						</button>
+
+						<button type="button" class="btn btn-lg btn-white-shadow btn-icon rounded-circle mb-0 swiper-button-next-industry">
+							<i class="bi bi-arrow-right rtl-flip"></i>
+						</button>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-lg-8">
+				<swiper-container class="swiper-outside-end-n20" loop="true" space-between="30" autoplay='{"pauseOnMouseEnter": true}' navigation='{
+					"nextEl": ".swiper-button-next-industry",
+					"prevEl": ".swiper-button-prev-industry"
+				}' breakpoints='{
+					"576": { "slidesPerView": 2 },
+					"1200": { "slidesPerView": 3 }
+				}'>
+					@for (industry of industries; track $index) {
+					<swiper-slide>
+						<div class="card p-3 pb-0">
+							<img [src]="industry.image" class="card-img" alt="service image" />
+							<div class="card-body px-2">
+								<h6 class="mb-2">{{ industry.title }}</h6>
+								<p class="mb-3">{{ industry.description }}</p>
+								<a [routerLink]="[]" class="link-primary-grad icon-link icon-link-hover stretched-link mb-0">
+									Read more <i class="bi bi-arrow-right"></i>
+								</a>
+							</div>
+						</div>
+					</swiper-slide>
+					}
+				</swiper-container>
+
+			</div>
+		</div>
+	</div>
+</section>

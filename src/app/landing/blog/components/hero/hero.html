@@ -1,0 +1,71 @@
+<section class="bg-secondary position-relative pt-xl-8 pb-3">
+
+	<span>
+		<svg class="position-absolute bottom-0 start-0" viewBox="0 0 1920 193.5" style="enable-background:new 0 0 1920 193.5;" xml:space="preserve">
+			<path class="fill-body" d="M556,116.1c-184.7-78.7-447.6-32.8-556,0v77.4h1920V0c-56.4,35.6-132.2,69.4-285.5,38 C1481.2,6.6,1333-21.5,1125.7,55.4C1012.7,108.5,740.7,194.8,556,116.1z" />
+		</svg>
+	</span>
+
+	<div class="container position-relative pt-4 pt-sm-5">
+
+		<div class="row mb-5 mb-md-7">
+
+			<div class="col-lg-6 col-xl-5">
+				<h1 class="fw-bold display-6 mb-3 mb-sm-4 mb-lg-0">The Creative Insight <span class="text-primary-grad">Blogs</span></h1>
+			</div>
+
+			<div class="col-lg-5 ms-auto">
+				<p class="mb-0">Dive into expert insights, innovative ideas, and inspiring stories to elevate your brand. Explore the forefront of design and marketing with The Creative Insight Blog.</p>
+
+				<div class="bg-body rounded-pill position-relative z-index-2 p-1 mt-4">
+					<form class="input-group align-items-center">
+						<input class="form-control bg-transparent border-0 me-1" type="email" placeholder="Search.....">
+						<button type="button" class="btn btn-dark btn-round rounded-circle lh-1 mb-0 me-2"><i class="bi bi-search"></i></button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row g-4 mb-n8">
+			@for (post of posts; track post.id) {
+			<div class="col-lg-6">
+				<article class="card card-img-scale overflow-hidden rounded-4">
+
+					<img src="{{ post.image }}" class="img-scale" alt="blog-img" priority>
+
+					<div class="bg-overlay bg-dark opacity-3"></div>
+
+					<div class="card-img-overlay d-flex flex-column align-items-start p-sm-5">
+						<div class="badge text-bg-dark mb-3">{{ post.category }}</div>
+
+						<div class="card-text mt-auto">
+							<h5 class="mb-3">
+								<a routerLink="/blog-single" class="text-white">
+									{{ post.title }}
+								</a>
+							</h5>
+
+							<ul class="nav nav-divider align-items-center">
+								<li class="nav-item">
+									<div class="nav-link">
+										<div class="d-flex align-items-center text-white position-relative">
+											<div class="avatar avatar-sm">
+												<img src="{{ post.author.avatar }}" width="40" height="40" class="avatar-img rounded-circle" alt="avatar">
+											</div>
+											<span class="ms-3">by <a [routerLink]=[]>{{ post.author.name }}</a></span>
+										</div>
+									</div>
+								</li>
+								<li class="nav-item text-white d-none d-sm-block">{{ post.date }}</li>
+								<li class="nav-item text-white d-none d-xl-block">{{ post.readTime }}</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+			</div>
+			}
+		</div>
+
+	</div>
+</section>

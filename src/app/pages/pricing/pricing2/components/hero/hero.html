@@ -1,0 +1,106 @@
+<section class="bg-secondary position-relative pt-xl-8 pb-0 mb-n4 overflow-hidden">
+
+    <div class="position-absolute end-0 top-0 mt-6 me-n6 z-index-2 d-none d-md-block">
+        <img src="assets/images/elements/clay-decoration.png" class="h-400px" alt="Clay-decoration">
+    </div>
+
+
+    <div class="position-absolute top-0 start-50 mt-n9 ms-n9">
+        <img src="assets/images/elements/grad-shape/blur-decoration.svg" class="blur-8 opacity-1" alt="Grad shape">
+    </div>
+
+
+    <div class="position-absolute start-0 top-0">
+        <img src="assets/images/elements/grad-shape/blur-decoration-2.svg" class="opacity-1 blur-8 h-300px rotate-335" alt="Grad shape">
+    </div>
+
+    <div class="container position-relative z-index-2 pt-4 pt-sm-5">
+
+        <div class="inner-container-small text-center mb-5 mb-sm-7">
+
+            <nav class="mb-2 d-flex justify-content-center" aria-label="breadcrumb">
+                <ol class="breadcrumb pt-0">
+                    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pricing - v2</li>
+                </ol>
+            </nav>
+
+
+            <h1 class="mb-0">Affordable & flexible pricing plans</h1>
+        </div>
+        <div class="row g-4 g-lg-5">
+            @for (item of pricingPlans; track $index) {
+            <div class="col-xl-10 mx-auto">
+                <div class="card card-hover-shadow card-hover-transition bg-body bg-opacity-75 rounded-4 p-4 p-sm-5">
+                    <div class="row g-4 g-md-0">
+                        <div class="col-md-6">
+                            <div class="icon-xl bg-secondary-grad shadow-primary rounded-circle mb-4">
+                                <img [src]="item.image" class="h-40px" alt="rocket image">
+                            </div>
+                            <p class="lead heading-color fw-semibold mb-2">{{item.title}}</p>
+                            <p class="mb-2"> <span class="h1 mb-0">${{item.price}}</span> /month</p>
+                            <p class="mb-0">{{item.description}}</p>
+                        </div>
+
+                        <div class="col-md-5 ms-auto">
+
+                            <div class="card-body d-flex flex-column h-100 p-0">
+                                <span class="fw-semibold opacity-6 mb-1 mb-md-3">Quick look at all the features</span>
+                                <ul class="list-group list-group-borderless mb-3">
+                                    @for (price of item.features; track $index) {
+                                    <li class="list-group-item d-flex heading-color mb-0"><i class="{{price.icon}}"></i>{{price.text}}</li>}
+                                </ul>
+
+                                <a class="btn btn-dark icon-link icon-link-hover justify-content-center mb-0"  [routerLink]="[]">{{item.button.text}}<i class="bi bi-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+
+            <div class="col-xl-10 mx-auto">
+                <div class="card card-hover-shadow card-hover-transition bg-primary-grad rounded-4 p-4 p-sm-5" data-bs-theme="dark">
+                    <div class="row g-4 g-md-0">
+                        <div class="col-md-6">
+                            <div class="icon-xl bg-dark rounded-circle mb-4">
+                                <img src="assets/images/elements/thunder.png" class="h-40px" alt="rocket image">
+                            </div>
+                            <p class="lead heading-color fw-semibold mb-2">Enterprise plan</p>
+
+                            <p class="h1 heading-color mb-2">Custom</p>
+                            <p class="mb-0">For businesses with unique requirements, our Custom Plan delivers a fully
+                                personalized experience.</p>
+                        </div>
+
+                        <div class="col-md-5 ms-auto">
+
+                            <div class="card-body d-flex flex-column h-100 p-0">
+                                <span class="fw-semibold mb-1 mb-md-3">Quick look at all the features</span>
+
+                                <ul class="list-group list-group-borderless mb-3">
+                                    <li class="list-group-item d-flex heading-color mb-0"><i class="bi bi-check-lg text-success me-1"></i>Unlimited projects</li>
+                                    <li class="list-group-item d-flex heading-color mb-0"><i class="bi bi-check-lg text-success me-1"></i>Custom reporting and analytics
+                                    </li>
+                                    <li class="list-group-item d-flex heading-color mb-0"><i class="bi bi-check-lg text-success me-1"></i>Dedicated account manager</li>
+                                    <li class="list-group-item d-flex heading-color mb-0"><i class="bi bi-check-lg text-success me-1"></i>Tailored support and consulting
+                                    </li>
+                                    <li class="list-group-item d-flex heading-color mb-0"><i class="bi bi-check-lg text-success me-1"></i>Personalized onboarding and
+                                        training</li>
+                                </ul>
+
+                                <a class="btn btn-white icon-link icon-link-hover justify-content-center mb-0"  [routerLink]="[]">Contact us<i class="bi bi-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span class="position-absolute bottom-0 start-0">
+        <svg class="text-dark" width="1920" height="73" viewBox="0 0 1920 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0L1920 61.5V73H0V0Z" fill="currentColor"></path>
+        </svg>
+    </span>
+</section>

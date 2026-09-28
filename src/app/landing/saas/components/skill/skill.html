@@ -1,0 +1,45 @@
+<section class="pt-0">
+    <div class="container">
+        <div class="border-top border-bottom border-primary mx-xl-6 py-4 py-xl-6 px-xl-4" style="--bs-border-opacity: .20;">
+            <div class="row g-4">
+                <div class="row g-4">
+                    @for (stat of counter; track $index) {
+                    <div class="col-sm-4">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-md-flex align-items-center">
+
+                                <h4 class="h2 mb-0">
+                                    <span [countUp]="stat.value"></span>
+                                    @if (stat.suffix) {
+                                    <span class="ms-1" [class]="stat.color">{{ stat.suffix }}</span>
+                                    }
+                                </h4>
+
+                                <div class="ms-md-3">
+                                    @if (stat.showStars) {
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                        <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                        <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                        <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                        <li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+                                    </ul>
+                                    }
+                                    <p class="mb-0">{{ stat.text }}</p>
+                                </div>
+                            </div>
+
+                            @if ($index !== counter.length - 1) {
+                            <div class="vr bg-primary mx-2 opacity-2 d-none d-sm-block"></div>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</section>

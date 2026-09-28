@@ -1,0 +1,37 @@
+<section class="bg-secondary bg-opacity-50">
+    <div class="container pt-8">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="text-primary-grad fw-bold lead">03.</span>
+                <h5>Result</h5>
+            </div>
+
+            <div class="col-md-8 ms-auto">
+                <p class="lead">Two assure Edward whence the was. Who worthy yet ten boys denote wonder. Weeks views her
+                    sight old tears sorry. Additions can suspected its concealed put furnished.</p>
+                <p class="mb-0">Transforming ideas into reality often requires collaboration with a diverse range of
+                    individuals. Partnering with experts, seeking mentorship, and building a network of like-minded
+                    individuals can provide valuable insights and support.</p>
+
+
+                <div class="row row-cols-2 row-cols-md-3 mt-0 g-4 g-lg-5">
+                    @for(item of countersData; track $index) {
+                    <div class="col">
+                        <h2 class="mb-0">
+                            @if(item.prefix) {
+                            <span class="mb-0">{{ item.prefix }}</span>
+                            }
+                            <span [countUp]="item.count"   [countUpOptions]="{ decimalPlaces: getDecimalPlaces(item.count) }"></span>
+                            @if(item.suffix) {
+                            <span class="mb-0" [class]="item.color">{{ item.suffix }}</span>
+                            }
+                        </h2>
+                        <p class="mb-0">{{ item.text }}</p>
+                    </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

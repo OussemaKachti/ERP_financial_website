@@ -1,0 +1,36 @@
+<section class="pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="mb-3 mb-lg-4">{{ title }}</h2>
+                <a [routerLink]="buttonLink" class="btn btn-primary mb-0">{{ buttonText }}</a>
+                <hr class="my-4 my-lg-5 border-primary opacity-2">
+                <div class="row g-4">
+                    @for (feature of features; track $index) {
+                    <div class="col-md-6">
+                        <div class="card card-body bg-transparent p-0">
+                            <img [src]="feature.icon" class="w-40px mb-4" alt="feature icon">
+                            <h6>{{ feature.title }}</h6>
+                            <p>{{ feature.description }}</p>
+                        </div>
+                    </div>
+                    }
+                </div>
+                <div class="bg-body shadow-primary rounded d-inline-block py-3 px-md-4 mt-4">
+                    <p class="heading-color mb-0 px-3 px-sm-5 px-md-0">
+                        <i class="bi bi-info-square-fill me-2"></i>{{ ctaText }}
+                        <a [routerLink]="ctaLink" class="fw-semibold icon-link icon-link-hover hover-underline-animation">
+                            {{ ctaButtonText }} <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-5 position-relative ms-auto">
+                <div class="bg-secondary rounded-4 position-relative p-5">
+                    <img [src]="saasImage" alt="Saas image">
+                    <img [src]="mainImage" class="rounded-4" alt="image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

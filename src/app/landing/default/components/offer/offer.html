@@ -1,0 +1,35 @@
+<section class="bg-secondary position-relative pt-0">
+    <div class="position-absolute bottom-0 end-0 ms-n5 mb-n8 d-none d-lg-block z-index-2">
+        <img src="assets/images/elements/grad-shape/02.png" class="h-200px" alt="Shape">
+    </div>
+
+    <div class="container">
+        <div class="inner-container-small text-center mb-5">
+            <h2 class="mb-0">What we offer</h2>
+        </div>
+
+        <div class="row justify-content-center g-4 g-lg-5">
+            @for (service of services; track $index) {
+            <div class="col-md-6 col-lg-4">
+                <div class="card card-hover-shadow card-hover-transition rounded-4 h-100 p-4">
+                    <div class="card-header bg-transparent p-0 mb-8">
+                        <div [class]="'icon-lg d-flex justify-content-center align-items-center text-white rounded-circle ' + service.iconBgColor">
+                            <img [src]="service.icon" alt="service icon" width="30" height="30">
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent mt-auto p-0">
+                        <h6><a  [routerLink]="[]">{{ service.title }}</a></h6>
+                        <a [routerLink]="service.link" class="link-primary-grad icon-link icon-link-hover stretched-link mb-0">Read more <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="inner-container-small bg-primary-grad rounded-3 text-center py-3 mt-5">
+            <p class="text-white mb-0 px-2 px-sm-5 px-md-0">✌️ Ready to elevate your digital presence?
+                <a routerLink="/contact-v1" class="fw-semibold hover-underline-animation text-white">Hire us now</a>
+            </p>
+        </div>
+
+    </div>
+</section>

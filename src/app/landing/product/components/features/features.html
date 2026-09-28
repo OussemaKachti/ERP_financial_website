@@ -1,0 +1,40 @@
+<section class="bg-secondary-grad overflow-hidden position-relative pt-0">
+    <div class="position-absolute bottom-0 start-0 ms-n8 mb-n6">
+        <img src="assets/images/elements/geo-grad-pattern.svg" class="h-500px opacity-2" alt="pattern">
+    </div>
+    <div class="container">
+        <div class="row mb-4 mb-md-5">
+            <div class="col-md-8 col-xl-6">
+                <h2>Unmatched features for everyday excellence</h2>
+            </div>
+            <div class="col-md-4 col-xl-6">
+                <div class="d-flex justify-content-md-end gap-3 position-relative mt-3">
+                    <a  [routerLink]="[]"
+                        class="btn btn-lg btn-white btn-icon rounded-circle mb-0 swiper-button-prev-feature rtl-flip">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                    <a  [routerLink]="[]"
+                        class="btn btn-lg btn-white btn-icon rounded-circle mb-0 swiper-button-next-feature rtl-flip">
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper swiper-outside-end-n20">
+            <swiper-container class="swiper-wrapper" [config]="swiperOptions" init="false">
+                @for (feature of features; track $index) {
+                <swiper-slide class="swiper-slide">
+                    <div class="card card-img-scale rounded-4 overflow-hidden">
+                        <img [src]="feature.image" class="img-scale" [alt]="feature.alt">
+                        <div class="bg-overlay bg-dark opacity-4"></div>
+                        <div class="card-img-overlay p-4 p-xxl-5">
+                            <h5 class="text-white">{{ feature.title }}</h5>
+                            <p class="text-white text-opacity-75">{{ feature.description }}</p>
+                        </div>
+                    </div>
+                </swiper-slide>
+                }
+            </swiper-container>
+        </div>
+    </div>
+</section>

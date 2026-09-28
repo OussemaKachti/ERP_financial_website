@@ -1,0 +1,56 @@
+<section class="bg-secondary-grad pt-1">
+	<div class="container">
+		<div class="row g-4">
+			<div class="col-md-7 mb-3 mb-md-0">
+				<h3 class="mb-4 mb-sm-5 pe-7">Join over <span class="text-purple">1,000+</span> companies using Folio</h3>
+
+				<div class="d-flex flex-wrap gap-4 gap-sm-5">
+
+					@for (item of aboutClientlogo; track $index) {
+					<div class="swap-logo">
+						<img [src]="item.grayLogo" class="h-30px" alt="client-img">
+						<div class="swap-item">
+							<img [src]="item.lightModeLogo" class="dark-mode-item h-30px" alt="client logo">
+							<img [src]="item.darkModeLogo" class="light-mode-item h-30px" alt="client logo">
+						</div>
+					</div>
+					}
+
+				</div>
+			</div>
+			<div class="col-md-5 col-lg-4 ms-auto">
+				<div class="d-flex gap-4 gap-lg-2 flex-wrap mb-4">
+					<div>
+
+						<img src="assets/images/elements/apple.svg" class="icon-lg mb-3" alt="">
+
+						<ul class="list-inline mb-1">
+							<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+							<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+							<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+							<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+							<li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+						</ul>
+						<span>4.8 stars on App Store</span>
+					</div>
+
+					<div class="ms-xl-auto">
+
+						<img src="assets/images/elements/gicon.svg" class="icon-lg mb-3" alt="">
+
+						<ul class="list-inline mb-1">
+							<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+							<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+							<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+							<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+							<li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+						</ul>
+						<span>4.6 stars on Google</span>
+					</div>
+				</div>
+
+				<a class="btn btn-outline-primary icon-link icon-link-hover mt-2" routerLink="/contact-us">Join our community<i class="bi bi-arrow-right"></i> </a>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,24 @@
+
+<section class="pt-0 mt-n9">
+    <div class="container-fluid position-relative">
+        <div class="max-width-1550 bg-dark position-relative rounded-4 overflow-hidden py-5 py-sm-6 py-lg-8"
+            data-bs-theme="dark">
+            <div class="container position-relative">
+                
+                <h2 class="mb-4 mb-lg-6">Step-by-Step Process</h2>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+              
+                    @for (item of process; track $index) {
+                    <div class="col">
+                        <h4 class="text-{{item.color}}">{{item.step}}</h4>
+                        <h6>{{item.title}}</h6>
+                        <p class="mb-0">{{item.description}}</p>
+                    </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

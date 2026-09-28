@@ -1,0 +1,19 @@
+<section class="pt-0">
+	<div class="container">
+		<h2 class="text-center mb-4 mb-lg-5">Principles for your finance</h2>
+		<div class="row g-4 g-lg-5">
+			@for (item of values; track $index) {
+			<div class="col-sm-6 col-xl-3">
+				<div class="bg-secondary-grad rounded-4 p-4">
+					<div class="icon-lg bg-body {{ item.color }} shadow-primary rounded-circle mb-4">
+						<i class="{{ item.icon }}"></i>
+					</div>
+					<h6 class="mb-2">{{ item.title }}</h6>
+					<p class="mb-0">{{ item.description }}</p>
+				</div>
+			</div>
+			}
+		</div>
+
+	</div>
+</section>

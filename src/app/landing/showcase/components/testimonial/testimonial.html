@@ -1,0 +1,79 @@
+<section>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-center text-lg-start">
+                <h2 class="mb-3 mb-lg-4">Hear from our satisfied users</h2>
+                <ul class="avatar-group align-items-center justify-content-center justify-content-lg-start mb-2">
+                    <li class="avatar avatar-sm">
+                        <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
+                    </li>
+                    <li class="avatar avatar-sm">
+                        <img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
+                    </li>
+                    <li class="avatar avatar-sm">
+                        <img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar">
+                    </li>
+                    <li class="avatar avatar-sm">
+                        <img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
+                    </li>
+                    <li class="avatar avatar-sm">
+                        <img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
+                    </li>
+                </ul>
+                <p>Rated <span class="badge bg-dark">4.9/5.0</span> by over 100.000+ users</p>
+            </div>
+
+            <div class="col-lg-8 col-xl-7 ms-auto">
+                <div class="swiper mt-2 mt-md-4">
+                    <swiper-container [config]="swiperTestimonial" init="false" class="swiper-wrapper">
+                        @for (testimonial of testimonials; track $index) {
+                        <swiper-slide class="swiper-slide">
+                            <div class="card bg-secondary bg-opacity-50 rounded-4 overflow-hidden">
+                                <div class="row g-0">
+                                    <div class="col-md-5">
+                                        <img [src]="testimonial.image" class="rounded-start mb-3 mb-md-0" alt="...">
+                                    </div>
+                                    <div class="col-md-7 col-xl-6">
+                                        <div class="card-body d-flex flex-column h-100 p-xl-4">
+                                            <ul class="list-inline mb-2">
+                                                @for(star of getStars(testimonial.rating);track $index){
+                                                <li class="list-inline-item me-0">
+                                                    <i class="bi bi-star-fill text-primary"></i>
+                                                </li>
+                                                }
+                                                @if(testimonial.rating % 1 !== 0){
+                                                <li class="list-inline-item me-0">
+                                                    <i class="bi bi-star-half text-primary"></i>
+                                                </li>
+                                                }
+                                            </ul>
+                                            <p class="heading-color">{{ testimonial.text }}</p>
+                                            <div class="mt-auto">
+                                                <p class="lead heading-color fw-semibold mb-0">{{ testimonial.name }}
+                                                </p>
+                                                <small>{{ testimonial.role }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        }
+                    </swiper-container>
+                    <div
+                        class="d-flex justify-content-between position-absolute top-50 start-50 translate-middle w-100 z-index-2">
+                        <a  [routerLink]="[]"
+                            class="btn btn-dark btn-icon btn-lg rounded-circle mb-0 swiper-button-prev-test rtl-flip ms-2">
+                            <i class="bi bi-arrow-left"></i>
+                        </a>
+                        <a  [routerLink]="[]"
+                            class="btn btn-dark btn-icon btn-lg rounded-circle mb-0 swiper-button-next-test rtl-flip me-2">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

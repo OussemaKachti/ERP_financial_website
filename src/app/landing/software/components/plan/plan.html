@@ -1,0 +1,62 @@
+<section class="bg-secondary position-relative overflow-hidden">
+	<span>
+		<svg class="position-absolute top-0 start-0 mt-lg-n6" viewBox="0 0 1950 237" style="enable-background:new 0 0 1950 237;" xml:space="preserve">
+			<path class="fill-body" d="M1949.5,0H0v164c717.2,131.2,1598.5,54.7,1949.5,0V0z" />
+		</svg>
+	</span>
+
+	<div class="container position-relative z-index-9 pt-5 pt-xxl-8">
+		<div class="row g-4 align-items-center">
+			<div class="col-lg-4">
+				<h2 class="mb-3 mb-lg-4"> Find the perfect plan for your business</h2>
+				<p class="mb-4">Our flexible pricing plans are designed to scale with your business, offering the features you need to thrive.</p>
+
+				<a routerLink="/pricing-v1" class="btn btn-primary-grad icon-link icon-link-hover">Compare pricing <i class="bi bi-arrow-right"></i></a>
+			</div>
+			<div class="col-lg-8 ms-auto ps-xl-6">
+					<div class="row align-items-center g-0">
+						@for (plan of pricingPlans; track plan) {
+						<div class="col-md-6 mb-5 mb-md-0">
+							<div class="card {{ plan.cardStyle.bg }} {{ plan.cardStyle.text }} {{ plan.cardStyle.extra }}">
+
+								@if (plan.popular) {
+								<div class="text-bg-dark rounded position-absolute top-0 start-50 translate-middle px-3 py-1">
+									Most popular
+								</div>
+								}
+								<div class="card-header bg-transparent d-flex flex-column align-items-center p-0">
+									<div class="icon-xl 
+              {{ plan.popular ? 'bg-body' : 'bg-secondary' }} 
+              d-flex justify-content-center align-items-center text-white rounded-circle mb-3">
+										<img [src]="plan.icon" class="h-40px" [alt]="plan.name">
+									</div>
+									<h6 class="mb-3" [class]="plan.popular ? 'text-white' : ''">{{ plan.name }}</h6>
+									<span [class]="plan.popular ? 'text-white' : 'text-primary-grad'">
+										<span class="h1 fw-bold" [class]="plan.popular ? 'text-white' : ''">
+											{{ plan.currency }}{{ plan.price }}
+										</span>/{{ plan.billingCycle }}
+									</span>
+								</div>
+								<div class="card-body w-100 p-0 mt-3">
+									<ul class="list-group list-group-borderless text-center mb-4" [class]="plan.popular ? 'opacity-8' : ''">
+										@for (feature of plan.features; track feature) {
+										<li class="list-group-item mb-0" [class]="plan.popular ? 'text-white' : ''">
+											<i class="bi bi-check-lg" [class]="plan.popular ? '' : 'text-success me-1'"></i>
+											{{ feature }}
+										</li>
+										}
+									</ul>
+
+									<a [routerLink]="plan.button.link" class="btn {{ plan.button.style }} w-100 mb-0">
+										{{ plan.button.label }}
+									</a>
+								</div>
+							</div>
+						</div>
+						}
+					</div>
+	
+			</div>
+		</div>
+	</div>
+</section>

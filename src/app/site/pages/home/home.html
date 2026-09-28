@@ -1,0 +1,325 @@
+<!-- ═══════════════ Hero ═══════════════ -->
+<section class="rf-hero">
+  <div class="rf-hero-ring" aria-hidden="true"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-10 col-xxl-9 mx-auto text-center">
+        <a routerLink="/tarifs" class="rf-hero-badge">
+          <strong>Lancement</strong>
+          Prix réduits jusqu’au 15 décembre 2026 <i class="bi bi-arrow-right"></i>
+        </a>
+        <h1 class="rf-display mb-4">
+          Votre gestion, vos clients et vos équipes
+          <span class="rf-serif-em">sur une seule plateforme.</span>
+        </h1>
+        <p class="rf-lead mx-auto mb-4" style="max-width: 44rem">
+          Facturation, stock, comptabilité, prospection terrain et paie pour les PME de Tunisie et d’Algérie —
+          avec un seul compte et des données qui circulent d’un service à l’autre.
+        </p>
+        <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center">
+          <a routerLink="/demonstration" class="btn btn-primary btn-lg mb-0">Demander une démonstration</a>
+          <a [href]="site.inscription" class="btn btn-rf-ghost btn-lg mb-0">Essayer gratuitement</a>
+        </div>
+        <p class="rf-hero-note">Sans installation · Période d’essai gratuite · Mensuel ou annuel</p>
+      </div>
+    </div>
+
+    <div class="rf-stage mt-5 pt-lg-3" (mouseenter)="enPause.set(true)" (mouseleave)="enPause.set(false)"
+      (focusin)="enPause.set(true)" (focusout)="enPause.set(false)">
+      <div class="text-center">
+        <div class="rf-app-switch" role="tablist" aria-label="Applications" [class.is-paused]="enPause()">
+          @for (mod of modules; track mod.key; let i = $index) {
+            <button type="button" role="tab" [class.active]="actif() === i" [attr.aria-selected]="actif() === i"
+              [attr.aria-controls]="'ecran-' + mod.key" (click)="choisir(i)">
+              <span class="rf-dot" [style.--c]="mod.couleur"></span>
+              {{ mod.nom }}
+              <span class="rf-progress" [style.--c]="mod.couleur" [class.is-running]="auto()"
+                [style.animation-play-state]="enPause() ? 'paused' : 'running'"></span>
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="rf-stage-screens">
+        @for (mod of modules; track mod.key; let i = $index) {
+          <div [id]="'ecran-' + mod.key" role="tabpanel" [class.is-hidden]="actif() !== i" [attr.aria-hidden]="actif() !== i">
+            <rf-app-window [src]="mod.hero.src" [alt]="mod.hero.alt" [url]="mod.hero.url"
+              [largeur]="mod.hero.largeur" [hauteur]="mod.hero.hauteur" [prioritaire]="i === 0" />
+          </div>
+        }
+      </div>
+      <p class="rf-stage-caption" aria-live="polite">
+        <strong class="rf-ink">{{ modules[actif()].hero.titre }}</strong> {{ modules[actif()].hero.legende }}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Chiffres clés ═══════════════ -->
+<section class="pb-5">
+  <div class="container">
+    <div class="rf-facts" data-aos="fade-up">
+      <div><strong>1 compte</strong><span>pour les trois applications, sans nouvelle connexion</span></div>
+      <div><strong>4 devises</strong><span>dinars tunisien et algérien, euro et dollar, au millime</span></div>
+      <div><strong>FR · ع</strong><span>Finance et RH en français ou en arabe, de droite à gauche</span></div>
+      <div><strong>Multi-société</strong><span>plusieurs entreprises depuis le même accès, données séparées</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Trois applications ═══════════════ -->
+<section class="rf-section" id="applications">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-7">
+        <span class="rf-eyebrow">Trois applications</span>
+        <h2 class="rf-h2">Une seule façon de travailler, du devis à la paie</h2>
+      </div>
+      <div class="col-lg-5 d-flex align-items-end">
+        <p class="rf-lead mb-0">
+          Les applications partagent le même compte, les mêmes sociétés et les mêmes utilisateurs.
+          Démarrez avec la Finance ou les RH, et ajoutez le reste quand l’entreprise en a besoin.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      @for (mod of modules; track mod.key) {
+        <div class="col-lg-4" data-aos="fade-up" [attr.data-aos-delay]="$index * 80">
+          <article class="rf-module-card" [style.--c]="mod.couleur">
+            <div class="d-flex justify-content-between align-items-start">
+              <span class="rf-module-icon"><i class="bi" [class]="mod.icone"></i></span>
+              <span class="rf-module-card-num">{{ mod.num }}</span>
+            </div>
+            <h3 class="rf-module-card-title mt-4">{{ mod.nomLong }}</h3>
+            <p class="rf-module-card-desc">{{ mod.accroche }}</p>
+            <ul class="rf-check-list">
+              @for (p of mod.apercu; track p) {
+                <li>{{ p }}</li>
+              }
+            </ul>
+            <a class="rf-link" [routerLink]="'/' + mod.key">Découvrir {{ mod.key === 'rh' ? 'les RH' : mod.key === 'crm' ? 'le CRM' : 'la Finance' }} <i class="bi bi-arrow-right"></i></a>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Situations ═══════════════ -->
+<section class="rf-section rf-surface">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-8">
+        <span class="rf-eyebrow">Ce qui change au quotidien</span>
+        <h2 class="rf-h2">Des situations que chaque dirigeant de PME connaît</h2>
+        <p class="rf-lead mb-0">
+          Pas besoin de changer de métier. Les tableurs, les relances de mémoire et les doubles saisies
+          laissent la place à des outils qui font le travail répétitif à votre place.
+        </p>
+      </div>
+    </div>
+
+    <div class="d-none d-md-grid rf-situation py-0 border-0" aria-hidden="true">
+      <div class="rf-col-label">Aujourd’hui</div>
+      <div></div>
+      <div class="rf-col-label">Avec {{ site.nom }}</div>
+    </div>
+    <div class="rf-situations">
+      @for (s of situations; track s.avant) {
+        <div class="rf-situation" data-aos="fade-up">
+          <p class="rf-situation-before">{{ s.avant }}</p>
+          <div class="rf-situation-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+          <div class="rf-situation-after">
+            <span class="rf-tag" [style.--c]="m[s.module].couleur">{{ m[s.module].nom }}</span>
+            <p>{{ s.apres }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Preuve par l'écran ═══════════════ -->
+<section class="rf-section overflow-hidden">
+  <div class="container">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-4 mb-4">
+      <div style="max-width: 40rem">
+        <span class="rf-eyebrow">Sur l’écran</span>
+        <h2 class="rf-h2">Ce que vous verrez en ouvrant l’application</h2>
+        <p class="rf-lead mb-0">
+          Chaque capture est prise dans l’application, sur une société de démonstration :
+          un distributeur d’équipements de traçabilité pour cliniques et laboratoires.
+        </p>
+      </div>
+      <div class="rf-gallery-nav">
+        <button type="button" (click)="defiler(-1)" [disabled]="debut()" aria-label="Capture précédente"><i class="bi bi-arrow-left"></i></button>
+        <button type="button" (click)="defiler(1)" [disabled]="fin()" aria-label="Capture suivante"><i class="bi bi-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rf-gallery" #piste (scroll)="majGalerie()" tabindex="0" aria-label="Captures de l’application">
+    @for (g of galerie; track g.src) {
+      <figure class="rf-gallery-item">
+        <rf-app-window [src]="'assets/rfidia/screens/' + g.src" [alt]="g.texte" [url]="g.url"
+          [largeur]="g.largeur" [hauteur]="g.hauteur" />
+        <figcaption>
+          <span class="rf-tag" [style.--c]="m[g.module].couleur">{{ m[g.module].nom }}</span>
+          <span>{{ g.texte }}</span>
+        </figcaption>
+      </figure>
+    }
+  </div>
+</section>
+
+<!-- ═══════════════ Données partagées ═══════════════ -->
+<section class="rf-section rf-surface">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="position-sticky" style="top: calc(var(--rf-header-h) + 2rem)">
+          <span class="rf-eyebrow">Une plateforme, des données partagées</span>
+          <h2 class="rf-h2">Ce qui est saisi une fois sert partout</h2>
+          <p class="rf-lead">
+            Un client créé dans le CRM, un salarié ajouté aux RH ou une facture émise en Finance appartiennent
+            à la même société, avec les mêmes droits d’accès.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="row g-3">
+          @for (f of flux; track f.texte) {
+            <div class="col-sm-6" data-aos="fade-up" [attr.data-aos-delay]="$index * 60">
+              <div class="rf-flow" [style.--from]="m[f.de].couleur" [style.--to]="m[f.vers].couleur">
+                <div class="rf-flow-route">
+                  <span class="rf-tag" [style.--c]="m[f.de].couleur">{{ f.deLabel }}</span>
+                  <span class="rf-flow-line" aria-hidden="true"></span>
+                  <span class="rf-tag" [style.--c]="m[f.vers].couleur">{{ f.versLabel }}</span>
+                </div>
+                <p>{{ f.texte }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="row g-4 mt-4">
+          @for (p of piliers; track p.titre) {
+            <div class="col-sm-6">
+              <div class="rf-pillar">
+                <h3>{{ p.titre }}</h3>
+                <p>{{ p.texte }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Pour qui ═══════════════ -->
+<section class="rf-section rf-band">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <span class="rf-eyebrow">Pour qui</span>
+        <p class="rf-quote-xl mb-5">
+          Les PME de négoce, de distribution et de services qui <em>facturent chaque semaine</em>, gèrent un stock,
+          emploient de cinq à cinquante personnes et ont une équipe commerciale sur le terrain.
+        </p>
+        <div class="row g-3">
+          @for (t of metiers; track t.titre) {
+            <div class="col-md-4 col-lg-12 col-xl-4">
+              <div class="rf-trade">
+                <i class="bi" [class]="t.icone"></i>
+                <h3>{{ t.titre }}</h3>
+                <p>{{ t.texte }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="ps-xl-4">
+          <div class="rf-rtl-shot" data-aos="fade-left">
+            <img src="assets/rfidia/screens/a-dashboard.webp" width="2000" height="1250" loading="lazy" decoding="async"
+              alt="Tableau de bord financier affiché en arabe, de droite à gauche">
+          </div>
+          <div class="d-flex gap-3 mt-4">
+            <span class="rf-tag flex-shrink-0" style="--c: #f3a6b4">العربية</span>
+            <p class="mb-0 small">
+              <strong class="rf-ink">En arabe, de droite à gauche.</strong>
+              Chaque utilisateur choisit sa langue pour la Finance et les RH. Les documents envoyés aux clients
+              restent en français.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Tarifs ═══════════════ -->
+<section class="rf-section" id="tarifs">
+  <div class="container">
+    <div class="text-center mx-auto mb-4" style="max-width: 44rem">
+      <span class="rf-eyebrow">Tarifs</span>
+      <h2 class="rf-h2">Payer uniquement ce que l’entreprise utilise</h2>
+      <p class="rf-lead mb-0">
+        La Finance et les RH se souscrivent seules ou ensemble. La suite complète ajoute le CRM terrain.
+      </p>
+    </div>
+    <rf-pricing-grid />
+    <div class="text-center mt-4">
+      <a routerLink="/tarifs" class="rf-link">Comparer le contenu des offres <i class="bi bi-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Démarrer ═══════════════ -->
+<section class="rf-section rf-surface">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-7">
+        <span class="rf-eyebrow">Démarrer</span>
+        <h2 class="rf-h2">Quatre étapes, sans installation</h2>
+      </div>
+      <div class="col-lg-5 d-flex align-items-end">
+        <p class="mb-0">
+          Le plan comptable standard et les types de congés usuels se mettent en place en une seule opération :
+          l’essentiel du paramétrage est fait avant la première facture.
+        </p>
+      </div>
+    </div>
+    <ol class="rf-steps list-unstyled mb-0">
+      @for (e of etapes; track e.titre; let i = $index) {
+        <li class="rf-step" data-aos="fade-up" [attr.data-aos-delay]="i * 80">
+          <span class="rf-step-num">0{{ i + 1 }}</span>
+          <h3>{{ e.titre }}</h3>
+          <p>{{ e.texte }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════ Questions ═══════════════ -->
+<section class="rf-section">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <span class="rf-eyebrow">Questions</span>
+        <h2 class="rf-h2">Ce qu’on nous demande souvent</h2>
+        <p class="rf-muted">Une autre question ? Posez-la pendant la démonstration.</p>
+        <a routerLink="/demonstration" class="rf-link">Demander une démonstration <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="col-lg-8">
+        <rf-faq-list [questions]="faq" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<rf-cta-band />

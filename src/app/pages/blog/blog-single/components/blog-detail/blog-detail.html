@@ -1,0 +1,201 @@
+<section class="position-relative overflow-hidden pt-xl-8">
+	<div class="position-absolute start-0 top-0">
+		<img src="assets/images/elements/grad-shape/blur-decoration-2.svg" class="opacity-1 blur-9 h-300px rotate-335" alt="Grad shape">
+	</div>
+
+	<div class="position-absolute end-0 top-0">
+		<img src="assets/images/elements/grad-shape/blur-decoration-2.svg" class="opacity-1 blur-8 h-300px rotate-335" alt="Grad shape">
+	</div>
+
+	<div class="container position-relative pt-4 pt-sm-5">
+		<div class="row">
+
+			<div class="col-lg-8 mx-auto text-center mb-4 mb-sm-6">
+				<a  [routerLink]="[]" class="badge text-bg-dark mb-4">Lifestyle</a>
+				<h1 class="h2 mb-0">Building a strong identity for your business</h1>
+			</div>
+
+
+			<div class="col-12 mx-auto text-center mb-4 mb-sm-6">
+				<img src="assets/images/blog/blog-detail.jpg" class="img-fluid rounded" alt="blog-img">
+			</div>
+			<div class="col-md-11 mx-auto mb-4 mb-sm-6">
+				<div class="row">
+					<div class="col-md-4 text-center mb-6 mb-md-0">
+
+						<div class="avatar avatar-xxl mx-auto flex-shrink-0 mb-3">
+							<img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
+						</div>
+						<p class="mb-1 opacity-6">Word by</p>
+						<h6 class="mb-3">Joan Wallace</h6>
+						<div class="d-flex justify-content-center align-items-center flex-wrap">
+
+							<a  [routerLink]="[]" class="text-primary-hover mb-0"><i class="bi bi-heart me-2"></i>20</a>
+
+
+							<span class="vr mx-3"></span>
+
+
+							<a  [routerLink]="[]" class="text-primary-hover mb-0"><i class="bi bi-chat me-2"></i>5</a>
+
+
+							<span class="vr mx-3"></span>
+
+							<div class="dropdown" ngbDropdown>
+								<a  [routerLink]="[]" ngbDropdownToggle class="text-primary-hover arrow-none" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="bi bi-share me-2"></i>14
+								</a>
+								<ul class="dropdown-menu min-w-auto" ngbDropdownMenu aria-labelledby="cardFeedAction">
+									@for (item of socialLinks; track $index) {
+									<li>
+										<a class="dropdown-item" [routerLink]="item.link">
+											<i [class]="item.icon"></i>
+											{{ item.label }}
+										</a>
+									</li>
+									}
+								</ul>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-7 ms-auto">
+						<p><span class="dropcap heading-color bg-secondary bg-opacity-50 rounded px-2">T</span>he simple act of cultivating gratitude has the remarkable ability to bring joy and abundance into our lives, shifting our perspective from lack to abundance. In this article, we will explore the power of gratitude and how it can enhance our overall well-being and create a positive ripple effect in our lives and the lives of those around us. <strong>In a world filled with chaos</strong> and uncertainty, it's easy to lose sight of the things that truly matter.</p>
+						<p>Additionally, expressing gratitude to others through acts of kindness or <u> heartfelt appreciation strengthens our relationships and</u> fosters a sense of interconnectedness.</p>
+						<p class="mb-0">By reframing obstacles as opportunities for growth and learning, <mark>we can navigate through difficulties with</mark> a sense of gratitude for the lessons they bring. This mindset shift empowers us to find joy and meaning in every circumstance, leading to a more fulfilling and purposeful life.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-12 mb-4 mb-sm-6">
+				<lightgallery [settings]="setting" class="row g-4 g-lg-6">
+					@for (item of blog; track $index) {
+					<div class="col-sm-4">
+						<a [href]="item.link" data-glightbox="" data-gallery="image-popup">
+							<img [src]="item.src" class="rounded h-100" alt="blog-img">
+						</a>
+					</div>
+					}
+				</lightgallery>
+			</div>
+			<div class="col-lg-10 mx-auto mb-4 mb-sm-6">
+
+				@for (step of article.steps; track $index) {
+				<h6>{{ step.title }}</h6>
+
+				@if (step.paragraph) {
+				<p class="mb-5">{{ step.paragraph }}</p>
+				}
+
+				@if (step.list) {
+				<ul class="ps-4 mb-5">
+					@for (item of step.list; track $index) {
+					@if (typeof item === 'string') {
+					<li class="mb-2">{{ item }}</li>
+					}
+					@else {
+					<ul>
+						@for (sub of item; track $index) {
+						<li class="mb-2">{{ sub }}</li>
+						}
+					</ul>
+					}
+					}
+				</ul>
+				}
+				}
+				<blockquote class="card card-body bg-secondary bg-opacity-50 overflow-hidden p-sm-5 mb-5">
+					<div class="vr bg-primary-grad h-100 position-absolute top-0 start-0" style="width: 3px; opacity:100%"></div>
+					<span class="display-4 text-primary position-absolute top-0 start-0 opacity-1 mt-n3">
+						<i class="bi bi-quote"></i>
+					</span>
+					<q class="fs-6 heading-color">{{ article.quote.text }}</q>
+					<div class="blockquote-footer mb-0 mt-3">{{ article.quote.author }}</div>
+				</blockquote>
+				<div class="align-items-center mb-5">
+					<h6>Popular Tags:</h6>
+					<ul class="list-inline d-flex flex-wrap gap-2 mb-0">
+						@for (tag of article.popularTags; track $index) {
+						<li class="list-inline-item">
+							<a class="btn btn-secondary btn-sm mb-lg-0"  [routerLink]="[]">{{ tag }}</a>
+						</li>
+						}
+					</ul>
+				</div>
+				<div class="bg-secondary bg-opacity-50 rounded d-md-flex justify-content-between align-items-center text-center px-4 py-3">
+					<h6 class="mb-0">{{ article.feedback.question }}</h6>
+					<small class="py-3 p-md-0 d-block">{{ article.feedback.stats }}</small>
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+						<input type="radio" class="btn-check" name="btnradio" id="btnradio1">
+						<label class="btn btn-outline-primary btn-sm mb-0" for="btnradio1">
+							<i class="bi bi-hand-thumbs-up"></i> Yes
+						</label>
+						<input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+						<label class="btn btn-outline-primary btn-sm mb-0" for="btnradio2">
+							No <i class="bi bi-hand-thumbs-down"></i>
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-10 mx-auto mb-4">
+				<hr class="mb-4 mb-sm-6">
+				<h5>{{ comments.length }} comments</h5>
+
+				@for (comment of comments; track $index) {
+				<div class="my-4 d-flex" [class]="comment.extraclass">
+					<img class="avatar avatar-md rounded-circle me-3" [src]="comment.avatar" alt="avatar">
+					<div>
+						<div class="mb-2">
+							<h6 class="m-0">{{ comment.name }}</h6>
+							<span class="me-3 small">{{ comment.date }}</span>
+						</div>
+						<p class="mb-2">{{ comment.text }}</p>
+						<ul class="nav nav-divider align-items-center">
+							<li class="nav-item">
+								<a class="text-body-secondary text-primary-hover mb-0" href="#!">
+									Like{{ comment.likes ? ' (' + comment.likes + ')' : '' }}
+								</a>
+							</li>
+							<li class="nav-item d-none d-sm-block">
+								<a class="text-body-secondary text-primary-hover mb-0" href="#!">Reply</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				}
+			</div>
+
+
+			<div class="col-lg-10 mx-auto">
+				<div class="bg-secondary bg-opacity-50 rounded-4 p-4 p-sm-5">
+
+					<h5 class="mb-0">Your Views Please!</h5>
+					<small>Your email address will not be published. Required fields are marked *</small>
+
+					<form class="row g-3 mt-2">
+
+						<div class="col-lg-6">
+							<label class="form-label">Name *</label>
+							<input type="text" class="form-control" aria-label="First name" required>
+						</div>
+
+						<div class="col-lg-6">
+							<label class="form-label">Email *</label>
+							<input type="email" class="form-control" required>
+						</div>
+						<div class="col-12">
+							<label class="form-label">Your Comment *</label>
+							<textarea class="form-control" rows="3" required></textarea>
+						</div>
+
+						<div class="col-12">
+							<button type="submit" class="btn btn-primary mb-0">Post comment</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

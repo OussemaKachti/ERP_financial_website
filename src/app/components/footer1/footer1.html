@@ -1,0 +1,77 @@
+<footer class="bg-dark position-relative pt-6 pt-lg-8" data-bs-theme="dark">
+    <div class="container position-relative">
+        <div class="row g-4">
+            <div class="col-md-6 col-xl-4">
+                <a routerLink="/index">
+                    <img class="h-40px" src="assets/images/logo-light.svg" alt="logo">
+                </a>
+                <p class="my-3 my-xl-4">A Bootstrap theme that's both stylish and functional, perfect for any type of
+                    technology or corporate website.</p>
+            </div>
+
+            <div class="col-xl-7 ms-auto">
+                <div class="row g-4">
+
+                    @for (section of footerSections; track $index) {
+                    @if (!section.apps) {
+                    <div class="col-6 col-md-3">
+                        <h6 class="mb-3 mb-xl-4">{{ section.title }}</h6>
+                        <ul class="nav flex-column gap-1">
+                            @for (item of section.links; track $index) {
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="item.link">
+                                    {{ item.label }}
+                                    @if (item.badge) {
+                                    <span class="badge bg-{{item.badge.color}} ms-2">{{ item.badge.text }}</span>
+                                    }
+                                    @if (item.external) {
+                                    <i class="bi bi-box-arrow-up-right small ms-2"></i>
+                                    }
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                    }
+
+                    @if (section.apps) {
+                    <div class="col-sm-6 col-md-6">
+                        <h6 class="mb-3 mb-xl-4">{{ section.title }}</h6>
+                        <p class="mb-3">{{ section.description }}</p>
+                        <div class="row g-2 mb-4 mb-sm-5">
+                            @for (app of section.apps; track $index) {
+                            <div class="col-5 col-sm-6 col-md-5 col-lg-4 col-xl-5">
+                                <a [routerLink]="app.link"><img [src]="app.img" [alt]="app.alt" /></a>
+                            </div>
+                            }
+                        </div>
+
+                        <span class="heading-color fw-semibold">{{ section.socialTitle }}</span>
+                        <ul class="list-inline align-items-center mb-0 mt-3">
+                            @for (social of section.socials; track $index) {
+                            <li class="list-inline-item">
+                                <a class="btn btn-xs btn-icon bg-{{social.color}}" [routerLink]="social.link">
+                                    <i class="bi bi-{{social.icon}} lh-base"></i>
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                    }
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="mt-xl-5 mb-0 opacity-1">
+        <div class="d-md-flex justify-content-between align-items-center text-center text-lg-start py-4">
+            <div class="text-body small mb-3 mb-md-0"> Copyrights ©{{currentYear}} Folio. Build by <a href="https://www.webestica.com/" target="_blank" class="text-body text-primary-hover hover-underline-animation">Webestica</a>. </div>
+            <ul class="nav d-flex justify-content-center gap-1 mb-0">
+                <li class="nav-item"><a class="nav-link small py-0" routerLink="/about-v1">Privacy policy</a></li>
+                <li class="nav-item"><a class="nav-link small py-0 pe-0" routerLink="/service-single">Terms & conditions</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,32 @@
+<section class="pt-0">
+  <div class="container">
+    <div class="row text-center">
+      @for ( s of skill; track $index) {
+      <div [class]="s.extraclass">
+        <div [class]="s.flexClass">
+
+          @if (s.divider && s.dividerPosition === 'before') {
+          <div class="vr bg-primary-grad opacity-1 my-3"></div>
+          }
+
+          <div class="text-center">
+            <div class="d-flex justify-content-center">
+              @if (s.extraSymbol) {
+              <span class="display-2 heading-color mb-0">{{s.extraSymbol}}</span>
+              }
+              <h4 class="purecounter display-2 mb-0" [countUp]="s.value"></h4>
+              <span class="display-2 text-{{s.color}} mb-0">{{s.suffix}}</span>
+            </div>
+            <p class="px-3 py-2 bg-body mt-n3 mt-md-n4 position-relative">{{s.text}}</p>
+          </div>
+
+          @if (s.divider && s.dividerPosition === 'after') {
+          <div class="vr bg-primary-grad opacity-1 my-3"></div>
+          }
+
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+
+<section class="pt-0">
+	<div class="bg-parallax position-relative h-400px h-xl-600px  overflow-hidden" ngJarallax data-jarallax
+                    data-speed="0.6" style="background:url(assets/images/about/10.jpg) no-repeat; background-size:cover; background-position:center;" >
+		<div class="bg-overlay bg-dark opacity-1"></div>
+		<div class="position-absolute top-50 start-50 translate-middle z-index-2">
+     <lightgallery [settings]="setting">
+        <a data-src="https://www.youtube.com/watch?v=tXHviS-4ygo">
+          <button class="btn btn-icon btn-xl btn-white btn-round mb-0">
+            <i class="bi bi-play-fill fa-lg"></i>
+          </button>
+        </a>
+      </lightgallery>
+		</div>
+	</div>	
+	<div class="container mt-n5 mt-xl-n7">
+		<div class="bg-dark position-relative rounded-4 overflow-hidden p-4 p-md-5 p-lg-6" data-bs-theme="dark">
+			<div class="position-absolute top-0 start-0 mt-n7 ms-n5">
+				<img src="assets/images/elements/grad-shape/02.png" class="blur-7 opacity-3" alt="Grad shape">
+			</div>
+
+			<div class="row g-4 align-items-center position-relative">
+				<div class="col-lg-6 text-center text-lg-start">
+					<h2 class="h3 mb-3">Need finance guidance?</h2>
+					<p class="mb-0">We've always worked very hard to give our customers the best experience.</p>
+				</div>
+				<div class="col-lg-4 ms-auto text-end">
+					<div class="heading-color text-center mb-3"> <span class="fs-2 fw-bold">$9.99</span> /per hour</div>
+					<a  [routerLink]="[]" class="btn btn-primary-grad mb-0 w-100"><i class="bi bi-telephone me-2"></i>Book call!</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

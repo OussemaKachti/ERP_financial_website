@@ -1,0 +1,38 @@
+<section>
+    <div class="container" #develop>
+        <div class="row" >
+            <div class="col-lg-4">
+                <div  >
+                    <h2 class="mb-3"  [boundary]="develop"  stickyThing  [marginTop]="100">Development tips & trends</h2>
+                    <p class="mb-sm-5"><i class="bi bi-instagram text-primary-grad me-2"></i>Follow us on
+                        <b>Instagram</b> to see life at <a [routerLink]="[]" class="hover-underline-animation">&#64;folio</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-7 ms-auto"  > 
+                @for (blog of developmentTips; track $index) {
+                <div class="card card-hover-transition bg-transparent border-bottom rounded-0 p-4 ps-0" #spacer >
+                    <div class="row align-items-sm-center">
+                        <div class="col-5 col-sm-3 col-xl-2">
+                            <img [src]="blog.image" class="card-img" alt="blog-img">
+                        </div>
+                        <div class="col-7 col-sm-9 col-xl-10">
+                            <div class="card-body ps-0 pe-3 py-0">
+                                <h6 class="card-title mb-3 mb-md-0">{{ blog.title }}</h6>
+                                <div class="d-sm-flex justify-content-between align-items-center mt-3">
+                                    <ul class="nav nav-divider align-items-center">
+                                        <li class="nav-item d-none d-sm-block">{{ blog.date }}</li>
+                                        <li class="nav-item d-none d-xl-block">{{ blog.readTime }}</li>
+                                    </ul>
+                                    <a class="icon-link icon-link-hover stretched-link" [routerLink]="blog.link">Read more<i
+                                            class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

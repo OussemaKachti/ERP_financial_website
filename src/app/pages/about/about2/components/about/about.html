@@ -1,0 +1,63 @@
+
+<section class="bg-secondary-grad pt-0 pb-1">
+    <div class="container position-relative z-index-2">
+        <div class="row">
+            <div class="col-xl-10 mx-auto">
+                <div class="row align-items-center g-4 g-lg-6 mb-6 mb-md-8">
+                    
+                    <div class="col-sm-8 col-lg-5 position-relative mx-auto">
+                        <div class="text-bg-img text-center text-lg-start fw-bold lh-1"
+                            style="background:url(assets/images/about/text-bg.jpg) no-repeat; background-size:cover; background-position:center; background-clip: text;">
+                            2002</div>
+                        
+                        <h5 class="bg-body px-4 py-2 position-absolute top-0 start-0 rotate-335">Since</h5>
+                    </div>
+
+                    
+                    <div class="col-lg-7">
+                        <h2 class="mb-4">Bringing ideas to life</h2>
+                        <p>Our creative experts blend innovation with strategy to turn your vision into reality.</p>
+                        <p class="mb-4">We believe great design is strategic. Our approach combines industry knowledge
+                            with creative insights to ensure your visual identity is impactful and results-driven.</p>
+                       
+                        <ul class="list-inline d-flex flex-wrap gap-2 gap-sm-4 mb-3">
+                            <li class="list-inline-item heading-color"> <i
+                                    class="bi bi-check-circle text-primary-grad me-1"></i>Creative design
+                            </li>
+                            <li class="list-inline-item heading-color"> <i
+                                    class="bi bi-check-circle text-primary-grad me-1"></i>Strategic insight</li>
+                        </ul>
+                        <a class="btn btn-white-shadow mb-0 mt-3" routerLink="/service-list">Explore our services </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="max-width-1550 bg-dark position-relative rounded-4 py-5 py-sm-6 py-lg-8 mb-n9" data-bs-theme="dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        
+                        <h2 class="mb-4 mb-sm-6">Our awards and achievements</h2>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                            
+                            @for (item of aboutAward; track $index) {
+                            <div class="col">
+                                <img [src]="item.image" class="h-30px mb-3" [alt]="item.alt">
+                                <p class="mb-0">{{item.description}}</p>
+                            </div>
+                            }
+
+                        </div>
+                    </div>
+
+                    
+                    <div class="col-lg-6 ms-auto position-absolute bottom-0 end-0 d-none d-lg-block">
+                        <img src="assets/images/elements/awards-saly.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

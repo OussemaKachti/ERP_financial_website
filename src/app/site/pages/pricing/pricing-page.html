@@ -1,0 +1,81 @@
+<section class="rf-page-hero pb-0">
+  <div class="container">
+    <div class="text-center mx-auto mb-5" style="max-width: 46rem">
+      <span class="rf-eyebrow">Tarifs</span>
+      <h1 class="rf-display mb-4" style="font-size: clamp(2.2rem, 1.4rem + 2.8vw, 3.6rem)">
+        Payer uniquement ce que <span class="rf-serif-em">l’entreprise utilise</span>
+      </h1>
+      <p class="rf-lead mb-0">
+        La Finance et les RH se souscrivent seules ou ensemble ; la suite complète ajoute le CRM terrain.
+        Sans installation, avec une période d’essai gratuite.
+      </p>
+    </div>
+    <rf-pricing-grid />
+  </div>
+</section>
+
+<section class="rf-section">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-8">
+        <span class="rf-eyebrow">Comparer</span>
+        <h2 class="rf-h2">Ce que contient chaque offre</h2>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="rf-compare">
+        <caption class="visually-hidden">Fonctionnalités comprises dans chaque offre</caption>
+        <thead>
+          <tr>
+            <th scope="col" style="min-width: 17rem"><span class="visually-hidden">Fonctionnalité</span></th>
+            @for (c of colonnes; track c.cle) {
+              <th scope="col" style="min-width: 8rem">{{ c.nom }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (g of groupes; track g.titre) {
+            <tr class="rf-group">
+              <td [attr.colspan]="colonnes.length + 1">
+                <span class="d-inline-flex align-items-center gap-2"><span class="rf-dot" [style.--c]="g.couleur"></span>{{ g.titre }}</span>
+              </td>
+            </tr>
+            @for (l of g.lignes; track l.texte) {
+              <tr>
+                <th scope="row">{{ l.texte }}</th>
+                @for (c of colonnes; track c.cle) {
+                  <td>
+                    @if (l.offres.includes(c.cle)) {
+                      <i class="bi bi-check-lg" aria-hidden="true"></i><span class="visually-hidden">Inclus</span>
+                    } @else {
+                      <i class="bi bi-dash" aria-hidden="true"></i><span class="visually-hidden">Non inclus</span>
+                    }
+                  </td>
+                }
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="rf-section rf-surface">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <span class="rf-eyebrow">Questions</span>
+        <h2 class="rf-h2">Abonnement et facturation</h2>
+        <p class="rf-muted">Vous hésitez entre deux offres ? La démonstration sert aussi à ça.</p>
+        <a routerLink="/demonstration" class="rf-link">Demander une démonstration <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="col-lg-8">
+        <rf-faq-list [questions]="faq" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<rf-cta-band />

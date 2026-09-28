@@ -1,0 +1,42 @@
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-5 text-center text-md-start">
+                <h2 class="mb-3 mb-md-0">A glimpse of my projects</h2>
+            </div>
+            <div class="col-md-5 ms-auto text-center text-md-end">
+                <a  [routerLink]="[]" class="btn btn-primary mb-0">View all projects</a>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-6">
+            @for (project of projects; track $index) {
+            <div class="col-md-6 d-flex align-items-center mt-4">
+                <div class="card card-img-scale card-content-hover rounded-0 bg-transparent overflow-hidden">
+                    <div class="card-img-scale-wrapper rounded-4">
+                        <img [src]="project.image" class="img-scale rounded-4" alt="portfolio-img">
+                        <div
+                            class="card-img-overlay hover-content d-flex flex-column align-items-center justify-content-center p-5">
+                            <div class="icon-xl bg-dark text-white rounded-circle"><i class="bi bi-arrow-up-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body d-flex justify-content-between px-0 pb-0">
+                        <div>
+                            <h6 class="mb-0"><a [routerLink]="project.link" class="heading-color stretched-link">{{
+                                    project.title }}</a></h6>
+                            <span>{{ project.category }}</span>
+                        </div>
+                        <small>&#64;{{ project.year }}</small>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="d-inline-flex justify-content-center mx-auto w-100">
+            <p class="bg-dark rounded-3 text-white text-center px-5 py-3 mb-0">victory️ Let's create a modern, engaging
+                website for your business.
+                <a  [routerLink]="[]" class="fw-semibold hover-underline-animation text-white">Hire me</a>
+            </p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,65 @@
+<section class="pt-0">
+    <div class="container">
+
+        <div class="inner-container-small text-center mb-4 mb-lg-5">
+            <h2 class="mb-0">Choose the plan that fits your needs</h2>
+        </div>
+
+        <div class="row g-4">
+            @for (plan of pricingPlans; track $index) {
+            <div class="col-md-8 col-lg-4 mx-auto">
+                <div class="card {{ plan.bgClass }} {{ plan.textClass }} rounded-4 p-5 h-100" [attr.data-bs-theme]="plan.highlight ? 'dark' : null">
+                    <div class="card-body p-0">
+                        <h6 class="mb-2">{{ plan.name }}</h6>
+
+                        <span>
+                            <span [class]="plan.price === 'Custom' ? 'h2' : 'h1'">{{ plan.price }}</span>
+                            {{ plan.priceUnit }}
+                        </span>
+
+                        <div class="mb-0 mt-3">
+                            <a [routerLink]="plan.btnLink" [class]="plan.btnClass">{{ plan.btnText }}</a>
+                        </div>
+                    </div>
+
+                    <div class="crad-footer p-0 pt-4">
+                        <p class="heading-color mb-0"><i class="bi bi-patch-check me-2 text-success"></i>{{plan.footer}}</p>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-lg-9 col-xl-7 mx-auto">
+
+                <div class="swiper mt-6">
+                    <swiper-container class="swiper-wrapper mb-6" init="false" [config]="swiperConfig">
+                        @for (item of testimonials; track $index) {
+
+                        <swiper-slide class="swiper-slide text-center">
+
+                            <div class="avatar avatar-lg flex-shrink-0 mb-3">
+                                <img class="avatar-img rounded-circle" [src]="item.image" alt="avatar">
+                            </div>
+
+                            <blockquote class="mb-4">
+                                <p class="fs-6 heading-color mb-0">{{item.text}} </p>
+                            </blockquote>
+
+                            <h6 class="mb-0">{{item.name}}</h6>
+                            <span>{{item.position}}</span>
+                        </swiper-slide>
+                        }
+
+                    </swiper-container>
+
+
+                    <div class="swiper-pagination swiper-pagination-primary position-absolute bottom-0 mb-3"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</section>

@@ -1,0 +1,322 @@
+<div class="header-absolute">
+  @if(loginAlert){
+  <div class="alert fade show bg-dark border-0 rounded-0 text-center py-2 m-0 d-none d-lg-block" role="alert" style="z-index: 1025;;">
+    <div class="container d-flex justify-content-between px-2 px-xl-4">
+      <p class="small text-white mb-0"><i class="bi bi-headset me-2"></i>Call us: <a [routerLink]="[]" class="link-white">+123
+          555 66 </a></p>
+
+      <p class="small text-white mb-0">🔥 Hurry, limited time 40% discount!</p>
+
+
+      <ul class="list-inline d-flex align-items-center gap-2 dropdown-hover mb-0">
+
+        <li class="list-inline-item dropdown dropdown-animation" ngbDropdown>
+          <button class="btn btn-link mb-0 p-0 lh-1 arrow-none" ngbDropdownToggle id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-circle-half theme-icon-active fill-white fa-fw" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+              <use [routerLink]="[]"></use>
+            </svg>
+          </button>
+
+          <ul class="dropdown-menu min-w-auto dropdown-menu-end" ngbDropdownMenu aria-labelledby="bd-theme">
+            <li class="mb-1">
+              <button type="button" (click)="changeTheme('light')" [class]="{ active: mode === 'light' }" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light">
+                <svg width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+                  <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z">
+                  </path>
+                  <use [routerLink]="[]"></use>
+                </svg>Light
+              </button>
+            </li>
+            <li class="mb-1">
+              <button type="button" (click)="changeTheme('dark')" [class]="{ active: mode === 'dark' }" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+                  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z">
+                  </path>
+                  <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z">
+                  </path>
+                  <use [routerLink]="[]"></use>
+                </svg>Dark
+              </button>
+            </li>
+            <li>
+              <button type="button" (click)="changeTheme('auto')" [class]="{ active: mode === 'auto' }" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half fa-fw mode-switch me-1" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+                  <use [routerLink]="[]"></use>
+                </svg>Auto
+              </button>
+            </li>
+          </ul>
+        </li>
+
+        <li class="list-inline-item vr"> </li>
+        <li class="list-inline-item">
+          <a [routerLink]="[]" class="text-white text-primary-hover fw-light small">Login</a>
+          <span class="text-white mx-1">/</span>
+          <a [routerLink]="[]" class="text-white text-primary-hover fw-light small">Register</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  }
+  @if (darkAlertShow) {
+  <div class="alert fade show bg-dark border-0 rounded-0 text-center overflow-hidden z-index-9 py-2 m-0 d-none d-lg-block" role="alert">
+    <p class="text-white small m-0"><i class="bi bi-rocket-takeoff-fill me-2"></i> New version available! discover
+      the latest enhancements. <a [routerLink]="[]" class="fw-semibold text-purple hover-underline-animation ">Click here
+        to upgrade!</a></p>
+  </div>
+  }
+  @if(alertShow){
+  <div class="alert fade show bg-primary border-0 rounded-0 text-center overflow-hidden z-index-9 py-2 m-0 d-none d-lg-block" role="alert">
+    <div class="container d-flex justify-content-between px-2 px-xl-4">
+      <ul class="list-inline d-flex flex-wrap gap-3 text-white mb-0">
+        <li class="list-inline-item fw-light"><i class="bi bi-headset me-2"></i>Call us: <a [routerLink]="[]" class="link-white">+123 555 66 </a></li>
+        <li class="list-inline-item fw-light"><i class="bi bi-envelope me-2"></i>Email: <a [routerLink]="[]" class="link-white">example&#64;gmail.com</a></li>
+      </ul>
+      <ul class="list-inline mb-0">
+        <li class="list-inline-item small text-white">Follow us on: </li>
+        <li class="list-inline-item"> <a [routerLink]="[]" class="link-white"><i class="bi bi-facebook"></i></a> </li>
+        <li class="list-inline-item"> <a [routerLink]="[]" class="link-white"><i class="bi bi-instagram"></i></a> </li>
+        <li class="list-inline-item"> <a [routerLink]="[]" class="link-white"><i class="bi bi-twitter-x"></i></a> </li>
+        <li class="list-inline-item"> <a [routerLink]="[]" class="link-white"><i class="bi bi-linkedin"></i></a> </li>
+      </ul>
+    </div>
+  </div>
+
+  }
+  <header class="{{headerClass}}" [class.header-sticky-on]="scrollY > 400" [attr.data-bs-theme]="theme">
+
+    <nav class="navbar navbar-expand-xl">
+      <div class="container">
+
+        <a class="navbar-brand me-0" routerLink="/">
+          <img class="light-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
+          <img class="dark-mode-item navbar-brand-item" src="assets/images/logo-light.svg" alt="logo">
+        </a>
+
+        <div class="navbar-collapse collapse" [ngbCollapse]="isCollapsed" id="navbarCollapse">
+          <ul class="navbar-nav navbar-nav-scroll dropdown-hover mx-auto">
+            @if(menuItems.length){
+            <ng-container>
+              <app-demos-menu-dropdown [menuItems]="menuItems[0].children" [activeMenuItems]="activeMenuItems"></app-demos-menu-dropdown>
+              <app-pages-menu-dropdown [menuItems]="menuItems[1].children" [activeMenuItems]="activeMenuItems"></app-pages-menu-dropdown>
+              <app-more-menu-dropdown [menuItems]="menuItems[2].children" [activeMenuItems]="activeMenuItems"> </app-more-menu-dropdown>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="'/contact-us'">Contact us</a>
+              </li>
+            </ng-container>
+            }
+          </ul>
+        </div>
+
+        @if(cartShow){
+        <ul class="nav align-items-center dropdown-hover ms-sm-2">
+
+          <li class="nav nav-item dropdown nav-search" ngbDropdown>
+            <a ngbDropdownToggle class="btn btn-secondary btn-round d-flex justify-content-center align-items-center mb-0 arrow-none" role="button" [routerLink]="[]" id="navSearch" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside" data-bs-display="static">
+              <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.4016 13.9001L9.56434 10.0629M9.56434 10.0629C10.5141 9.11275 11.1015 7.80033 11.1015 6.35073C11.1015 3.45087 8.75104 1.1001 5.85155 1.1001C2.95205 1.1001 0.601562 3.45087 0.601562 6.35073C0.601562 9.2505 2.95205 11.6013 5.85155 11.6013C7.30151 11.6013 8.61429 11.0134 9.56434 10.0629Z" stroke="currentColor" stroke-width="1.06667" stroke-linecap="round"></path>
+              </svg>
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-center shadow rounded p-1" aria-labelledby="navSearch" data-bs-popper="none">
+              <form class="input-group">
+                <input class="form-control form-control-sm border-primary" type="search" placeholder="Search..." aria-label="Search">
+                <button class="btn btn-sm btn-primary m-0" type="submit">Search</button>
+              </form>
+            </div>
+          </li>
+
+          <li class="nav-item position-relative ms-2 me-1">
+            <a (click)="open(cart)" class="btn btn-secondary btn-round d-flex justify-content-center align-items-center mb-0" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" data-bs-target="#offcanvasMenu">
+                <path d="M10.5751 4.15553C10.5751 2.19185 8.98322 0.599976 7.01956 0.599976C5.05589 0.599976 3.46401 2.19185 3.46401 4.15553M5.50425 13.4H8.53487C9.64797 13.4 10.2045 13.4 10.6762 13.2505C11.4659 13.0003 12.1279 12.4535 12.5228 11.7252C12.7586 11.2903 12.8637 10.7437 13.0739 9.65064C13.3705 8.10824 13.5188 7.33711 13.392 6.71574C13.1791 5.67247 12.4613 4.80345 11.4771 4.39739C10.8909 4.15553 10.1055 4.15553 8.53487 4.15553H5.50425C3.93362 4.15553 3.1483 4.15553 2.56206 4.39739C1.5778 4.80345 0.859967 5.67247 0.647082 6.71574C0.52029 7.33711 0.668593 8.10824 0.965204 9.65064C1.17541 10.7437 1.2805 11.2903 1.51637 11.7252C1.91124 12.4535 2.57316 13.0003 3.36291 13.2505C3.83464 13.4 4.39117 13.4 5.50425 13.4Z" stroke="currentColor" stroke-width="1.06667" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <span class="position-absolute top-0 start-100 translate-middle badge smaller rounded-circle bg-success mt-xl-2 ms-n1">2
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </li>
+
+          <li class="nav-item vr bg-primary opacity-1 ms-3 d-none d-sm-block"> </li>
+
+          <li class="nav-item ms-3 d-none d-xl-block">
+            <a class="m-0" [routerLink]="[]">
+              <span class="hamburger-menu">
+                <span class="hamburger-menu-line"></span>
+                <span class="hamburger-menu-line"></span>
+                <span class="hamburger-menu-line"></span>
+              </span>
+            </a>
+          </li>
+
+          <li class="nav-item ms-3">
+            <button class="navbar-toggler p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-animation">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+          </li>
+        </ul>
+        }@else { <ul class="nav align-items-center dropdown-hover ms-sm-2">
+
+          <li class="nav-item dropdown dropdown-animation" ngbDropdown>
+            <button class="btn btn-link mb-0 px-2 lh-1 arrow-none" ngbDropdownToggle id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-circle-half theme-icon-active fill-mode fa-fw" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                <use [routerLink]="[]"></use>
+              </svg>
+            </button>
+
+            <ul class="dropdown-menu min-w-auto dropdown-menu-end" ngbDropdownMenu aria-labelledby="bd-theme">
+              <li class="mb-1">
+                <button type="button" (click)="changeTheme('light')" [class]="{ active: mode === 'light' }" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+                  <svg width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+                    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+                    <use [routerLink]="[]"></use>
+                  </svg>Light
+                </button>
+              </li>
+              <li class="mb-1">
+                <button type="button" (click)="changeTheme('dark')" [class]="{ active: mode === 'dark' }" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+                    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+                    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+                    <use [routerLink]="[]"></use>
+                  </svg>Dark
+                </button>
+              </li>
+              <li>
+                <button type="button" (click)="changeTheme('auto')" [class]="{ active: mode === 'auto' }" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half fa-fw mode-switch me-1" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                    <use [routerLink]="[]"></use>
+                  </svg>Auto
+                </button>
+              </li>
+            </ul>
+          </li>
+          @if(signUp){
+          <li class="nav-item ms-2 d-none d-sm-block">
+            <a routerLink="/auth/sign-up" class="btn btn-sm btn-primary-grad mb-0">Sign up</a>
+          </li>
+          }
+          @if(schedule){
+          <li class="nav-item ms-2 d-none d-sm-block">
+            <a [routerLink]="[]" (click)="open(content)" class="btn btn-sm btn-dark mb-0" data-bs-toggle="offcanvas" data-bs-target="#scheduleCall" aria-controls="scheduleCall"><i class="bi bi-calendar-week me-2"></i>Schedule a call</a>
+          </li>
+          }
+          @if(bookCall){
+          <li class="nav-item ms-2 d-none d-sm-block">
+            <a [routerLink]="[]" class="btn btn-sm btn-dark mb-0"><i class="bi bi-telephone me-2"></i>Book a call</a>
+          </li>
+          }
+          @if(download){
+          <li class="nav-item ms-2 d-none d-sm-block">
+            <a [routerLink]="[]" class="btn btn-sm btn-dark mb-0"><i class="bi bi-cloud-download-fill me-2"></i>Download app</a>
+          </li>
+          }
+          @if(loginSignup){
+          <li class="nav-item bg-secondary rounded d-none d-sm-block gap-1 ms-2 p-1">
+            <a routerLink="/auth/sign-up" class="btn btn-sm btn-secondary mb-0">Login</a>
+            <a routerLink="/auth/sign-up" class="btn btn-sm btn-primary mb-0">Sign up</a>
+          </li>
+          }
+
+          <li class="nav-item">
+            <button class="navbar-toggler ms-sm-3 p-2" (click)="isCollapsed = !isCollapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-animation">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+          </li>
+        </ul>}
+      </div>
+    </nav>
+  </header>
+</div>
+<ng-template #content let-offcanvas class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="scheduleCall" aria-labelledby="scheduleCallLabel">
+  <div class="offcanvas-header">
+    <h6 class="offcanvas-title" id="scheduleCallLabel">Schedule a call</h6>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <form class="row g-3">
+      <div class="col-12">
+        <label class="form-label">Your name *</label>
+        <input type="text" class="form-control form-control-sm" placeholder="Full name" required>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Email address *</label>
+        <input type="email" class="form-control form-control-sm" id="floatingInput" placeholder="name@example.com" required>
+      </div>
+
+      <div class="col-6">
+        <label class="form-label">Schedule date *</label>
+        <input type="date" class="form-control form-control-sm" required>
+      </div>
+
+      <div class="col-6">
+        <label class="form-label">Schedule date *</label>
+        <input type="time" class="form-control form-control-sm">
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Phone number *</label>
+        <input type="text" class="form-control form-control-sm" placeholder="(xxx) xx xxxx" minlength="10" maxlength="10"  pattern="[0-9]{10}" 
+  title="Please enter a valid 10-digit phone number"required>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Subject *</label>
+        <input type="text" class="form-control form-control-sm" placeholder="Subject name" required>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Message *</label>
+        <textarea class="form-control" placeholder="Write your message here...." id="floatingTextarea2" style="height: 150px"></textarea>
+      </div>
+
+      <button class="btn btn-primary mb-0">Send a message</button>
+    </form>
+  </div>
+</ng-template>
+<ng-template #cart let-offcanvas class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu">
+  <div class="offcanvas-header justify-content-between border-bottom px-3">
+    <h6 class="mb-0">My Cart</h6>
+    <button type="button" (click)="offcanvas.close('Close click')" class=" btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column px-3">
+    <div class="d-flex align-items-center gap-2">
+
+      <img src="assets/images/product/watches/01.png" class="rounded-2 bg-light p-2 h-70px" alt="product image">
+
+      <div class="ms-2">
+        <p class="heading-color fw-semibold mb-1">Apex Pro</p>
+        <select class="form-select form-select-sm w-auto" aria-label="Default select example">
+          <option value="1">01</option>
+          <option value="2">02</option>
+          <option value="3">03</option>
+        </select>
+      </div>
+
+      <a [routerLink]="[]" class="btn btn-sm btn-link p-0 ms-auto">Remove</a>
+    </div>
+    <div class="mt-auto">
+      <div class="d-flex justify-content-between mb-2">
+        <span class="heading-color fw-semibold">Subtotal</span>
+        <h6 class="text-success mb-0">$358</h6>
+      </div>
+
+      <div class="d-grid">
+        <a routerLink="/checkout" class="btn btn-lg btn-dark mb-0">Continue to Checkout</a>
+      </div>
+    </div>
+  </div>
+</ng-template>

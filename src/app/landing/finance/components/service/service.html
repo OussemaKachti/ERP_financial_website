@@ -1,0 +1,37 @@
+<section class="overflow-hidden pt-0">
+	<div class="container">
+		<div class="row align-items-xl-center">
+			<div class="col-lg-5 position-relative mb-4 mb-lg-0">
+				<div class="position-absolute top-0 end-0 me-n6 mt-6">
+					<img src="assets/images/elements/grad-shape/blur-decoration.svg" class="blur-9 opacity-2" alt="Grad shape">
+				</div>
+				<img src="assets/images/about/15.jpg" class="rounded-4 z-index-2 position-relative" alt="about image">
+			</div>
+			<div class="col-lg-7 col-xl-6 ms-auto">
+				<h2 class="mb-3 mb-sm-4">Comprehensive financial solutions for you</h2>
+				<div class="row g-0">
+					@for (col of services; track $index) {
+					<div class="col-sm-6">
+						<ul class="nav nav-link-hover-underline flex-column mb-0">
+							@for (item of col.col; track $index) {
+							<li class="nav-item pb-1">
+								<a [routerLink]="item.link" class="nav-link fs-6">
+									<span class="nav-link-text">{{ item.name }}</span>
+									<span class="nav-link-icon ms-1">
+										<i class="bi bi-arrow-right rtl-flip"></i>
+									</span>
+								</a>
+							</li>
+							}
+						</ul>
+					</div>
+					}
+				</div>
+
+				<p class="bg-secondary bg-opacity-25 border border-primary border-opacity-10 rounded-3 d-inline-block mt-3 mt=lg-4 mb-0 px-4 py-3">🤝 Looking for business opportunity?
+					<a routerLink="/contact-v1" class="fw-semibold hover-underline-animation">Send message</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

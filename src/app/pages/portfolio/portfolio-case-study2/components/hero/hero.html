@@ -1,0 +1,185 @@
+<section class="position-relative pt-6 pt-xl-7 overflow-visible">
+
+    <div class="position-absolute end-0 top-0">
+        <img src="assets/images/elements/grad-shape/blur-decoration-2.svg" class="opacity-1 blur-8 h-300px rotate-335" alt="Grad shape">
+    </div>
+
+
+    <div class="container-fluid px-xxl-5 pt-2">
+        <div class="h-300px h-sm-400px h-xl-500px rounded-4 overflow-hidden" ngJarallax data-jarallax data-speed="0.6" style="background:url(assets/images/portfolio/05.jpg) no-repeat; background-size:cover; background-position: center;">
+        </div>
+    </div>
+
+
+    <div class="container pt-6 pt-xl-7">
+        <div class="row g-4" #boundary>
+
+            <div class="col-md-7 col-lg-8">
+
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb pt-0">
+                        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                        <li class="breadcrumb-item"><a  [routerLink]="[]">Portfolio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Portfolio case study v2</li>
+                    </ol>
+                </nav>
+
+
+                <h1 class="h2 mb-3">Mobile app development</h1>
+                <p class="lead">Ideas are the seeds of innovation. They can originate from personal experiences,
+                    observations, or the desire to solve a problem.</p>
+
+                @for (section of sections; track section.id) {
+                <h6 class="mt-5 mb-3">
+                    <span class="text-primary me-2">{{ section.id }}.</span>
+                    {{ section.title }}
+                </h6>
+                @for (p of section.paragraphs; track $index) {
+                <p>
+                    @if (p.dropcap) {
+                    <span class="dropcap fs-2 heading-color bg-secondary bg-opacity-50 rounded px-2">
+                        {{ p.dropcap }}
+                    </span>
+                    }
+                    {{ p.text }}
+                </p>
+                }
+
+                @if (section.tags.length > 0) {
+                <ul class="list-inline">
+                    @for (tag of section.tags; track tag) {
+                    <li class="list-inline-item">
+                        <a class="btn btn-secondary btn-sm mb-lg-0"  [routerLink]="[]">{{ tag }}</a>
+                    </li>
+                    }
+                </ul>
+                }
+                @if (section.points.length > 0) {
+                <ul class="list-group list-group-borderless">
+                    @for (point of section.points; track point) {
+                    <li class="list-group-item d-flex heading-color">
+                        <i class="bi bi-check-lg text-success me-2"></i>
+                        {{ point }}
+                    </li>
+                    }
+                </ul>
+                }
+                }
+
+            </div>
+            <div class="col-md-5 col-lg-4">
+                <div data-sticky [marginTop]="100" [boundary]="boundary" data-sticky-for="992" stickyThing>
+                    <div class="card card-body bg-secondary-grad rounded-4 p-4 ms-md-4">
+
+                        <ul class="list-group list-group-borderless">
+                            @for (item of projectInfo; track $index) {
+                            @if (!item.isButton) {
+                            <li class="list-group-item mb-3">
+                                <small>{{ item.label }}</small>
+                                <p class="heading-color fw-semibold mt-1 mb-0">{{ item.value }}</p>
+                            </li>
+                            }
+                            @else {
+                            <li class="list-group-item d-grid mb-0">
+                                <a [routerLink]="item.buttonLink" class="btn btn-dark mb-0">
+                                    {{ item.buttonText }}
+                                    <i class="bi bi-box-arrow-up-right ms-2"></i>
+                                </a>
+                            </li>
+                            }
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4 align-items-end mt-4 mt-sm-6">
+
+            <div class="col-md-7">
+                <img src="assets/images/portfolio/01.jpg" class="rounded-4" alt="portfolio image">
+            </div>
+
+
+            <div class="col-md-4 ms-auto">
+                <img src="assets/images/portfolio/03.jpg" class="rounded-4 position-relative" alt="portfolio image">
+            </div>
+
+
+            <div class="col-md-6 mx-auto">
+                <img src="assets/images/portfolio/04.jpg" class="rounded-4 mt-md-n6" alt="portfolio image">
+            </div>
+        </div>
+
+        <div class="card card-body bg-secondary bg-opacity-50 p-sm-5 mt-5 mt-sm-7">
+            <q class="fs-6 heading-color">Too months nay end change relied who beauty wishes matter. Shew of john real
+                park so rest we on. Ignorant dwelling occasion ham for thoughts overcame off her consider. Polite it
+                elinor is depend.</q>
+
+            <div class="d-flex align-items-center mt-4">
+
+                <div class="avatar">
+                    <img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
+                </div>
+
+                <div class="ms-3">
+                    <h6 class="mb-0">Emma Watson</h6>
+                    <small>CEO, Co-founder</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-lg-4 mt-6">
+            <div class="col-lg-5">
+                <h6 class="mb-3"><span class="text-primary me-2">03.</span>Result</h6>
+                <p class="lead mb-lg-4">Two assure Edward whence the was. Who worthy yet ten boys denote wonder. Weeks
+                    views her sight old tears sorry. Additions can suspected its concealed put furnished.</p>
+            </div>
+
+            <div class="col-lg-7 col-xl-6 ms-auto">
+                <p>Partnering with experts, seeking mentorship, and building a network of like-minded individuals can
+                    provide valuable insights and support.</p>
+                <div class="row row-cols-2 row-cols-md-3 g-4 mt-1">
+                    @for(item of countersData; track $index) {
+                    <div class="col">
+                        <h2 class="mb-0">
+                            @if(item.prefix) {
+                            <span class="mb-0">{{ item.prefix }}</span>
+                            }
+                            <span [countUp]="item.count"></span>
+                            @if(item.suffix) {
+                            <span class="mb-0" [class]="item.color">{{ item.suffix }}</span>
+                            }
+                        </h2>
+                        <p class="mb-0">{{ item.text }}</p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <hr class="mt-5 mb-4">
+        <ul class="pagination pagination-border-none d-flex justify-content-between mb-0">
+            <li>
+                <ul class="list-unstyled">
+                    <li class="page-item">
+                        <a class="page-link"  [routerLink]="[]"><i class="bi bi-arrow-left me-2 rtl-flip"></i>Prev project</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="list-unstyled">
+                    <li class="page-item active"><a class="page-link"  [routerLink]="[]"><i class="bi bi-grid-fill"></i></a></li>
+                </ul>
+            </li>
+            <li>
+                <ul class="list-unstyled">
+                    <li class="page-item">
+                        <a class="page-link"  [routerLink]="[]">Next project<i class="bi bi-arrow-right ms-2 rtl-flip"></i></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</section>

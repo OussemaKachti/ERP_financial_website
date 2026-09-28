@@ -1,0 +1,32 @@
+
+<section class="position-relative pt-6 pt-xxl-0">
+	<div class="container">
+		<div class="row g-4 g-lg-5">
+             @for (item of services; track $index) {
+			<div class="col-md-6 col-xl-4">
+				<div class="card card-bg-grad-hover card-content-hover bg-secondary bg-opacity-75 h-100 p-4 p-sm-5">
+					
+					<div class="card-header bg-transparent p-0 pb-5">
+						
+						<img [src]="item.icon" class="h-70px" alt="icon">
+					</div>
+					<div class="card-footer bg-transparent mt-auto p-0">
+						<h6 class="mb-3">{{item.title}}</h6>
+						
+						<ul class="ps-3 mb-0">
+                            @for (data of item.description; track $index) {
+							<li class="mb-2">{{data}}</li>}
+						</ul>
+					</div>
+					<div class="hover-content d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
+						<a class="btn btn-white icon-link icon-link-hover mb-0 stretched-link" routerLink="/service-single">Explore service<i class="bi bi-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+        }
+		</div>
+		<p class="mb-0 mt-5 text-center heading-color">🔥 Let’s create something great work together. 
+			<a routerLink="/contact-us" class="fw-bold hover-underline-animation heading-color">Got a project in mind?</a>
+		</p>
+	</div>
+</section>

@@ -1,0 +1,99 @@
+<section class="pt-0">
+    <div class="container">
+        @for (item of portfolioData; track $index; let even=$even ) {
+        @if(even){
+        <div class="card card-img-scale bg-transparent p-0 mb-4 mb-lg-0">
+    
+            <div class="position-absolute top-50 start-50 translate-middle border opacity-4 h-100 d-none d-lg-block">
+            </div>
+            <span
+                class="position-absolute top-50 start-50 translate-middle rounded-circle bg-primary p-1 d-none d-lg-block">
+                <span class="d-block rounded-circle bg-body p-1"> </span>
+            </span>
+
+            <div class="row align-items-center g-0">
+                
+                <div class="col-lg-6 p-lg-5">
+                    <div class="card-img-scale-wrapper rounded-4">
+                        <a routerLink="/portfolio-case-study-v1"><img [src]="item.image" class="rounded-4 img-scale"
+                                alt="portfolio image"></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card-body px-2 p-lg-5">
+                        <div class="mb-3 mb-lg-4">
+                            <img [src]="item.clientLogo" class="light-mode-item h-30px"
+                                alt="client logo">
+                            <img [src]="item.darkLogo" class="dark-mode-item h-30px"
+                                alt="client logo">
+                        </div>
+                        
+                        <h5 class="mb-3">{{item.title}}</h5>
+                        <p>{{item.description}}</p>
+                       
+                        <ul class="nav nav-divider align-items-center mb-3 mb-lg-4">
+                            @for (data of item.tags; track $index) {
+                            <li class="nav-item heading-color">{{data}}</li>
+                            }
+                        </ul>
+                        
+                        <a routerLink="/portfolio-case-study-v1" class="link-primary-grad icon-link icon-link-hover">Read
+                            more <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        @else{
+        <div class="card card-img-scale bg-transparent p-0 mb-4 mb-lg-0">
+                <div class="position-absolute top-50 start-50 translate-middle border opacity-4 h-100 d-none d-lg-block">
+            </div>
+                <span
+                class="position-absolute top-50 start-50 translate-middle rounded-circle bg-primary p-1 d-none d-lg-block">
+                <span class="d-block rounded-circle bg-body p-1"> </span>
+            </span>
+
+            <div class="row align-items-center g-0">
+                
+                <div class="col-lg-6 order-2">
+                    <div class="card-body px-2 p-lg-5">
+                       
+                        <div class="mb-3 mb-lg-4">
+                            <img [src]="item.clientLogo" class="light-mode-item h-30px"
+                                alt="client logo">
+                            <img [src]="item.darkLogo" class="dark-mode-item h-30px"
+                                alt="client logo">
+                        </div>
+                        
+                        <h5 class="mb-3">{{item.title}}</h5>
+                        <p>{{item.description}}</p>
+                       
+                        <ul class="nav nav-divider align-items-center mb-3 mb-lg-4">
+                            @for (data of item.tags; track $index) {
+                            <li class="nav-item heading-color">{{data}}</li>
+                            }
+                        </ul>
+                        
+                        <a routerLink="/portfolio-case-study-v2" class="link-primary-grad icon-link icon-link-hover">Read
+                            more <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                
+                <div class="col-lg-6 order-1 order-lg-2 p-lg-5">
+                    <div class="card-img-scale-wrapper rounded-4">
+                        <a routerLink="/portfolio-case-study-v2"><img [src]="item.image"
+                                class="rounded-4 img-scale" alt="portfolio image"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        }
+        
+        <div class="d-grid justify-content-center mt-6">
+            <a  [routerLink]="[]" role="button" class="btn btn-secondary mb-0"> Load more work </a>
+        </div>
+    </div>
+</section>

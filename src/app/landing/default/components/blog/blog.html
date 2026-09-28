@@ -1,0 +1,49 @@
+<section>
+  <div class="container">
+    <div class="inner-container-small text-center mb-5">
+      <h2 class="mb-0">Insights on our blog</h2>
+    </div>
+
+    <div class="row g-4 g-lg-5">
+      @for (blog of blogs; track blog.title) {
+        <div class="col-md-4">
+          <article [class]="blog.cardClass">
+
+            @if (blog.type === 'image-card') {
+              <div [class]="blog.categoryClass">{{ blog.category }}</div>
+              <img [src]="blog.image" class="card-img-top" alt="Blog-img" />
+              <div class="card-body pb-2">
+                <h6 [class]="blog.titleClass || 'card-title mb-2'">
+                  <a  [routerLink]="[]">{{ blog.title }}</a>
+                </h6>
+              </div>
+              <div class="card-footer pt-0">
+                <a [class]="blog.linkClass || 'icon-link icon-link-hover stretched-link'" [routerLink]="blog.link">
+                  Read more<i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            }
+
+            @if (blog.type === 'text-card') {
+              <div class="card-body p-0 pb-2">
+                <div [class]="blog.categoryClass">{{ blog.category }}</div>
+                <h6 [class]="blog.titleClass || 'card-title mb-2'">{{ blog.title }}</h6>
+              </div>
+              <div class="card-footer bg-transparent p-0">
+                <a [class]="blog.linkClass || 'icon-link icon-link-hover stretched-link'" [routerLink]="blog.link">
+                  Read more<i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            }
+
+          </article>
+        </div>
+      }
+    </div>
+
+    <div class="text-center mt-5">
+      <p>Want more insights?</p>
+      <a routerLink="/blog-minimal" class="btn btn-white-shadow">Explore all resources</a>
+    </div>
+  </div>
+</section>

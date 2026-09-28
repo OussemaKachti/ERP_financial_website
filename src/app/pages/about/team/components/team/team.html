@@ -1,0 +1,29 @@
+<section class="pt-0">
+    <div class="container">
+        <div class="row g-4 g-sm-5">
+            @for (member of team; track $index) {
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card card-img-scale card-content-hover shadow rounded-top-pill overflow-hidden">
+                    <div class="card-img-scale-wrapper">
+                        <div class="hover-content h-100">
+                            <ul class="list-group list-group-borderless position-absolute bottom-0 end-0 me-3 mb-3">
+                                @for ( link of member.social_links; track $index) {
+                                <li class="list-group-item pb-0">
+                                    <a class="btn btn-sm btn-round bg-{{link.platform.toLowerCase()}}" [routerLink]="link.url">
+                                        <i class="bi bi-{{link.platform.toLowerCase()}}"></i>
+                                    </a>
+                                </li>}
+                            </ul>
+                        </div>
+                        <img [src]="member.avatar" class="card-img-top img-scale" alt="card image">
+                    </div>
+                    <div class="card-body text-center px-0">
+                        <h6 class="mb-0">{{ member.name }}</h6>
+                        <small>{{ member.role }}</small>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

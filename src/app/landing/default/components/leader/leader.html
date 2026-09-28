@@ -1,0 +1,28 @@
+<section class="bg-secondary pt-0">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-3">
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+          <h6 class="mb-0">Collaborating with industry leaders</h6>
+          <div class="vr bg-primary-grad opacity-2 d-none d-lg-block"></div>
+        </div>
+      </div>
+
+      <div class="col-lg-9">
+        <swiper-container #swiperEl init="false" class="align-items-center">
+          @for (item of clientLogo; track $index) {
+            <swiper-slide>
+              <div class="swap-logo">
+                <img [src]="item.gray" class="p-2 p-lg-3" alt="client-img" />
+                <div class="swap-item">
+                  <img [src]="item.light" class="dark-mode-item p-2 p-lg-3" alt="client logo" />
+                  <img [src]="item.dark" class="light-mode-item p-2 p-lg-3" alt="client logo" />
+                </div>
+              </div>
+            </swiper-slide>
+          }
+        </swiper-container>
+      </div>
+    </div>
+  </div>
+</section>

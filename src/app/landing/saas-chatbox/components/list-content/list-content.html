@@ -1,0 +1,29 @@
+
+<section class="pt-0">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <h2 class="mb-md-4">Generate content effortlessly in minutes</h2>
+                <p class="mb-md-4">Share your latest product updates directly in-app with visual notifications and
+                    interactive widgets for enhanced communication.</p>
+               
+                <ul class="list-group list-group-borderless">
+                    @for(item of listContent;track $index){
+                    <li class="list-group-item d-flex heading-color fw-semibold"><i
+                            class="bi bi-asterisk text-primary me-2"></i>{{item}}</li>
+                    }
+                </ul>
+            </div>
+            
+            <div class="col-lg-6 position-relative ps-lg-5">
+                <img src="assets/images/elements/saas-decoration/chatbot-02.png" class="position-relative z-index-2"
+                    alt="chatbot feature image">
+              
+                <div class="position-absolute top-50 start-50 translate-middle ms-n6">
+                    <img src="assets/images/elements/grad-shape/blur-decoration-2.svg" class="blur-9 opacity-3"
+                        alt="Grad shape">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

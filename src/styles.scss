@@ -1,0 +1,4 @@
+/* Styles globaux : thème Folio (Bootstrap compilé avec nos variables) puis AOS.
+   Le site RFIDIA est stylé dans public/assets/scss/_rfidia.scss. */
+@import "../node_modules/aos/dist/aos.css";
+@import "../public/assets/scss/style.scss";

@@ -1,0 +1,33 @@
+<section class="pt-0">
+    <div class="container">
+        <div class="row g-4 align-items-xl-center">
+            <div class="col-lg-6 col-xl-5 order-2">
+                <div class="bg-secondary-grad rounded-4 position-relative p-4">
+
+                    <img src="assets/images/elements/saas-decoration/chatbot-03.png" alt="Saas image">
+                </div>
+            </div>
+            <div class="col-lg-6 ms-auto order-1 order-lg-2">
+                <h2 class="mb-4 mb-lg-5">Boost productivity with intelligent automation</h2>
+                <div class="accordion accordion-border-start mb-sm-5" ngbAccordion [closeOthers]="true">
+                    @for (faq of faqs; track faq.id) {
+                    <div class="accordion-item mb-4" ngbAccordionItem [collapsed]="!faq.open">
+                        <div ngbAccordionHeader class="accordion-header font-base" id="heading-{{faq.id}}">
+                            <button ngbAccordionToggle class="accordion-button fw-semibold rounded" type="button" [attr.aria-controls]="'collapse-' + faq.id">
+                                <span class="heading-icon"><i class="bi {{faq.icon}}"></i></span>
+                                {{ faq.title }}
+                            </button>
+                        </div>
+
+                        <div ngbAccordionCollapse id="collapse-{{faq.id}}" class="accordion-collapse collapse" [class.show]="faq.open" [attr.aria-labelledby]="'heading-' + faq.id">
+                            <div ngbAccordionBody class="accordion-body pt-0">
+                                {{ faq.content }}
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

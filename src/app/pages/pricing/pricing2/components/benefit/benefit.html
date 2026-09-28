@@ -1,0 +1,52 @@
+<section class="bg-dark overflow-hidden position-relative" data-bs-theme="dark">
+
+    <div class="position-absolute bottom-0 end-0 mb-n8">
+        <img src="assets/images/elements/grad-shape/blur-decoration-2.svg" class="opacity-2 blur-9" alt="Grad shape">
+    </div>
+
+    <div class="container position-relative">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <p class="heading-color">Key benefits</p>
+
+                <ul class="list-group list-group-borderless mb-4">
+                    @for (item of featureList; track $index) {
+                    <li class="list-group-item heading-color lead d-flex">
+                        <i class="{{ item.icon }} {{ item.colorClass }} me-2"></i>
+                        {{ item.text }}
+                    </li>
+                    }
+                </ul>
+
+            </div>
+            <div class="col-lg-6 ms-auto">
+                <div class="row g-4 g-lg-6 mb-5">
+                    @for (skill of skills; track $index) {
+                    <div class="col-sm-6">
+                        <h3 class="border-start border-primary border-2 ps-4 mb-3" [countUp]="skill.value" [countUpOptions]="{ suffix: skill.suffix }">
+                        </h3>
+                        <p class="mb-0">{{ skill.label }}</p>
+                    </div>
+                    }
+                </div>
+
+                <blockquote class="d-flex">
+
+                    <div class="avatar avatar-xl flex-shrink-0">
+                        <img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
+                    </div>
+                    <div class="ms-4">
+
+                        <p class="fs-6 fw-normal heading-color mb-4">{{ quote.text }}</p>
+                        <div class="blockquote-footer mb-0">
+                            {{ quote.author }}
+                        </div>
+                    </div>
+                </blockquote>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>

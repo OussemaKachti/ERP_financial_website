@@ -1,0 +1,83 @@
+<footer class="bg-dark position-relative pt-6 pt-xl-8" data-bs-theme="dark">
+    <div class="container">
+
+         <div class="row g-4">
+            @for (widget of footerData; track $index) {
+            @if (widget.type === 'logo') {
+            <div class="col-lg-4">
+                <a class="navbar-brand me-0" routerLink="/">
+                    <img class="light-mode-item navbar-brand-item h-40px" [src]="widget.logoLight" alt="logo">
+                    <img class="dark-mode-item navbar-brand-item h-40px" [src]="widget.logoDark" alt="logo">
+                </a>
+                <p class="my-3 my-lg-4">{{ widget.description }}</p>
+                <ul class="list-group list-group-borderless">
+                    @for (c of widget.contacts; track $index) {
+                    <li class="d-flex mb-2">
+                        <a [routerLink]="c.link" class="text-primary-hover">
+                            <i class="me-2 text-primary {{ c.icon }}"></i> {{ c.text }}
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            }
+
+            @if (widget.type === 'links') {
+            <div class="col-6 col-md-3 col-lg-2">
+                <h6 class="mb-3 mb-sm-4">{{ widget.title }}</h6>
+                <ul class="nav flex-column gap-1">
+                    @for (item of widget.items; track $index) {
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="item.href">
+                            {{ item.label }}
+                            @if (item.badge) {
+                            <span class="badge ms-2" [class]="item.badge.class">{{ item.badge.text }}</span>
+                            }
+                            @if (item.external) {
+                            <i class="bi bi-box-arrow-up-right small ms-2"></i>
+                            }
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            }
+
+            @if (widget.type === 'newsletter') {
+            <div class="col-md-6 col-lg-4">
+                <h6 class="mb-3 mb-sm-4">{{ widget.title }}</h6>
+                <form class="input-group bg-body p-2 rounded-3 mb-2">
+                    <input class="form-control form-control-sm rounded border-0 me-3" type="email" placeholder="Enter your email">
+                    <button type="button" class="btn btn-sm btn-primary-grad px-3 rounded-2 mb-0">
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+                </form>
+                <p class="small mb-0">{{ widget.note }}</p>
+
+                <ul class="list-inline align-items-center mb-0 mt-3 mt-sm-4">
+                    <li class="list-inline-item heading-color fw-semibold">Follow on:</li>
+                    @for (s of widget.socials; track $index) {
+                    <li class="list-inline-item">
+                        <a class="btn btn-xs btn-icon {{ s.class }}" [routerLink]="s.href">
+                            <i class="{{ s.icon }} lh-base"></i>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            }
+            }
+        </div>
+
+        <hr class="my-4 mt-xl-5 mb-0">
+
+        <div class="d-md-flex justify-content-between align-items-center text-center text-lg-start py-4">
+
+            <div class="text-body small mb-3 mb-md-0"> Copyrights ©{{currentYear}} Folio. Build by <a href="https://www.webestica.com/" target="_blank" class="text-body text-primary-hover hover-underline-animation">Webestica</a>. </div>
+             <ul class="nav d-flex justify-content-center gap-1 mb-0">
+                <li class="nav-item"><a class="nav-link small py-0" routerLink="/about-v1">Privacy policy</a></li>
+                <li class="nav-item"><a class="nav-link small py-0 pe-0" routerLink="/service-single">Terms & conditions</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

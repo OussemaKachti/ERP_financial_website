@@ -1,0 +1,32 @@
+<section class="bg-secondary overflow-hidden">
+    <div class="container">
+
+        <h3 class="mb-5 text-center">Related blogs</h3>
+        <div class="swiper">
+            <swiper-container class="swiper-wrapper" [config]="swiperConfig" init="false">
+                @for (item of blogProject; track $index) {
+                <swiper-slide class="swiper-slide">
+                    <article class="card card-img-scale bg-transparent overflow-hidden h-100 p-0">
+
+                        <div class="d-flex gap-2 position-absolute top-0 start-0 z-index-2 m-4">
+                            <span class="badge bg-dark">{{item.category}}</span>
+                            <span class="badge bg-white text-dark">{{item.date}}</span>
+                        </div>
+                        <div class="card-img-scale-wrapper rounded-4">
+                            <img [src]="item.image" class="rounded-4 img-scale" alt="Blog-img">
+                        </div>
+                        <div class="card-body px-2">
+
+                            <h6 class="card-title mb-2"><a  [routerLink]="[]">Techniques to captivate your audience</a></h6>
+                            <a class="icon-link icon-link-hover stretched-link" [routerLink]="'blog-single'">Read more<i class="bi bi-arrow-right"></i> </a>
+                        </div>
+                    </article>
+                </swiper-slide>
+                }
+            </swiper-container>
+
+
+            <div class="swiper-pagination swiper-pagination-primary position-relative mt-0"></div>
+        </div>
+    </div>
+</section>

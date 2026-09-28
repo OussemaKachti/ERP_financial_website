@@ -1,0 +1,68 @@
+
+<section class="pt-8 pb-0 overflow-visible" #boundary>
+    <div class="container" >
+        <div class="row align-items-stretch">
+            
+            <div class="col-lg-5 offset-lg-1 order-2 mb-5 mb-lg-0">
+                <div data-sticky [marginTop]="100" [boundary]="boundary" data-sticky-for="992" stickyThing [spacer]="spacer">
+                    <div class="position-relative h-500px h-md-750px w-lg-50vw">
+                        <div class="w-100 h-500px h-md-750px rounded-4"
+                            style="background-image: url(assets/images/bg/05.jpg); background-size:cover; background-position:top center;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="col-lg-6 order-1 mb-5 mb-lg-0">
+                <div class="pb-lg-7 pt-lg-5">
+                    
+                    <h5 class="mb-lg-4"><span class="hand-wave-animate">🖐️</span> Hello, I’m</h5>
+
+                    
+                    <h1 class="display-1 position-relative mb-6 mb-sm-5">
+                        Emily Johnson
+                        <span
+                            class="h5 bg-primary text-white rounded-3 rotate-350 position-absolute bottom-0 end-0 mb-n5 mb-sm-n3 mb-lg-n1 px-4 py-3">Web
+                            developer</span>
+                    </h1>
+
+                    <p class="lead mb-4">I am a self-taught web Developer from the USA. Currently, I am a freelancer and
+                        collaborating with small companies and agencies. I deal with UI design / Front-end development
+                        and Bootstrap Development.</p>
+
+                   
+                    <a  [routerLink]="[]" class="btn btn-secondary icon-link icon-link-hover">Work with me! <i
+                            class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+
+            
+            <div class="col-xl-6 order-3">
+                
+                <h2 class="mb-4 mb-lg-5" #spacer>My expertise</h2>
+
+                <div class="row g-4 mt-4 mt-lg-5">
+                    @for (skill of skills; track $index) {
+                    <div class="col-md-6">
+                        <div class="card {{ skill.bgColor }} bg-opacity-15 rounded-4 p-4 h-100">
+                            <div class="card-header bg-transparent p-0 pb-4">
+                                <div class="icon-lg {{ skill.bgColor }} text-white rounded-circle">
+                                    <i class="{{ skill.icon }} fa-lg"></i>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <h6>{{ skill.category }}</h6>
+                                <p class="mb-3">{{ skill.description }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent p-0">
+                                <a [routerLink]="skill.link" class="link-primary-grad icon-link icon-link-hover">View projects
+                                    <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

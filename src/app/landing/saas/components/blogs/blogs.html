@@ -1,0 +1,49 @@
+<section class="position-relative overflow-hidden pt-0">
+    <div class="position-absolute bottom-0 end-0 mb-n2 me-n6 d-none d-xxl-block">
+        <img [src]="data.decorationImage" class="h-300px rtl-flip" alt="image">
+    </div>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <h2 class="mb-3">{{ data.title }}</h2>
+                <p class="mb-5">
+                    <i class="bi bi-instagram text-primary-grad me-2"></i>{{ data.followText }}
+                    <a [routerLink]="data.instagramLink" class="hover-underline-animation">{{ data.instagramHandle }}</a>
+                </p>
+                <div class="d-flex gap-2">
+                    <a  [routerLink]="[]"
+                        class="btn btn-secondary btn-icon btn-lg rounded-circle mb-0 swiper-button-prev rtl-flip">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                    <a  [routerLink]="[]"
+                        class="btn btn-secondary btn-icon btn-lg rounded-circle mb-0 swiper-button-next rtl-flip">
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="swiper">
+                    <swiper-container class="swiper-wrapper" init="false" [config]="swiperBlog">
+                        @for (blog of data.blogs; track $index) {
+                        <swiper-slide class="swiper-slide">
+                            <article class="card bg-transparent">
+                                <div class="badge text-bg-dark position-absolute top-0 start-0 m-4">{{ blog.category }}
+                                </div>
+                                <img [src]="blog.image" class="card-img rounded-4" alt="blog-image">
+                                <div class="card-body px-0 pb-0">
+                                    <h6 class="card-title mb-3">{{ blog.title }}</h6>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-0">{{ blog.author }}</p>
+                                        <a class="link-primary-grad icon-link icon-link-hover stretched-link me-1"
+                                            [routerLink]="blog.link">Read more<i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </article>
+                        </swiper-slide>
+                        }
+                    </swiper-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

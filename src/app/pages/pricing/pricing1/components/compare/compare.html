@@ -1,0 +1,84 @@
+<section class="pt-0 position-relative">
+	<div class="position-absolute end-0 top-0 mt-n7 me-6 d-none d-md-block">
+		<img src="assets/images/elements/rocket-03.png" class="h-200px" alt="rocket image">
+	</div>
+
+	<div class="container">
+
+		<h2 class="text-center mb-0">Compare plan</h2>
+		<div class="table-responsive-xl mt-2 mt-md-5">
+			<table class="table table-striped table-borderless align-middle">
+				<thead class="align-middle">
+					<tr>
+						<th scope="col">
+							<p class="mb-0 fs-5 heading-color">Features</p>
+						</th>
+
+						@for (plan of pricingTable[0].plans; track $index) {
+						<th scope="col">
+							<div class="text-center p-3">
+								<p class="mb-3 heading-color">{{ plan.name }}</p>
+								<a  [routerLink]="[]" class="btn btn-sm btn-outline-primary mb-0">
+									{{ plan.btnText }}
+								</a>
+							</div>
+						</th>
+						}
+					</tr>
+				</thead>
+
+				<tbody class="border-top-0">
+					@for (feature of pricingTable[1].features; track $index) {
+					<tr>
+						<th scope="row">
+							<span class="fw-normal heading-color ps-lg-4 mb-0">
+								{{ feature.name }}
+							</span>
+						</th>
+
+						@for (value of feature.values; track $index) {
+						<td class="text-center" [class.text-success]="value === 'check'" [class.text-danger]="value === 'x'">
+							@switch (value) {
+							@case ('check') { <i class="bi bi-check-circle fa-lg"></i> }
+							@case ('x') { <i class="bi bi-x-circle fa-lg"></i> }
+							@default { <span>{{ value }}</span> }
+							}
+						</td>
+						}
+					</tr>
+					}
+				</tbody>
+
+			</table>
+		</div>
+		<div class="row g-4 align-items-center mt-6">
+			<div class="col-lg-3">
+				<div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+					<h6 class="mb-0">Trusted by leading companies</h6>
+					<div class="vr bg-primary-grad opacity-1 d-none d-lg-block"></div>
+				</div>
+			</div>
+			<div class="col-lg-9">
+
+				<div class="swiper">
+					<swiper-container init="false" [config]="swiperConfig" class="swiper-wrapper align-items-center">
+
+						@for (item of clientLogo; track $index) {
+						<swiper-slide class="swiper-slide">
+							<div class="swap-logo">
+								<img [src]="item.gray_image" class="p-2 p-lg-3" alt="client-img">
+								<div class="swap-item">
+									<img [src]="item.light_mode_image" class="dark-mode-item p-2 p-lg-3" alt="client logo">
+									<img [src]="item.dark_mode_image" class="light-mode-item p-2 p-lg-3" alt="client logo">
+								</div>
+							</div>
+						</swiper-slide>
+						}
+
+					</swiper-container>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>

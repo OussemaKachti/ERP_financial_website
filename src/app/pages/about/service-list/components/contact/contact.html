@@ -1,0 +1,81 @@
+
+<section class="pb-0 overflow-hidden">
+    <div class="bg-secondary-grad position-relative pb-8">
+        <span>
+            <svg class="position-abslolute top-0 start-0 mt-n3 mt-sm-n1" viewBox="0 0 1920 108"
+                style="enable-background:new 0 0 1920 108;" xml:space="preserve">
+                <path class="fill-body" d="M0,0l1920,1.5V108L0,0z" />
+            </svg>
+        </span>
+
+        <div class="container position-relative pt-5 pt-lg-0">
+            <div class="row align-items-center g-4">
+                
+                <div class="col-lg-5">
+                    <span class="hand-wave-animate h2">🖐️</span>
+                    <h2 class="mb-3 h1">Say Hello</h2>
+                    <p>Our friendly team is ready to assist you with whatever you need.</p>
+                    <div class="row row-cols-1 row-cols-sm-2 g-4 mt-3 mt-md-5">
+              
+                        <div class="col">
+                            <span class="fs-3 text-primary-grad"><i class="bi bi-headset"></i></span>
+                            <h6 class="my-2 my-sm-3">Call us</h6>
+                            <p class="mb-2">Let's work together towards a common goal - get in touch!</p>
+                            <a  [routerLink]="[]" class="heading-color hover-underline-animation">+91 222 555 666</a>
+                        </div>
+
+                       
+                        <div class="col">
+                            <span class="fs-3 text-primary-grad"><i class="bi bi-envelope"></i></span>
+                            <h6 class="my-2 my-sm-3">Email us</h6>
+                            <p class="mb-2">We respond to all inquiries within 24 hours.</p>
+                            <a  [routerLink]="[]" class="heading-color hover-underline-animation">example&#64;gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ms-auto mt-5 mt-lg-n7">
+                    <div class="card card-body rounded-4 shadow-primary-lg p-4">
+                        <form class="row form-border-transparent g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">First name</label>
+                                <input type="text" class="form-control bg-secondary" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Last name</label>
+                                <input type="text" class="form-control bg-secondary" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Email address</label>
+                                <input type="email" class="form-control bg-secondary" id="floatingInput" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Mobile number</label>
+								<input type="text" class="form-control bg-secondary" pattern="\d{10}" title="Please enter a 10-digit mobile number" maxlength="10" required>						
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control bg-secondary" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control bg-secondary" id="floatingTextarea2"
+                                    style="height: 150px" minlength="10" required></textarea>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                
+                                <button class="btn btn-primary mb-2 mb-md-0">Send a message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

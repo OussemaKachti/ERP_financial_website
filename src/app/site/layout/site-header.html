@@ -1,0 +1,55 @@
+<header class="rf-header" [class.is-scrolled]="scrolled()" [class.is-open]="open()">
+  <div class="container">
+    <a class="rf-brand" routerLink="/" [attr.aria-label]="site.nom + ', accueil'">
+      <img src="assets/rfidia/brand/ring.png" alt="" width="34" height="34">
+      <span>
+        <span class="rf-brand-name">{{ site.nom }}</span>
+        <span class="rf-brand-sub">TECHNOLOGY</span>
+      </span>
+    </a>
+
+    <ul class="rf-nav" aria-label="Navigation principale">
+      @for (l of liens; track l.lien) {
+        <li>
+          <a [routerLink]="l.lien" routerLinkActive="active">
+            @if (l.couleur) {
+              <span class="rf-dot" [style.--c]="l.couleur"></span>
+            }
+            {{ l.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="rf-header-actions">
+      <button type="button" class="rf-icon-btn" (click)="themeService.basculer()"
+        [attr.aria-label]="themeService.theme() === 'dark' ? 'Passer en thème clair' : 'Passer en thème sombre'">
+        <i class="bi" [class.bi-sun]="themeService.theme() === 'dark'" [class.bi-moon-stars]="themeService.theme() !== 'dark'"></i>
+      </button>
+      <a [href]="site.connexion" class="btn btn-rf-ghost btn-sm px-3 py-2 mb-0 rf-hide-mobile">Connexion</a>
+      <a routerLink="/demonstration" class="btn btn-primary btn-sm px-3 py-2 mb-0 rf-hide-mobile">Demander une démo</a>
+      <button type="button" class="rf-icon-btn rf-burger" (click)="basculerMenu()" [attr.aria-expanded]="open()"
+        aria-controls="rf-mobile-nav" [attr.aria-label]="open() ? 'Fermer le menu' : 'Ouvrir le menu'">
+        <i class="bi" [class.bi-list]="!open()" [class.bi-x-lg]="open()"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="rf-mobile-nav" id="rf-mobile-nav" [class.is-open]="open()" [attr.aria-hidden]="!open()" aria-label="Menu mobile">
+  @for (l of liens; track l.lien) {
+    <a class="rf-mobile-link" [routerLink]="l.lien" [attr.tabindex]="open() ? 0 : -1">
+      <span class="d-inline-flex align-items-center gap-2">
+        @if (l.couleur) {
+          <span class="rf-dot" [style.--c]="l.couleur"></span>
+        }
+        {{ l.label }}
+      </span>
+      <i class="bi bi-arrow-right"></i>
+    </a>
+  }
+  <div class="d-grid gap-2 mt-4">
+    <a routerLink="/demonstration" class="btn btn-primary btn-lg" [attr.tabindex]="open() ? 0 : -1">Demander une démonstration</a>
+    <a [href]="site.connexion" class="btn btn-rf-ghost btn-lg" [attr.tabindex]="open() ? 0 : -1">Connexion</a>
+  </div>
+</nav>

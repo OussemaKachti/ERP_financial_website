@@ -1,0 +1,162 @@
+<div [style.--c]="mod.couleur">
+  <!-- ═══════════════ En-tête ═══════════════ -->
+  <section class="rf-page-hero">
+    <div class="container">
+      <div class="row g-4 align-items-end mb-5">
+        <div class="col-lg-8">
+          <span class="rf-eyebrow">{{ mod.num }} · {{ mod.nomLong }}</span>
+          <h1 class="rf-display mb-4" style="font-size: clamp(2.2rem, 1.4rem + 2.8vw, 3.6rem)">{{ mod.titre }}</h1>
+          <p class="rf-lead mb-0" style="max-width: 44rem">{{ mod.intro }}</p>
+        </div>
+        <div class="col-lg-4 d-flex flex-column flex-sm-row flex-lg-column align-items-lg-end gap-2">
+          <a routerLink="/demonstration" [queryParams]="{ module: mod.key }" class="btn btn-primary btn-lg mb-0">Demander une démonstration</a>
+          <a [href]="site.inscription" class="btn btn-rf-ghost btn-lg mb-0">Essayer gratuitement</a>
+        </div>
+      </div>
+
+      <div data-aos="fade-up">
+        <rf-app-window [src]="mod.hero.src" [alt]="mod.hero.alt" [url]="mod.hero.url"
+          [largeur]="mod.hero.largeur" [hauteur]="mod.hero.hauteur" [prioritaire]="true" />
+      </div>
+      <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mt-3">
+        <p class="rf-muted small mb-0"><strong class="rf-ink">{{ mod.hero.titre }}</strong> {{ mod.hero.legende }}</p>
+      </div>
+      <ul class="rf-kpis">
+        @for (k of mod.cles; track k.texte) {
+          <li><i class="bi" [class]="k.icone"></i>{{ k.texte }}</li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ Navigation des sections ═══════════════ -->
+  <nav class="rf-subnav" [attr.aria-label]="'Sections ' + mod.nom">
+    <div class="container">
+      <ul>
+        @for (s of mod.sections; track s.id) {
+          <li>
+            <a [href]="'#' + s.id" [class.active]="section() === s.id" (click)="aller(s.id, $event)"
+              [attr.aria-current]="section() === s.id ? 'true' : null">{{ s.nav }}</a>
+          </li>
+        }
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ Sections ═══════════════ -->
+  @for (s of mod.sections; track s.id; let impair = $odd) {
+    <section class="rf-feature" [id]="s.id" [class.rf-surface]="impair">
+      <div class="container">
+        <div class="row g-5 align-items-center" [class.flex-lg-row-reverse]="impair">
+          <div class="col-lg-5 rf-feature-text" data-aos="fade-up">
+            <span class="rf-feature-kicker">{{ s.kicker }}</span>
+            <h2 class="rf-h2">{{ s.titre }}</h2>
+            <p class="mb-4">{{ s.intro }}</p>
+
+            @for (p of s.points ?? []; track p.titre) {
+              <div class="rf-feature-point">
+                <h3>{{ p.titre }}</h3>
+                <p>{{ p.texte }}</p>
+              </div>
+            }
+
+            @if (s.puces) {
+              <ul class="rf-kpis mt-3">
+                @for (p of s.puces; track p) {
+                  <li><i class="bi bi-check2"></i>{{ p }}</li>
+                }
+              </ul>
+            }
+          </div>
+
+          <div class="col-lg-7">
+            <div class="rf-shot-stack" [class.is-reverse]="impair" [class.is-portrait]="s.shot2 && s.shot2.hauteur > s.shot2.largeur"
+              data-aos="fade-up" data-aos-delay="100">
+              <rf-app-window [src]="s.shot.src" [alt]="s.shot.alt" [url]="s.shot.url"
+                [largeur]="s.shot.largeur" [hauteur]="s.shot.hauteur" />
+              @if (s.shot2; as s2) {
+                <div class="rf-shot-secondary">
+                  <rf-app-window [src]="s2.src" [alt]="s2.alt" [url]="s2.url" [largeur]="s2.largeur" [hauteur]="s2.hauteur" />
+                </div>
+              }
+            </div>
+            <ul class="rf-shot-captions">
+              <li><span><strong>{{ s.shot.titre }}</strong> {{ s.shot.legende }}</span></li>
+              @if (s.shot2; as s2) {
+                <li><span><strong>{{ s2.titre }}</strong> {{ s2.legende }}</span></li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- ═══════════════ Relié au reste ═══════════════ -->
+  <section class="rf-section rf-band">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <span class="rf-eyebrow">Relié au reste</span>
+          <h2 class="rf-h2">{{ mod.nomLong }} ne travaille pas seul</h2>
+          <p class="mb-4">
+            Les trois applications partagent le même compte, les mêmes sociétés et les mêmes utilisateurs.
+            Ce qui est saisi ici sert ailleurs, sans ressaisie.
+          </p>
+          <ul class="list-unstyled mb-0">
+            @for (f of flux; track f.texte) {
+              <li class="d-flex gap-3 py-3 border-top" style="border-color: rgba(255,255,255,.1) !important">
+                <span class="text-nowrap small fw-semibold" style="color: #fff; min-width: 9.5rem">
+                  {{ f.deLabel }} <i class="bi bi-arrow-right mx-1"></i> {{ f.versLabel }}
+                </span>
+                <span class="small">{{ f.texte }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-3 h-100">
+            @for (a of autres; track a.key) {
+              <div class="col-md-6">
+                <a [routerLink]="'/' + a.key" class="rf-trade d-flex flex-column text-decoration-none" [style.--c]="a.couleur">
+                  <span class="rf-module-icon" [style.--c]="a.couleur"><i class="bi" [class]="a.icone" style="color: inherit"></i></span>
+                  <h3>{{ a.nomLong }}</h3>
+                  <p class="mb-4">{{ a.accroche }}</p>
+                  <span class="mt-auto fw-semibold" style="color: #fff">Découvrir <i class="bi bi-arrow-right ms-1"></i></span>
+                </a>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ Prix ═══════════════ -->
+  <section class="rf-section-sm">
+    <div class="container">
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-4 py-4 border-top border-bottom" style="border-color: var(--rf-line) !important">
+        <div>
+          <span class="rf-eyebrow mb-2">Tarif</span>
+          <p class="rf-h3 rf-ink mb-1">
+            @if (mod.key === 'crm') {
+              Le CRM terrain est compris dans la suite complète,
+            } @else {
+              Offre {{ offre().nom }} :
+            }
+            dès <span style="color: var(--c)">{{ offre().prix }} DT HT par mois</span>.
+          </p>
+          <p class="rf-muted mb-0 small">
+            @if (offre().promo) {
+              Prix de l’offre de lancement, valable pour toute signature jusqu’au 15 décembre 2026.
+            }
+            Mensuel ou annuel, TVA et timbre fiscal en sus.
+          </p>
+        </div>
+        <a routerLink="/tarifs" class="btn btn-rf-ghost btn-lg mb-0 flex-shrink-0">Voir toutes les offres</a>
+      </div>
+    </div>
+  </section>
+
+  <rf-cta-band />
+</div>

@@ -1,0 +1,138 @@
+<section class="rf-page-hero">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5">
+        <span class="rf-eyebrow">Démonstration</span>
+        <h1 class="rf-display mb-4" style="font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.4rem)">
+          Voyons ensemble comment {{ site.nom }} s’adapte à <span class="rf-serif-em">votre entreprise.</span>
+        </h1>
+        <p class="rf-lead mb-5">
+          Une démonstration sur vos propres cas — vos documents, vos circuits de validation, votre équipe —
+          vaut mieux qu’une longue description.
+        </p>
+
+        <div class="rf-feature-point">
+          <h3>Sur vos documents</h3>
+          <p>Une facture, un devis, un bulletin de paie : nous partons de ce que vous faites aujourd’hui.</p>
+        </div>
+        <div class="rf-feature-point">
+          <h3>Avec les modules qui vous concernent</h3>
+          <p>Finance, CRM terrain ou RH : la démonstration suit vos priorités, pas un script.</p>
+        </div>
+        <div class="rf-feature-point border-bottom" style="border-color: var(--rf-line) !important">
+          <h3>Et la reprise de l’existant</h3>
+          <p>Clients, articles, salariés : nous regardons comment démarrer sans repartir de zéro.</p>
+        </div>
+
+        <p class="rf-muted small mt-4 mb-0">
+          Vous préférez essayer seul ?
+          <a [href]="site.inscription" class="fw-semibold">Créez votre compte</a> et démarrez la période d’essai gratuite.
+        </p>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="rf-form ms-lg-4">
+          @switch (etat()) {
+            @case ('envoye') {
+              <div class="rf-success" role="status">
+                <i class="bi bi-check2"></i>
+                <h2 class="rf-h3">Merci, votre demande est bien partie.</h2>
+                <p class="rf-muted mb-4">Nous vous rappelons pour convenir d’un créneau.</p>
+                <a routerLink="/" class="btn btn-rf-ghost mb-0">Retour à l’accueil</a>
+              </div>
+            }
+            @default {
+              <form [formGroup]="form" (ngSubmit)="envoyer()" novalidate>
+                <h2 class="rf-h3 mb-1">Demander une démonstration</h2>
+                <p class="rf-muted small mb-4">Trois champs obligatoires, moins d’une minute.</p>
+
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label class="form-label" for="nom">Nom et prénom *</label>
+                    <input id="nom" class="form-control" formControlName="nom" autocomplete="name" [class.is-invalid]="invalide('nom')"
+                      [attr.aria-invalid]="invalide('nom')" aria-describedby="nom-err">
+                    <div id="nom-err" class="invalid-feedback">Indiquez votre nom.</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="societe">Société *</label>
+                    <input id="societe" class="form-control" formControlName="societe" autocomplete="organization"
+                      [class.is-invalid]="invalide('societe')" [attr.aria-invalid]="invalide('societe')" aria-describedby="societe-err">
+                    <div id="societe-err" class="invalid-feedback">Indiquez le nom de votre société.</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="telephone">Téléphone *</label>
+                    <input id="telephone" type="tel" class="form-control" formControlName="telephone" autocomplete="tel"
+                      inputmode="tel" dir="ltr" [class.is-invalid]="invalide('telephone')" [attr.aria-invalid]="invalide('telephone')"
+                      aria-describedby="telephone-err">
+                    <div id="telephone-err" class="invalid-feedback">Un numéro de téléphone valide, indicatif compris si besoin.</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="email">E-mail</label>
+                    <input id="email" type="email" class="form-control" formControlName="email" autocomplete="email" dir="ltr"
+                      [class.is-invalid]="invalide('email')" [attr.aria-invalid]="invalide('email')" aria-describedby="email-err">
+                    <div id="email-err" class="invalid-feedback">Cette adresse e-mail ne semble pas valide.</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="pays">Pays</label>
+                    <select id="pays" class="form-select" formControlName="pays">
+                      <option>Tunisie</option>
+                      <option>Algérie</option>
+                      <option>Autre</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="effectif">Effectif</label>
+                    <select id="effectif" class="form-select" formControlName="effectif">
+                      <option value="">Choisir…</option>
+                      <option>1 à 5 personnes</option>
+                      <option>6 à 20 personnes</option>
+                      <option>21 à 50 personnes</option>
+                      <option>Plus de 50 personnes</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12">
+                    <fieldset>
+                      <legend class="form-label">Modules qui vous intéressent</legend>
+                      <div class="rf-module-pick">
+                        @for (mod of modules; track mod.key) {
+                          <label [style.--c]="mod.couleur">
+                            <input type="checkbox" [formControlName]="mod.key">
+                            {{ mod.nomLong }}
+                          </label>
+                        }
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label" for="message">Votre contexte <span class="rf-muted fw-normal">(facultatif)</span></label>
+                    <textarea id="message" class="form-control" rows="4" formControlName="message"
+                      placeholder="Votre activité, vos outils actuels, ce que vous voulez voir en priorité…"></textarea>
+                  </div>
+                </div>
+
+                @if (etat() === 'erreur') {
+                  <div class="alert alert-danger small mt-4 mb-0" role="alert">
+                    La demande n’a pas pu être envoyée. Réessayez dans un instant.
+                  </div>
+                }
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 mt-4 mb-0" [disabled]="etat() === 'envoi'">
+                  @if (etat() === 'envoi') {
+                    <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Envoi…
+                  } @else {
+                    Envoyer la demande
+                  }
+                </button>
+                <p class="rf-muted small text-center mt-3 mb-0">
+                  Vos coordonnées servent uniquement à organiser la démonstration.
+                </p>
+              </form>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

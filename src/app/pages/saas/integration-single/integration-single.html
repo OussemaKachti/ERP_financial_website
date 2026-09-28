@@ -1,0 +1,53 @@
+<app-horizontal-menu [loginSignup]="true" />
+<main>
+
+	<section class="pt-xl-8">
+
+		<div class="container inner-container pt-4 pt-md-5">
+
+			<nav class="mb-2 justify-content-center d-flex" aria-label="breadcrumb">
+				<ol class="breadcrumb pt-0">
+					<li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+					<li class="breadcrumb-item"><a routerLink="/integrations">Integration</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Integration single</li>
+				</ol>
+			</nav>
+			<div class="bg-secondary rounded-4 d-sm-flex align-items-center p-4 p-sm-5 mb-5 mb-sm-7">
+
+				<div class="icon-xxl text-center shadow-primary bg-body rounded-3 flex-shrink-0">
+					<img src="assets/images/client/icons/05.svg" class="h-60px" alt="">
+				</div>
+				<div class="ms-sm-4 mt-3 mt-sm-0">
+					<h1 class="h3 mb-1">Connect with Graphlo</h1>
+					<span>Expert data synchronization for reliable transfer between your application and external
+						systems</span>
+				</div>
+			</div>
+			<h6 class="mb-3">Overview</h6>
+			<p>Integrating with Folio is a game-changer. With this integration, you can effortlessly synchronize data,
+				messages, and tasks between our software and Folio. Enjoy real-time updates, improved communication, and
+				a more organized workflow.</p>
+			<p>How promotion excellent curiosity yet attempted happiness Gay prosperous impression had conviction For
+				every delay death ask style Me mean able.</p>
+
+				@for (item of integrationSteps; track $index) {
+				<h6 class="mb-3 mt-4">{{ item.step }}</h6>
+
+				@if (item.description) {
+				<p>{{ item.description }}</p>
+				}
+
+				<ul class="list-group list-group-borderless">
+					@for (point of item.points; track $index) {
+					<li class="list-group-item heading-color d-flex mb-0">
+						<i class="bi bi-arrow-right me-2"></i> {{ point }}
+					</li>
+					}
+				</ul>
+				}
+
+		</div>
+	</section>
+
+	<app-footer3 />
+</main>

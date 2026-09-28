@@ -1,0 +1,29 @@
+<section class="pt-md-0">
+	<div class="container">
+		<div class="row">
+			
+<div class="col-lg-10 mx-auto">
+  @for (item of featureList; track item.id) {
+  <div [class]="item.class">
+    <div
+      class="col-md-6 pe-md-5"
+      [class.pe-md-5]="!item.reverse"
+      [class.ps-md-5]="item.reverse"
+      [class.order-2]="item.reverse"
+    >
+      <div class="{{ item.imageBg }} p-4 rounded-4">
+        <img [src]="item.image" alt="tab image" class="rounded-4" />
+      </div>
+    </div>
+
+    <div class="col-md-6" [class.order-2]="!item.reverse">
+      <h4 class="mb-md-4">{{ item.title }}</h4>
+      <p class="mb-0">{{ item.description }}</p>
+    </div>
+  </div>
+  }
+</div>
+
+		</div>
+	</div>
+</section>

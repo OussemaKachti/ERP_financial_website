@@ -1,0 +1,34 @@
+<section class="bg-secondary bg-opacity-75">
+    <div class="container">
+        <div class="inner-container position-relative text-center mb-4 mb-md-5">
+            <h2 class="mb-0">Have questions? (FAQs)</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+
+                <div ngbAccordion [closeOthers]="true" class="accordion accordion-bg-body-light" id="accordionFaq">
+
+                    @for (faq of faqData; track $index) {
+                    <div ngbAccordionItem class="accordion-item mb-4">
+                        <div ngbAccordionHeader class="accordion-header font-base" [id]="'heading-' + faq.id">
+                            <button ngbAccordionButton class="accordion-button fw-semibold rounded" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + faq.id" [attr.aria-controls]="'collapse-' + faq.id" [class.collapsed]="!faq.open" [attr.aria-expanded]="faq.open">
+                                {{ faq.question }}
+                            </button>
+                        </div>
+
+                        <div [id]="'collapse-' + faq.id" ngbAccordionCollapse class="accordion-collapse collapse" [class.show]="faq.open" [attr.aria-labelledby]="'heading-' + faq.id" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body pt-0" ngbAccordionBody>
+                                {{ faq.answer }}
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                </div>
+                <p class="heading-color text-center">Need help? Our team is ready to assist you. Start a chat for quick
+                    support. <a  [routerLink]="[]" class="hover-underline-animation fw-semibold">Talk to Us</a></p>
+            </div>
+        </div>
+    </div>
+</section>

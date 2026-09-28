@@ -1,0 +1,59 @@
+<footer class="bg-dark pt-8 pt-md-9 position-relative" data-bs-theme="dark">
+
+    <div class="container">
+        <div class="row g-4 justify-content-between">
+
+            <div class="col-lg-4">
+                <a [routerLink]="footerData.logo.path">
+                    <img class="h-40px" [src]="footerData.logo.img" alt="logo">
+                </a>
+                <p class="my-3 my-lg-4">{{ footerData.logo.description }}</p>
+
+                <ul class="list-inline mb-0">
+                    @for (social of footerData.socialLinks; track social.icon) {
+                    <li class="list-inline-item">
+                        <a class="btn btn-xs btn-icon btn-secondary" [routerLink]="social.path">
+                            <i class="{{ social.icon }} lh-base"></i>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div class="col-lg-6 col-xxl-4">
+                <div class="row g-4">
+                    @for (section of footerData.sections; track section.title) {
+                    <div class="col-6">
+                        <h6 class="mb-3 mb-sm-4">{{ section.title }}</h6>
+                        <ul class="nav flex-column gap-1">
+                            @for (link of section.links; track link.name) {
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="link.path">
+                                    {{ link.name }}
+                                    @if (link.badge) {
+                                    <span class="badge ms-2" [class]="link.badge.class">{{ link.badge.text }}</span>
+                                    }
+                                    @if (link.icon) {
+                                    <i class="{{ link.icon }} small ms-2"></i>
+                                    }
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+
+        <hr class="mt-xl-5 mb-0 opacity-1">
+        <div class="d-md-flex justify-content-between align-items-center text-center text-lg-start py-4">
+            <div class="text-body small mb-3 mb-md-0"> Copyrights ©{{currentYear}} Folio. Build by <a href="https://www.webestica.com/" target="_blank" class="text-body text-primary-hover hover-underline-animation">Webestica</a>. </div>
+            <ul class="nav d-flex justify-content-center gap-1 mb-0">
+                <li class="nav-item"><a class="nav-link small py-0" routerLink="/about-v1">Privacy policy</a></li>
+                <li class="nav-item"><a class="nav-link small py-0 pe-0" routerLink="/service-single">Terms & conditions</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

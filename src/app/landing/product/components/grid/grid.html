@@ -1,0 +1,48 @@
+<section class="pb-0 pb-xl-8">
+    <div class="container">
+        <div class="d-sm-flex justify-content-between text-center mb-7">
+            <h2 class="mb-3 mb-sm-0">Our collections</h2>
+            <a [routerLink]="[]" class="link-primary-grad icon-link icon-link-hover mb-0">View all products <i
+                    class="bi bi-arrow-right"></i></a>
+        </div>
+<div class="row">
+  @for(product of products; track $index){
+    <div class="col-md-6 col-xl-3 mb-7 mb-xl-0">
+      <div class="card card-img-scale text-center bg-secondary p-4 h-100" style="--bs-bg-opacity:0.4">
+        
+        @if(product.discount){
+          <div class="position-absolute top-0 start-0 mt-n3 ms-n3">
+            <img src="assets/images/elements/discount-label.svg" class="position-relative" alt="">
+            <span class="small text-white position-absolute top-50 start-50 translate-middle">
+              {{product.discount}}
+            </span>
+          </div>
+        }
+
+        <div class="card-header bg-transparent p-3 mt-n7">
+          <img src="{{product.image}}" class="img-scale" alt="{{product.alt}}">
+        </div>
+        <div class="card-body p-0 mt-3">
+          <h6 class="mb-2"><a [routerLink]="[]">{{product.name}}</a></h6>
+          <p class="mb-3">{{product.description}}</p>
+
+          @if(product.originalPrice){
+            <div class="d-flex align-items-center gap-2 justify-content-center">
+              <span class="text-success h6 mb-0">{{product.price}}</span>
+              <small class="text-decoration-line-through">{{product.originalPrice}}</small>
+            </div>
+          }
+          @if(!product.originalPrice){
+            <span class="text-success h6">{{product.price}}</span>
+          }
+        </div>
+        <div class="card-footer bg-transparent p-0 pt-3">
+          <a [routerLink]="[]" class="btn btn-sm btn-dark mb-0">Buy now</a>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+    </div>
+</section>

@@ -1,0 +1,80 @@
+<section class="bg-secondary bg-opacity-50 position-relative pt-xl-8 overflow-hidden">
+
+	<span>
+		<svg class="position-absolute bottom-0 start-0 mb-n3 z-index-2" viewBox="0 0 1950 178" style="enable-background:new 0 0 1950 178;">
+			<path class="fill-body" d="M1480.3,21.8c238.7-17.4,359.6,39,469.7,74.4V178H0v-54.2V4.4c57.3,38.5,287.7,14.6,446.4,0 c170.6-15.7,342.3,14.5,440.8,33C1104,78,1274.8,36.9,1480.3,21.8z" />
+		</svg>
+	</span>
+
+	<div class="container position-relative pt-4 pt-sm-5 pb-4 pb-lg-8">
+
+		<div class="row">
+
+			<div class="col-lg-5 mb-6 mb-lg-0">
+				<h1 class="h2 mb-lg-4">Powerful analytics to drive your business</h1>
+				<p class="mb-lg-4">Gain insights, make informed decisions, and drive growth with our powerful analytics feature</p>
+				<a [routerLink]="[]" class="btn btn-primary-grad mb-0">Start your free trial</a>
+			</div>
+
+
+			<div class="col-lg-6 position-relative ms-auto">
+
+				<div class="position-absolute top-0 start-50 translate-middle ms-6">
+					<img src="assets/images/elements/saas-decoration/03.png" class="shadow-primary-lg rounded-4" alt="feature image">
+				</div>
+
+
+				<div class="position-absolute bottom-0 start-0 mb-n4">
+					<img src="assets/images/elements/saas-decoration/06.png" class="h-100px h-sm-200px shadow-primary-lg rounded-4" alt="feature image">
+				</div>
+
+
+				<div class="ps-md-7">
+					<img src="assets/images/about/11.jpg" class="rounded-4" alt="feature image">
+				</div>
+			</div>
+		</div>
+		<div class="row align-items-center g-4 mt-6 mt-lg-9">
+
+			<div class="col-md-4 col-lg-3 order-2">
+				<img src="assets/images/elements/saas-decoration/07.png" class="w-md-300px shadow-primary-lg rounded-4" alt="feature image">
+			</div>
+
+
+			<div class="col-md-8 ms-auto order-1 order-md-2">
+				<div class="row g-4 align-items-center">
+					<div class="col-md-6">
+
+						<h6 class="mb-3">Unlock the power of data with advanced analytics</h6>
+
+						<ul class="list-group list-group-borderless">
+							@for(item of features;track $index){
+							<li class="list-group-item d-flex pb-0"><i class="bi bi-check-circle text-success me-2"></i>{{item}}</li>
+							}
+						</ul>
+					</div>
+
+
+					<div class="col-md-6 border-start border-2 border-pink ps-sm-5">
+						<div class="row row-cols-2 g-4">
+							@for (item of countersData; track $index) {
+							<div class="col">
+								<h3 class="mb-0">
+									@if (item.prefix) {
+									<span class="text-primary">{{ item.prefix }}</span>
+									}
+									<span [countUp]="item.count">0</span>
+									<span [class]="item.color">{{ item.suffix }}</span>
+								</h3>
+								<p class="mb-0">{{ item.text }}</p>
+							</div>
+							}
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>

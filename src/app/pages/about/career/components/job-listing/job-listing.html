@@ -1,0 +1,47 @@
+<section class="py-0 mb-n8">
+	<div class="container-fluid">
+
+		<div class="max-width-1550 bg-dark position-relative rounded-4 overflow-hidden py-5 py-sm-6 py-lg-8">
+
+
+			<div class="position-absolute top-0 start-0 mt-n6 ms-n5">
+				<img src="assets/images/elements/grad-shape/blur-decoration.svg" class="blur-7 opacity-1" alt="Grad shape">
+			</div>
+
+			<div class="position-absolute top-100 start-50 translate-middle">
+				<img src="assets/images/elements/grad-shape/blur-decoration-2.svg" class="opacity-2 blur-9" alt="Grad shape">
+			</div>
+			<div class="container position-relative" data-bs-theme="dark">
+				<h2 class="text-center mb-4">New job openings</h2>
+				<p class="text-center lead mx-auto mb-5">Explore our exciting career opportunities and find the perfect
+					fit for your skills and aspirations.</p>
+				<div class="row">
+					<div class="col-lg-10 mx-auto">
+						@for (item of job; track $index) {
+						<div class="card bg-transparent bg-opacity-50 border border-opacity-10 card-hover-transition card-hover-shadow mb-4">
+							<div class="card-body p-4">
+								<div class="row g-3 g-sm-4 align-items-center">
+									<div class="col-md-5">
+										<h6 class="mb-0">{{item.title}}</h6>
+									</div>
+									<div class="col-sm-4 col-md-2">
+										<span>{{item.location}}</span>
+									</div>
+
+									<div class="col-sm-4 col-md-3">
+										<span>{{item.category}}</span>
+									</div>
+									<div class="col-sm-4 col-md-2 text-sm-end">
+										<a routerLink="/career-single" class="fw-semibold link-success icon-link icon-link-hover stretched-link">Apply
+											<i class="bi bi-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

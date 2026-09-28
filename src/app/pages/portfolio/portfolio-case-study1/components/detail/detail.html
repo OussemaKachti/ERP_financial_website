@@ -1,0 +1,47 @@
+<section>
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-md-4">
+				<span class="text-primary-grad fw-bold lead">01.</span>
+				<h5>Overview</h5>
+			</div>
+
+			<div class="col-md-8 ms-auto">
+				<p class="lead">Ideas are the seeds of innovation. They can originate from personal experiences, observations, or the desire to solve a problem.</p>
+				<p>Once an idea takes root, it requires nurturing and refinement. This stage involves research, brainstorming, and gathering feedback. Conducting market analysis, exploring existing solutions, and collaborating with others can help refine the idea further. The goal is to gain a deeper understanding of the idea's feasibility, potential impact, and market viability.</p>
+				<ul class="list-inline">
+					<li class="list-inline-item"> <a class="btn btn-light btn-sm mb-lg-0"  [routerLink]="[]">Branding</a> </li>
+					<li class="list-inline-item"> <a class="btn btn-light btn-sm mb-lg-0"  [routerLink]="[]">Packaging</a> </li>
+					<li class="list-inline-item"> <a class="btn btn-light btn-sm mb-lg-0"  [routerLink]="[]">UI/UX design</a> </li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<span class="text-primary-grad fw-bold lead">02.</span>
+				<h5>The Challenge</h5>
+			</div>
+
+			<div class="col-md-8 ms-auto">
+				<p>Turning ideas into reality is a transformative process that drives innovation and progress. It begins with recognizing the power and potential of an idea. Through cultivation, planning, and strategizing, ideas are refined and shaped into actionable plans. Challenges are embraced as opportunities for growth, and perseverance becomes key in overcoming obstacles.</p>
+
+
+				<div class="row">
+					@for (col of services; track $index) {
+					<div class="col-sm-6 col-lg-5">
+						<ul class="list-group list-group-borderless">
+							@for (item of col; track $index) {
+							<li class="list-group-item d-flex heading-color">
+								<i class="bi bi-check-circle text-primary me-2"></i>
+								{{ item }}
+							</li>
+							}
+						</ul>
+					</div>
+					}
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>

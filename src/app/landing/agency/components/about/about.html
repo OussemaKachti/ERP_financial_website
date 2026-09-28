@@ -1,0 +1,44 @@
+<section class="position-relative pt-0 pb-0 pb-xl-8">
+	<div class="container px-xl-7">
+		<div class="row align-items-center">
+			<div class="col-lg-6 position-relative pe-xl-6 mb-5 mb-lg-0">
+				<div class="position-absolute top-0 start-0 ms-n6">
+					<img src="assets/images/elements/grad-shape/blur-decoration.svg" class="blur-7 opacity-1" alt="Grad shape">
+				</div>
+				<img src="assets/images/about/07.jpg" class="rounded-4 z-index-2 position-relative" alt="about image">
+			</div>
+			<div class="col-lg-6 ms-auto">
+				<div class="d-flex align-items-center" style="max-width: 30rem;">
+					<h2 class="display-4 text-primary-grad mb-0">14+</h2>
+					<h6 class="mb-0 ms-3">Products successfully launched</h6>
+				</div>
+				<hr class="border-primary border-opacity-50 mt-4 mb-5">
+				<ul ngbNav [(activeId)]="activeId" #nav="ngbNav" class="nav nav-pills nav-pills-dark gap-3" role="tablist">
+					@for (tab of tabs; track tab.id) {
+					<li [ngbNavItem]="tab.id">
+						<button ngbNavLink class="nav-link" [class.active]="activeId === tab.id">
+							<i class="{{tab.icon}} me-2"></i>{{tab.title}}
+						</button>
+						<ng-template ngbNavContent>
+							<p class="mb-2">{{tab.content}}</p>
+							<ul class="list-group list-group-borderless mb-3">
+								@for (item of tab.list; track $index) {
+								<li class="list-group-item heading-color d-flex pb-0">
+									<i class="bi bi-patch-check text-success me-2"></i>{{item}}
+								</li>
+								}
+							</ul>
+						</ng-template>
+					</li>
+					}
+				</ul>
+				<div class="tab-content mt-4">
+					<div [ngbNavOutlet]="nav"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="position-absolute top-100 start-0 translate-middle ms-9 mt-4 z-index-9 d-none d-xl-block">
+		<img src="assets/images/elements/ai-hand.png" class="aos ms-9 ps-6" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800" data-aos-easing="ease-in-out" alt="ai hand">
+	</div>
+</section>

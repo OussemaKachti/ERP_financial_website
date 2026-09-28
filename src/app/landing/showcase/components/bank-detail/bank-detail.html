@@ -1,0 +1,41 @@
+<section>
+    <div class="container">
+        <div class="row g-4 align-items-lg-center">
+            <div class="col-md-6 col-xl-5 order-2 order-md-1">
+                <div class="swiper">
+                    <swiper-container class="swiper-wrapper" init="false" [config]="swiperConfig">
+                        @for (step of steps; track $index) {
+
+                        <swiper-slide class="swiper-slide bg-body">
+                            <div class="bg-secondary-grad rounded-4 overflow-hidden p-5 h-100">
+                                <img [src]="step.image" class="mb-n8 rounded-5 shadow-primary" alt="step image">
+                            </div>
+                        </swiper-slide>
+                        }
+                    </swiper-container>
+                </div>
+            </div>
+            <div class="col-md-6 order-1 ms-auto">
+                <div class="swiper">
+                    <swiper-container class="swiper-wrapper mb-lg-5" init="false"  [config]="swiperOptionConfig">
+                        @for (step of allsteps; track $index) {
+                        <swiper-slide class="swiper-slide  bg-body overflow-hidden">
+                            <span class="fw-semibold text-primary">{{ step.phase }}</span>
+                            <h2 class="my-3">{{ step.title }}</h2>
+                            <p class="mb-0">{{ step.description }}</p>
+                        </swiper-slide>
+                        }
+                    </swiper-container>
+                </div>
+                <div class="d-flex gap-3 position-relative mt-3">
+                    <a id="swiper-button-prev-steps"  [routerLink]="[]"
+                        class="btn btn-lg btn-secondary btn-icon rounded-circle mb-0 swiper-button-prev-steps rtl-flip"><i
+                            class="bi bi-arrow-left"></i></a>
+                    <a id="swiper-button-next-steps"  [routerLink]="[]"
+                        class="btn btn-lg btn-secondary btn-icon rounded-circle mb-0 swiper-button-next-steps rtl-flip"><i
+                            class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+<section class="py-0">
+	<div class="container">
+		<h2 class="text-center mb-4 mb-lg-5">Our financial experts</h2>
+		<div class="row g-4 g-lg-5">
+			@for (member of teams; track $index) {
+			<div class="col-sm-6 col-lg-3">
+				<div class="card card-content-hover bg-transparent">
+					<img [src]="member.image" class="card-img" [alt]="member.name" />
+					<div class="card-body text-center px-0 pb-0">
+						<h6 class="mb-1">{{ member.name }}</h6>
+						<p class="mb-0">{{ member.role }}</p>
+						<ul class="list-inline hover-content position-relative p-0 mb-0">
+							@for (social of member.socials; track $index) {
+							<li class="list-inline-item">
+								<a class="btn btn-icon w-auto lead" [class]="social.class" [routerLink]="social.url">
+									<i class="bi" [class]="social.icon"></i>
+								</a>
+							</li>
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+			}
+		</div>
+
+	</div>
+</section>

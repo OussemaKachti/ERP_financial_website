@@ -1,0 +1,41 @@
+<section class="overflow-hidden">
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-sm-8 col-lg-5">
+                <h2 class="text-center text-sm-start mb-0">Success stories and projects</h2>
+            </div>
+            <div class="col-sm-4 col-lg-5 ms-auto">
+                <div class="d-flex justify-content-center justify-content-sm-end gap-3 position-relative mt-3">
+                    <a  [routerLink]="[]" class="btn btn-secondary btn-lg btn-icon rounded-circle mb-0 swiper-button-prev-project rtl-flip"><i class="bi bi-arrow-left"></i></a>
+                    <a  [routerLink]="[]" class="btn btn-secondary btn-lg btn-icon rounded-circle mb-0 swiper-button-next-project rtl-flip"><i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper swiper-outside-n5 px-4 px-sm-5">
+
+        <swiper-container init="false" [config]="swiperConfig" class="swiper-wrapper">
+            @for (item of projects; track $index) {
+            <swiper-slide class="swiper-slide">
+                <div class="card card-img-scale card-content-hover card-metro-hover rounded-4">
+                    <img [src]="item.image" class="img-scale" alt="portfolio-img">
+
+                    <div class="card-img-overlay hover-content d-flex flex-column align-items-start p-5">
+
+                        <img [src]="item.client_logo" class="h-30px" alt="client logo">
+
+                        <div class="card-text mt-auto">
+                            <h6 class="mb-0"><a routerLink="/{{item.link}}" class="text-white stretched-link">{{item.title}}</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </swiper-slide>
+            }
+        </swiper-container>
+    </div>
+    <div class="inner-container-small bg-primary-grad rounded-3 text-center py-3 mt-6 mx-3 mx-md-auto">
+        <p class="text-white mb-0 px-2 px-sm-5 px-md-0">🔥 Kickstart your project! collaborate with us for success!
+            <a href="contact-v1.html" class="fw-semibold hover-underline-animation text-white">Start today</a>
+        </p>
+    </div>
+</section>

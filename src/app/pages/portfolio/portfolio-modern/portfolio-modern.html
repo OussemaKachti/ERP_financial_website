@@ -1,0 +1,83 @@
+<app-horizontal-menu [headerClass]="'bg-transparent'" [signUp]="true" />
+<main>
+
+	<section class="bg-secondary pt-xl-8 pb-5 pb-md-7">
+
+		<div class="container position-relative pt-4 pt-sm-5">
+
+			<nav class="mb-2" aria-label="breadcrumb">
+				<ol class="breadcrumb pt-0">
+					<li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Portfolio</li>
+				</ol>
+			</nav>
+
+			<h1 class="display-5">Portfolio Modern Grid</h1>
+		</div>
+	</section>
+
+	<section class="bg-secondary pt-0">
+		<div class="container">
+
+			<div class="row justify-content-center mb-6">
+				<div class="col-md-5">
+					<div class="card card-img-scale card-content-hover rounded-0 bg-transparent overflow-hidden">
+						<div class="card-img-scale-wrapper rounded-0">
+
+							<img src="assets/images/portfolio/3by4/09.jpg" class="img-scale" alt="portfolio-img">
+
+							<div class="card-img-overlay hover-content d-flex flex-column align-items-center justify-content-center p-5">
+								<div class="icon-xl bg-dark text-white rounded-circle"><i class="bi bi-arrow-up-right"></i></div>
+							</div>
+						</div>
+
+						<div class="card-body d-flex justify-content-between px-0 pb-0">
+							<div>
+								<h6 class="mb-0"><a routerLink="/portfolio-case-study-v1" class="heading-color stretched-link">Mobile app development</a></h6>
+								<span>UI/UX design</span>
+							</div>
+							<small>&#64;2024</small>
+						</div>
+					</div>
+				</div>
+				@for (item of modern; track $index) {
+				<div class="col-md-6 d-flex align-items-center">
+					<div class="row justify-content-center mt-5 mt-md-0">
+						<div class="col-md-8">
+							<div class="card card-img-scale card-content-hover rounded-0 bg-transparent overflow-hidden">
+								<div class="card-img-scale-wrapper rounded-0">
+
+									<img [src]="item.image" class="img-scale" alt="portfolio-img">
+
+									<div class="card-img-overlay hover-content d-flex flex-column align-items-center justify-content-center p-5">
+										<div class="icon-xl bg-dark text-white rounded-circle"><i class="bi bi-arrow-up-right"></i></div>
+									</div>
+								</div>
+								<div class="card-body d-flex justify-content-between px-0 pb-0">
+									<div>
+										<h6 class="mb-0"><a routerLink="/{{item.link}}" class="heading-color stretched-link">{{item.description}}</a></h6>
+										<span>{{item.category}}</span>
+									</div>
+									<small>&#64;{{item.year}}</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				}
+			</div>
+
+			<div class="d-grid justify-content-center">
+				<a  [routerLink]="[]" role="button" class="btn btn-loader btn-outline-primary mb-0" data-bs-toggle="button" aria-pressed="true">
+					<span class="load-text">Load more work</span>
+					<div class="load-icon">
+						<div class="spinner-grow spinner-grow-sm bg-primary" role="status">
+							<span class="visually-hidden">Loading...</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
+	<app-footer1 />
+</main>

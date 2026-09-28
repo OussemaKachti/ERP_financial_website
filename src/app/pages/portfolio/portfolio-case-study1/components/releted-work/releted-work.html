@@ -1,0 +1,28 @@
+<section>
+    <div class="container">
+        <h3 class="mb-4">Related works</h3>
+        <div class="swiper">
+            <swiper-container class="swiper-wrapper" [config]="workSwiper" init="false">
+
+                @for (item of slides; track $index) {
+                <swiper-slide class="swiper-slide">
+                    <div class="card card-img-scale bg-transparent overflow-hidden">
+                        <div class="card-img-scale-wrapper rounded-3">
+
+                            <img [src]="item.image" class="img-scale" alt="portfolio-img">
+                        </div>
+
+                        <div class="card-body px-0 pb-0">
+                            <h6 class="mb-0"><a [routerLink]="item.link" class="heading-color stretched-link">{{item.title}}</a></h6>
+                            <small>{{item.category}}</small>
+                        </div>
+                    </div>
+                </swiper-slide>
+                }
+            </swiper-container>
+
+            <div class="swiper-pagination swiper-pagination-primary position-relative mt-4"></div>
+        </div>
+
+    </div>
+</section>

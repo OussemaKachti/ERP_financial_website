@@ -1,0 +1,32 @@
+<section class="pt-0">
+    <div class="container">
+        <div class="row g-4 g-lg-5" >
+            <div class="col-md-6">
+                <div class="card rounded-4 overflow-hidden">
+                    <div class="bg-overlay bg-dark opacity-5"></div>
+                    <img src="assets/images/product/video-cta.jpg" class="img-fluid" alt="CTA image">
+                    <lightgallery [settings]="setting" class="card-img-overlay d-flex flex-column align-items-start p-sm-5">
+                        <div class="mt-auto">
+                            <h4 class="text-white mb-3">See our watches in action</h4>
+                            <a href="https://www.youtube.com/embed/tXHviS-4ygo" class="btn btn-sm btn-primary mb-0"
+                                data-glightbox data-gallery="office-tour">
+                                <i class="bi bi-play-fill me-2"></i>Play video
+                            </a>
+                        </div>
+                    </lightgallery>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card rounded-4 overflow-hidden">
+                    <img src="assets/images/product/arrival-cta.jpg" class="img-fluid" alt="CTA image">
+                    <div class="card-img-overlay d-flex flex-column align-items-center text-center p-sm-5 mx-auto"
+                        style="max-width: 75%;">
+                        <span class="heading-color fw-bold mb-2">New arrival</span>
+                        <h4 class="text-white mb-3">Hurricane smart watch pro at $89 USD</h4>
+                        <a  [routerLink]="[]" class="btn btn-sm btn-dark mb-0">Explore now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

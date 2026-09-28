@@ -1,0 +1,64 @@
+<section class="bg-secondary position-relative overflow-hidden z-index-2 pt-6">
+    <div class="container">
+        <div class="inner-container-small text-center mb-4 mb-md-6">
+            <h2 class="mb-0">Discover the power of our online <span class="text-primary-grad">banking</span> app</h2>
+        </div>
+        <div class="row g-4 g-lg-5 align-items-lg-center">
+            <div class="col-md-6 col-lg-4 order-1 pe-5">
+                @for (feature of features.slice(0, 3); track $index) {
+                <div class="aos d-flex justify-content-lg-end mb-4 mb-md-6" data-aos="fade-right" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-out">
+                    <div class="text-lg-end order-1 ms-3 ms-lg-0 me-lg-3">
+                        <h6 class="mb-2">{{ feature.title }}</h6>
+                        <p class="mb-0">{{ feature.description }}</p>
+                    </div>
+                    <div class="icon-lg bg-body {{ feature.iconColor }} rounded-circle flex-shrink-0 order-lg-2">
+                        <i class="{{ feature.icon }}"></i>
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="col-md-8 col-lg-4 mx-auto order-3 order-lg-2">
+                <img src="assets/images/mobile-app/feature.png" class="aos" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-out" alt="feature mobile">
+            </div>
+            <div class="col-md-6 col-lg-4 order-2 order-lg-3">
+                @for (feature of features.slice(3); track $index) {
+                <div class="aos d-flex mb-4 mb-md-6" data-aos="fade-left" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-out">
+                    <div class="icon-lg bg-body {{ feature.iconColor }} rounded-circle flex-shrink-0">
+                        <i class="{{ feature.icon }}"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-2">{{ feature.title }}</h6>
+                        <p class="mb-0">{{ feature.description }}</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+        <div class="inner-container row g-4 mt-6 mt-md-8" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-out">
+            <div class="col-sm-6 col-md-4">
+                <div class="text-center border-end pe-sm-5 h-100">
+                    <img src="assets/images/elements/review.svg" class="h-60px mb-4" alt="review image">
+                    <h4>{{ ratings.overallRating }}</h4>
+                    <p class="mb-0">Rating by {{ ratings.userCount }} users</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="text-center border-end pe-sm-5 h-100">
+                    <div class="d-flex justify-content-center gap-2 mb-4">
+                        <img src="assets/images/elements/apple.svg" class="h-60px" alt="">
+                        <img src="assets/images/elements/play-store.svg" class="h-60px" alt="">
+                    </div>
+                    <h4>{{ ratings.platformReviews }}</h4>
+                    <p class="mb-0">Review on google play and iOS</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center h-100">
+                    <span class="display-6 text-primary-grad"><i class="bi bi-people"></i></span>
+                    <h4>{{ ratings.totalMembers }}</h4>
+                    <p class="mb-0">Total members use this platform</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

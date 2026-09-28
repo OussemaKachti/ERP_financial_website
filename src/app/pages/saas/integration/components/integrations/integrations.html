@@ -1,0 +1,56 @@
+<section class="pt-0">
+	<div class="container">
+		<div class="d-md-flex justify-content-center align-items-center mb-4 mb-lg-6">
+			<p class="mb-4 mb-md-0 me-4">Filter by:</p>
+			<ul class="nav nav-underline gap-md-4 mb-0">
+				<li class="nav-item">
+					<a class="nav-link py-0 active" aria-current="page" [routerLink]="[]" (click)="filterIntegrations('All')">All</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link py-0" [routerLink]="[]" (click)="filterIntegrations('Productivity')">Productivity</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link py-0" [routerLink]="[]" (click)="filterIntegrations('CRM')">CRM</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link py-0" [routerLink]="[]" (click)="filterIntegrations('Payment')">Payment</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link py-0" [routerLink]="[]" (click)="filterIntegrations('e-commerce')">e-commerce</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link py-0" [routerLink]="[]" (click)="filterIntegrations('Streaming')">Streaming</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="row g-4 g-xl-5">
+			@for (item of integrations; track $index) {
+
+			<div class="col-md-6 col-lg-4">
+				<div class="card card-hover-transition bg-secondary bg-opacity-50 h-100 p-4">
+					<div class="card-body p-0">
+						<div class="d-flex gap-3 align-items-center mb-3">
+
+							<div class="icon-lg text-center shadow-primary bg-body rounded-3 flex-shrink-0" style="line-height: 3.2rem;">
+								<img [src]="item.icon" class="h-30px" alt="">
+							</div>
+
+							<div>
+								<h6 class="mb-0">{{item.title}}</h6>
+								<span>{{item.category}}</span>
+							</div>
+						</div>
+						<p>{{item.description}}</p>
+					</div>
+
+					<div class="card-footer bg-transparent p-0 mt-4">
+						<a [routerLink]="'/integration-single'" class="link-primary-grad icon-link icon-link-hover stretched-link mb-0">Explore
+							integration<i class="bi bi-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+			}
+		</div>
+	</div>
+</section>

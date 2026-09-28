@@ -1,0 +1,62 @@
+
+<section class="bg-body position-relative py-0">
+    <div class="container position-relative z-index-9">
+        
+        <div class="row align-items-center mb-4 mb-md-5">
+            <div class="col-md-7 col-xl-5">
+                <h2 class="mb-0">Hear from our happy customers</h2>
+            </div>
+
+            <div class="col-md-5 ms-sm-auto text-sm-end mt-5 mt-sm-0">
+                <div class="d-flex gap-2 justify-content-sm-end">
+                    <a  [routerLink]="[]" id="swiper-button-prev" class="btn btn-primary-grad btn-icon btn-lg rounded-circle mb-0 swiper-button-prev"><i
+                            class="bi bi-arrow-left fa-sm"></i></a>
+                    <a  [routerLink]="[]" id="swiper-button-next" class="btn btn-primary-grad btn-icon btn-lg rounded-circle mb-0 swiper-button-next"><i
+                            class="bi bi-arrow-right fa-sm"></i></a>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="swiper" >
+
+            <swiper-container class="swiper-wrapper" init="false" [config]="swiperConfig">
+                
+                @for (item of testimonial; track $index) {
+                <swiper-slide class="swiper-slide">
+                    <div class="card bg-secondary bg-opacity-50 bg-blur rounded-4 p-4 h-100">
+                       
+                        <div class="card-body p-0 mb-4">
+                            <ul class="list-inline mb-3">
+                                <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                <li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+                            </ul>
+                            
+                            <blockquote>
+                                <p class="heading-color mb-0">{{item.testimonial}}</p>
+                            </blockquote>
+                        </div>
+                        
+                        <div class="card-footer bg-transparent p-0">
+                            
+                            <div class="d-flex align-items-center">
+                                <div class="avatar flex-shrink-0">
+                                    <img class="avatar-img rounded-circle" [src]="item.avatar" alt="avatar">
+                                </div>
+                                <div class="ms-3">
+                                    <p class="lead heading-color fw-semibold mb-0">{{item.name}}</p>
+                                    <small>{{item.role}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </swiper-slide>
+                }
+            </swiper-container>
+        </div>
+        
+    </div>
+</section>

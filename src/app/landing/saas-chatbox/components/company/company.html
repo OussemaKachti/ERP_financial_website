@@ -1,0 +1,20 @@
+<section class="pt-0">
+    <div class="container">
+        <h6 class="text-center mb-5">Trusted by 10,000+ marketers at leading companies.</h6>
+        <div class="swiper">
+            <swiper-container init="false" [config]="swiperConfig" class="swiper-wrapper align-items-center">
+                @for ( client of clientsLogo; track $index) {
+                <swiper-slide class="swiper-slide">
+                    <div class="swap-logo">
+                        <img [src]="client.grayLogo" alt="client-img">
+                        <div class="swap-item">
+                            <img [src]="client.lightLogo" class="dark-mode-item" alt="client logo">
+                            <img [src]="client.darkLogo" class="light-mode-item" alt="client logo">
+                        </div>
+                    </div>
+                </swiper-slide>
+                }
+            </swiper-container>
+        </div>
+    </div>
+</section>

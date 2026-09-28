@@ -1,0 +1,31 @@
+<section class="position-relative pt-sm-8 pt-lg-9 pb-4">
+	<div class="position-absolute top-0 end-0 z-index-2 d-none d-md-block rtl-flip">
+		<img src="assets/images/elements/grad-shape/07.png" alt="">
+	</div>
+
+	<div class="container pt-4">
+		<div class="col-md-9 pe-3">
+			<p class="heading-color bg-secondary d-inline-block rounded px-3 py-2 mb-3"><span class="badge bg-dark me-2">New</span> Maximize productivity with next-generation software</p>
+			<ngx-typed-js [strings]="['business', 'agency', 'startup']" [shuffle]="true" [typeSpeed]="60">
+				<h1 class="display-6 fw-semibold mb-4 lh-base">Creating software solutions for your
+					<span class="text-primary ityped-cursor-opacity mb-0 d-block d-xxl-inline-block">
+						<span class="typing" data-type-text="business&&agency&&startup"></span>
+					</span>
+				</h1>
+			</ngx-typed-js>
+			<div class="d-flex gap-3 gap-sm-4 flex-wrap">
+				<a routerLink="/portfolio-modern" class="btn btn-primary-grad">Explore our work</a>
+				<div class="d-flex gap-2 align-items-center">
+					<ul class="avatar-group mb-0 align-items-center">
+						@for (item of avatars; track $index) {
+						<li class="avatar">
+							<img class="avatar-img rounded-circle" [src]="item.src" [alt]="item.alt">
+						</li>
+						}
+					</ul>
+					<p class="heading-color mb-0">15K+ happy clients</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

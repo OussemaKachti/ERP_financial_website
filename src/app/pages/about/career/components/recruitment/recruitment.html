@@ -1,0 +1,46 @@
+<section class="pt-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-10 mx-auto">
+				<div class="row g-4">
+					<div class="col-md-6 order-2">
+						<div [ngbNavOutlet]="nav" class="tab-content"></div>
+					</div>
+					<div class="col-md-5 order-1 order-md-2 ms-auto">
+						<h2 class="mb-4">Our Recruitment Process</h2>
+
+						<ul class="nav nav-pills-dark flex-column gap-3 nav-pills" #nav="ngbNav" ngbNav orientation="vertical">
+
+							@for (step of steps; track step.id) {
+							<li [ngbNavItem]="step.id" [disabled]="step.disabled" class="w-100">
+								<button ngbNavLink class="nav-link text-start rounded-pill ps-4 py-3 w-100">
+									{{ step.title }}
+								</button>
+								<ng-template ngbNavContent>
+									<div class="card rounded-4 border overflow-hidden">
+										<img [src]="step.img" class="card-img-top" alt="step image" />
+										<div class="card-body p-4">
+											<h6>{{ step.heading }}</h6>
+											<p class="mb-0">{{ step.description }}</p>
+										</div>
+									</div>
+								</ng-template>
+							</li>
+							}
+						</ul>
+
+					</div>
+				</div>
+				<div class="inner-container-small bg-primary rounded-3 text-white text-center py-3 mt-5">
+					<p class="mb-0 px-2 px-sm-5 px-md-0">
+						<i class="bi bi-info-square-fill heading-color me-2"></i>
+						Contact our team for more information
+						<a  [routerLink]="[]" class="fw-semibold icon-link icon-link-hover hover-underline-animation text-white">
+							Let’s chat <i class="bi bi-arrow-right"></i>
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,47 @@
+<section class="position-relative z-index-2 py-0 mb-n8">
+    <div class="container-fluid position-relative">
+        <div class="max-width-1550 bg-dark position-relative rounded-4 overflow-hidden py-6 py-xl-8">
+            <div class="position-absolute top-100 start-50 translate-middle">
+                <img src="assets/images/elements/grad-shape/blur-decoration-2.svg" class="opacity-2 blur-9" alt="Grad shape">
+            </div>
+
+            <div class="container position-relative" data-bs-theme="dark">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 mb-5 mb-lg-0">
+                        <blockquote class="fs-6 fw-semibold text-white mb-sm-4">
+                            “Our dedicated team works tirelessly to turn your vision into a digital reality, using innovative strategies and cutting-edge solutions.”
+                        </blockquote>
+                        <span class="text-white">Jacqueline Miller, CEO at Folio</span>
+                    </div>
+
+                    <div class="col-lg-6 ms-auto">
+                        <h5 class="mb-4 text-center text-md-start">Top Author</h5>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                            @for (author of authorsData; track $index) {
+                            <div class="col">
+                                <div class="card card-body bg-transparent text-center p-0">
+                                    <div class="avatar avatar-xl mx-auto flex-shrink-0 mb-3">
+                                        <img class="avatar-img rounded-circle" [src]="author.image" alt="avatar">
+                                    </div>
+                                    <h6 class="mb-1"><a  [routerLink]="[]">{{ author.name }}</a></h6>
+                                    <small>{{ author.blogs }} Blogs</small>
+                                    <ul class="list-inline mb-0 mt-2">
+                                        @for (social of author.social; track social.platform) {
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-icon w-auto lead" [class]="'text-' + social.platform.toLowerCase()" [routerLink]="social.link">
+                                                <i [class]="'bi ' + social.icon + ' lh-base'"></i>
+                                            </a>
+                                        </li>
+                                        }
+                                    </ul>
+
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

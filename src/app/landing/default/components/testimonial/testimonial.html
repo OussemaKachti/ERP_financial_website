@@ -1,0 +1,83 @@
+<section class="position-relative pt-0">
+    <div class="position-absolute top-0 end-0 me-7 d-none d-sm-block" data-0="right:0%;top:50%;" data-top="right:0%;top:90%;">
+        <img src="assets/images/elements/hand-dec.png" alt="hand decoration">
+    </div>
+    <div class="position-absolute start-0 bottom-0 mb-n7 ms-n7">
+        <img src="assets/images/elements/grad-shape/05.png" alt="grad shape">
+    </div>
+
+    <div class="container-fluid">
+        <div class="max-width-1550 bg-secondary bg-opacity-50 bg-blur position-relative rounded-4 overflow-hidden py-6 py-lg-8">
+            <div class="position-absolute top-0 end-0 mt-n6 ms-n5">
+                <img src="assets/images/elements/grad-shape/blur-decoration.svg" class="blur-7 opacity-1" alt="Grad shape">
+            </div>
+
+            <div class="container">
+                <div class="inner-container text-center mb-lg-6">
+                    <h2>Client Testimonials 😍</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="swiper mt-2 mt-md-4">
+
+                            <swiper-container class="swiper-wrapper mb-5" [config]="swiperConfig" init="false">
+                                @for (item of testimonials; track $index) {
+                                <swiper-slide class="swiper-slide">
+                                    <div class="text-center">
+                                        <div class="avatar avatar-lg mx-auto flex-shrink-0 mb-4">
+                                            <img class="avatar-img rounded-circle" [src]="item.image" alt="avatar">
+                                        </div>
+                                        <blockquote class="mb-4">
+                                            <p class="lead heading-color mb-0">{{item.text}}</p>
+                                        </blockquote>
+                                        <ul class="list-inline mb-4">
+                                            <li class="list-inline-item fs-6 me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                            <li class="list-inline-item fs-6 me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                            <li class="list-inline-item fs-6 me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                            <li class="list-inline-item fs-6 me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                            <li class="list-inline-item fs-6 me-0"><i class="bi bi-star-half text-warning"></i></li>
+                                        </ul>
+                                        <div>
+                                            <h6 class="mb-0">{{item.name}}</h6>
+                                            <span>{{item.position}}</span>
+                                        </div>
+                                    </div>
+                                </swiper-slide>
+                                }
+                            </swiper-container>
+                            <div id="swiper-pagination" class="swiper-pagination swiper-pagination-primary position-absolute bottom-0 mb-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="border-primary border-2 border-opacity-25 my-5">
+                <div class="row align-items-center px-md-5">
+                    <div class="col-lg-4">
+                        <h5 class="mb-4 mb-lg-0">More than 500+ clients using <span class="text-primary">Folio</span>
+                            platform</h5>
+                    </div>
+                    @for (item of platformRatings; track $index) {
+                    <div class="col-sm-6 col-lg-4 col-xl-3 border-end border-primary border-opacity-25 ms-auto mb-4 mb-sm-0">
+                        <div class="d-flex align-items-center">
+
+                            <img [src]="item.icon" class="icon-lg" alt="">
+
+                            <div class="ms-3">
+                                <ul class="list-inline mb-1">
+                                    <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                    <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                    <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                    <li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+                                    <li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+                                </ul>
+                                <span>{{item.rating}} stars on {{item.platform}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

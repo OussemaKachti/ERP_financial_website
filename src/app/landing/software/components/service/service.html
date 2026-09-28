@@ -1,0 +1,35 @@
+
+<section class="bg-secondary position-relative overflow-hidden pt-0">
+	<div class="container position-relative">
+		<div class="inner-container-small text-center mb-6 mb-lg-7">
+			<h2 class="mb-0">Our expert services</h2>
+		</div>
+		<div class="row g-4 g-xl-5">
+			@for (item of serviceData; track $index) {
+			<div class="col-sm-6 col-lg-4 mb-4">
+				<div
+					class="card card-hover-shadow card-icon-transition text-center bg-body bg-opacity-50 bg-blur rounded-4 h-100 p-4">
+					<div [innerHTML]="$safeNavigationMigration(item?.sanitizedIcon)"
+						class="card-icon icon-xl bg-{{item.color}} d-flex justify-content-center align-items-center text-white rounded-circle">
+					
+					</div>
+					<div class="card-footer bg-transparent mt-6 p-0">
+						<h6 class="mb-3">{{item.title}}</h6>
+						<p>{{item.description}}</p>
+						<a routerLink="/service-single"
+							class="link-primary-grad icon-link icon-link-hover stretched-link mb-0">Read more <i
+								class="bi bi-arrow-right"></i></a>
+					</div>
+				</div>
+			</div>
+			}
+			<div class="col-sm-6 col-lg-4 mb-4">
+				<div class="d-flex flex-column justify-content-center align-items-center text-center h-100">
+					<img src="assets/images/elements/emoji.png" class="mb-3" alt="">
+					<p>Not satisfied yet?</p>
+					<a routerLink="/services-grid" class="btn btn-primary-grad mb-0">Explore all services</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

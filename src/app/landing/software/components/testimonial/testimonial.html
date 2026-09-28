@@ -1,0 +1,56 @@
+<section class="bg-body position-relative pt-0 pb-5 pb-sm-0">
+	<div class="position-absolute top-100 start-0 translate-middle z-index-2 ms-5 ms-xl-9 mt-5 d-none d-sm-block">
+		<img src="assets/images/elements/grad-shape/10.png" class="h-500px h-xl-700px rtl-flip" alt="">
+	</div>
+
+	<div class="container position-relative z-index-9">
+		<div class="row align-items-center mb-4 mb-md-5">
+			<div class="col-md-7 col-lg-5">
+				<h2 class="mb-0">What our clients say</h2>
+			</div>
+
+			<div class="col-md-5 ms-sm-auto text-sm-end mt-5 mt-sm-0">
+				<div class="d-flex gap-2 justify-content-sm-end">
+					<a  [routerLink]="[]" class="btn btn-primary-grad btn-icon btn-lg rounded-circle mb-0 swiper-button-prev"><i class="bi bi-arrow-left fa-sm"></i></a>
+					<a  [routerLink]="[]" class="btn btn-primary-grad btn-icon btn-lg rounded-circle mb-0 swiper-button-next"><i class="bi bi-arrow-right fa-sm"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="swiper">
+
+			<swiper-container init="false" [config]="swiperConfig" class="swiper-wrapper">
+				@for (item of testimonial; track $index) {
+				<swiper-slide class="swiper-slide">
+					<div class="card bg-secondary bg-opacity-50 bg-blur rounded-4 p-4 h-100">
+						<div class="card-body p-0 mb-4">
+							<ul class="list-inline mb-3">
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+							</ul>
+							<blockquote>
+								<p class="heading-color mb-0">Their team went above and beyond to understand our needs
+									and deliver a solution that exceeded our expectations. They demonstrated throughout
+									the process was truly impressive.</p>
+							</blockquote>
+						</div>
+						<div class="card-footer bg-transparent p-0">
+							<div class="d-flex align-items-center">
+								<div class="avatar flex-shrink-0">
+									<img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
+								</div>
+								<div class="ms-3">
+									<p class="lead heading-color fw-semibold mb-0">Jacqueline Miller</p>
+									<small>Product designer</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</swiper-slide>
+				}
+			</swiper-container>
+		</div>
+	</div>
+</section>

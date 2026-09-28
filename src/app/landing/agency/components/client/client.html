@@ -1,0 +1,25 @@
+<section class="pt-0 pb-md-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-sm-5 mb-lg-0">
+                <h2 class="mb-3 mb-lg-4">Solutions we've built for...</h2>
+                <p class="mb-3 mb-lg-4">Our AI solutions have driven innovation, streamlined operations, and fueled
+                    exceptional business growth.</p>
+                <a class="btn btn-primary icon-link icon-link-hover" [routerLink]="[]">Become a client<i class="bi bi-arrow-right"></i> </a>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="row border-md-transparent g-0">
+                    @for (item of clientdata; track $index) {
+                    <div class="col-6 col-md-4 border-primary border-opacity-10 border-end border-bottom">
+                        <div class="text-center p-3 p-md-5">
+                            <img [src]="item.light_mode_image" class="dark-mode-item h-40px" alt="client logo">
+                            <img [src]="item.dark_mode_image" class="light-mode-item h-40px" alt="client logo">
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

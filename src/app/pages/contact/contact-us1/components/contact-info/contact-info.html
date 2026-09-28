@@ -1,0 +1,30 @@
+
+<section class="pt-0 mt-n6 mt-lg-n7 mt-xl-n8">
+    <div class="container">
+        <div class="row g-4 g-lg-5">
+            @for (item of contactInfo; track item.contact; let last = $last) {
+            <div class="col-md-4">
+                <div class="card bg-secondary rounded-4 p-4 h-100">
+                   
+                    <div class="card-body p-0">
+                        
+                        <div class="icon-lg {{item.color}} text-white rounded-circle mb-3"><i [class]="item.icon"></i>
+                        </div>
+                        <h6>{{item.type}}</h6>
+                        <p class="mb-0">{{item.description}}</p>
+                    </div>
+                    
+                    <div class="card-footer bg-transparent p-0 pt-3">
+                        
+                        @if(last){
+                        <a class="btn btn-sm btn-white-shadow icon-link icon-link-hover"  [routerLink]="[]">{{item.contact}}<i
+                                class="bi bi-arrow-right"></i> </a>
+                        }@else {<a  [routerLink]="[]" class="text-primary-grad">{{item.contact}}</a>
+                    }
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,66 @@
+<footer class="rf-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <a class="rf-brand mb-3" routerLink="/">
+          <img src="assets/rfidia/brand/ring.png" alt="" width="34" height="34">
+          <span>
+            <span class="rf-brand-name">{{ site.nom }}</span>
+            <span class="rf-brand-sub">TECHNOLOGY</span>
+          </span>
+        </a>
+        <p class="rf-muted mb-0 pe-lg-5">
+          Facturation, stock, comptabilité, prospection terrain et paie pour les PME de Tunisie et d’Algérie,
+          avec un seul compte.
+        </p>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h4>Applications</h4>
+        <ul>
+          <li><a routerLink="/finance">Finance</a></li>
+          <li><a routerLink="/crm">CRM terrain</a></li>
+          <li><a routerLink="/rh">Ressources humaines</a></li>
+          <li><a routerLink="/tarifs">Tarifs</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h4>Commencer</h4>
+        <ul>
+          <li><a routerLink="/demonstration">Demander une démonstration</a></li>
+          <li><a [href]="site.inscription">Essayer gratuitement</a></li>
+          <li><a [href]="site.connexion">Connexion</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <h4>Accès directs</h4>
+        <ul>
+          <li><a [href]="site.apps.finance">finances.tagstream.com.tn</a></li>
+          <li><a [href]="site.apps.crm">crm.tagstream.com.tn</a></li>
+          <li><a [href]="site.apps.rh">rh.tagstream.com.tn</a></li>
+        </ul>
+        @if (site.contact.email || site.contact.telephone) {
+          <h4 class="mt-4">Contact</h4>
+          <ul>
+            @if (site.contact.telephone) {
+              <li><a [href]="'tel:' + site.contact.telephone">{{ site.contact.telephone }}</a></li>
+            }
+            @if (site.contact.email) {
+              <li><a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a></li>
+            }
+            @if (site.contact.adresse) {
+              <li class="rf-muted">{{ site.contact.adresse }}</li>
+            }
+          </ul>
+        }
+      </div>
+    </div>
+
+    <div class="rf-footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+      <span>© {{ annee }} {{ site.editeur }}. Tous droits réservés.</span>
+      <span>Prix hors taxes · TVA 19 % et timbre fiscal en sus.</span>
+    </div>
+  </div>
+</footer>

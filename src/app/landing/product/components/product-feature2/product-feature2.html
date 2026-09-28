@@ -1,0 +1,24 @@
+<section class="bg-dark overflow-hidden position-relative" data-bs-theme="dark">
+    <div class="col-md-8 col-lg-7 col-xl-12 col-xxl-9 position-absolute bottom-0 end-0 me-xl-n9 d-none d-md-block">
+        <img src="assets/images/product/feature-bg.png" class="ps-8 position-relative z-index-2" alt="">
+    </div>
+    <div class="position-absolute bottom-50 end-0">
+        <img src="assets/images/elements/grad-shape/blur-decoration-2.svg" class="opacity-2 blur-9" alt="Grad shape">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <h2 class="mb-4 mb-md-6">Advanced functionality for every moment</h2>
+                <div class="row g-4 g-lg-5">
+                    @for (feature of features2; track $index) {
+                    <div class="col-md-6">
+                        <span [class]="feature.iconClass" class="fs-3"><i [class]="feature.icon"></i></span>
+                        <h6 class="my-3">{{ feature.title }}</h6>
+                        <p class="mb-0">{{ feature.description }}</p>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

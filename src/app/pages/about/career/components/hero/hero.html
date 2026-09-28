@@ -1,0 +1,81 @@
+<section class="position-relative overflow-hidden pt-lg-7 pb-0">
+	<div class="bg-secondary-grad position-relative py-6 py-lg-8 mt-sm-2">
+		<div class="position-absolute top-0 start-0">
+			<img src="assets/images/elements/bg-pattern.svg" style="opacity: 0.05;" alt="bg pattern">
+		</div>
+		<div class="container position-relative">
+			@for(item of heroImage; track $index){
+			<div [class]="item.class">
+				<img class="avatar-img rounded-circle position-relative" [src]="item.image" alt="avatar">
+			</div>
+			}
+			<div class="inner-container text-center position-relative z-index-2 mx-auto">
+
+				<h1 class="fw-semibold mb-4 lh-base">Discover Inspiring Career Opportunities at <span class="text-primary">Folio</span></h1>
+
+
+				<p class="mb-5">Unlock your potential with our exciting career opportunities. At Folio, you'll find a supportive and dynamic environment where you can develop your skills and achieve your career goals.</p>
+
+
+				<div class="bg-body d-inline-block border border-primary border-opacity-10 rounded-3 position-relative p-2">
+
+					<form class="d-sm-flex align-items-center gap-3">
+
+						<div class="position-relative mb-1 mb-sm-0">
+							<input class="form-control border-0 me-1 ps-5 w-sm-200px w-md-300px" type="text" placeholder="Job title">
+
+							<span class="position-absolute top-50 start-0 translate-middle ps-5"><i class="bi bi-briefcase"></i></span>
+						</div>
+
+						<div class="vr opacity-1 my-2 d-none d-sm-block"></div>
+
+						<div class="position-relative mb-1 mb-sm-0">
+							<select class="form-select border-0 w-sm-200px w-md-300px ps-5" data-search-enabled="true">
+								<option>Location</option>
+								<option>Canada</option>
+								<option>USA</option>
+								<option>Paris</option>
+								<option>India</option>
+								<option>London</option>
+							</select>
+
+							<span class="position-absolute top-50 start-0 translate-middle ps-5"><i class="bi bi-geo-alt"></i></span>
+						</div>
+						<a class="btn btn-lg btn-dark btn-icon mb-0"  [routerLink]="[]"><i class="bi bi-search fs-6"></i></a>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-6 mt-lg-9">
+			<div class="row align-items-center mb-3">
+				<div class="col-sm-5">
+					<h5 class="text-center text-sm-start mb-0">Our unique selling points</h5>
+				</div>
+				<div class="col-sm-4 col-lg-5 ms-auto">
+					<div class="d-flex justify-content-center justify-content-sm-end gap-3 position-relative mt-3">
+						<a  [routerLink]="[]" class="fs-5 text-body-secondary text-primary-hover mb-0 swiper-button-prev-points rtl-flip"><i class="bi bi-arrow-left"></i></a>
+						<a  [routerLink]="[]" class="fs-5 text-body-secondary text-primary-hover mb-0 swiper-button-next-points rtl-flip"><i class="bi bi-arrow-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="swiper px-2" data-swiper-options='{
+				}'>
+				<swiper-container class="swiper-wrapper" init="false" [config]="swiperConfig">
+
+					@for (item of sellingPoint; track $index) {
+					<swiper-slide class="swiper-slide py-3">
+						<div class="card card-body card-hover-transition shadow-primary p-4">
+							<h3 class="{{item.color}} mb-4"><i class="bi {{item.icon}}"></i></h3>
+							<p class="lead heading-color fw-bold mb-2">{{item.title}}</p>
+							<a  [routerLink]="[]" class="link-primary-grad stretched-link icon-link icon-link-hover">Read more <i class="bi bi-arrow-right"></i></a>
+						</div>
+					</swiper-slide>}
+				</swiper-container>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="bg-body h-400px blur-7 position-absolute bottom-0 start-50 translate-middle-x mb-n8" style="width: 3000px"></div>
+</section>

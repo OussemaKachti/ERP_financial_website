@@ -1,0 +1,90 @@
+<footer class="bg-dark position-relative pt-6 pt-lg-8" data-bs-theme="dark">
+    <div class="position-absolute top-0 end-0 mt-n8 z-index-9 d-none d-md-block">
+        <img src="assets/images/elements/grad-shape/06.png" class="w-250px" alt="Shape">
+    </div>
+
+    <div class="container position-relative">
+        <div class="row mb-4 mb-lg-7">
+            <div class="col-lg-3 col-xl-4 mb-4 mb-lg-0">
+                <a class="me-0" routerLink="/index">
+                    <img class="h-40px" src="assets/images/logo-light.svg" alt="logo">
+                </a>
+            </div>
+            <div class="col-lg-9 col-xl-7 ms-md-auto">
+                <div class="bg-white d-md-flex justify-content-between align-items-center rounded-4 p-4" style="--bs-bg-opacity:0.05">
+                    <h5 class="mb-3 mb-md-0"><span class="hand-wave-animate">️🖐️</span> Let's innovate together</h5>
+                    <a routerLink="/contact-v1" class="btn btn-sm btn-primary-grad text-nowrap mb-0">Start
+                        innovating</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-8">
+                <div class="row g-4">
+                    @for(section of footerData; track $index) {
+                    <div class="col-sm-6 col-md-4">
+                        <h6 class="mb-0">{{ section.title }}</h6>
+                        <hr class="opacity-1 my-md-4" />
+                        <ul class="nav flex-column gap-1">
+                            @for(item of section.links; track $index) {
+                            <li class="nav-item">
+                                <a class="nav-link" [class.pt-0]="$index === 0" [routerLink]="item.link || null">
+                                    @if(item.icon && item.iconPosition === 'left'){
+                                    <i [class]="item.icon"></i>
+                                    }
+                                    {{ item.label }}
+
+                                    @if(item.badge){
+                                    <span class="badge ms-2" [class]="item.badge.class">
+                                        {{ item.badge.text }}
+                                    </span>
+                                    }
+                                    @if(item.icon && item.iconPosition === 'right'){
+                                    <i [class]="item.icon"></i>
+                                    }
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                    }
+                </div>
+            </div>
+
+
+
+            <div class="col-xl-4 mt-6 mt-xl-0">
+                <h6 class="mb-0">Download our app</h6>
+
+                <hr class="opacity-1 my-md-4">
+                <p>Get instant access to exclusive features for FREE!</p>
+
+                <div class="row g-2 mt-2 mb-4 mb-sm-5">
+
+                    <div class="col-5 col-sm-3 col-lg-2 col-xl-4">
+                        <a  [routerLink]="[]"> <img src="assets/images/elements/google-play.svg" alt=""> </a>
+                    </div>
+
+                    <div class="col-5 col-sm-3 col-lg-2 col-xl-4">
+                        <a  [routerLink]="[]"> <img src="assets/images/elements/app-store.svg" alt="app-store"> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="mt-xl-5 mb-0 opacity-1">
+        <div class="d-md-flex justify-content-between align-items-center text-center text-lg-start py-4">
+            <div class="text-body small mb-3 mb-md-0"> Copyrights ©{{currentYear}} Folio. Build by <a href="https://www.webestica.com/" target="_blank" class="text-body text-primary-hover hover-underline-animation">Webestica</a>. </div>
+            <ul class="list-inline mb-0">
+                @for (item of footerSocialLinks; track $index) {
+                <li class="list-inline-item">
+                    <a class="btn btn-xs btn-icon btn-secondary" [routerLink]="item.link">
+                        <i [class]="item.icon + ' lh-base'"></i>
+                    </a>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</footer>

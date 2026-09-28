@@ -1,0 +1,28 @@
+<section class="pt-0">
+    <div class="container position-relative">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h2 class="mb-3">Frequently Asked Questions</h2>
+                <p class="mb-0">Our team is ready to assist you! Start a chat for quick support. <a  [routerLink]="[]" class="hover-underline-animation fw-semibold">Talk to Us</a></p>
+            </div>
+            <div class="col-md-7 ms-auto">
+                <div class="accordion accordion-icon accordion-border-bottom" id="accordionFaq" ngbAccordion [closeOthers]="true">
+                    @for (faq of faqList; track faq.id) {
+                    <div class="accordion-item mb-3" ngbAccordionItem [collapsed]="!faq.open">
+                        <div class="accordion-header font-base" ngbAccordionHeader id="heading-{{ faq.id }}">
+                            <button ngbAccordionToggle class="accordion-button fw-semibold rounded collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + faq.id" [attr.aria-expanded]="faq.open ? 'true' : 'false'" [attr.aria-controls]="'collapse-' + faq.id">
+                                <span class="lead heading-color">{{ faq.question }}</span>
+                            </button>
+                        </div>
+                        <div id="collapse-{{ faq.id }}" ngbAccordionCollapse class="accordion-collapse collapse" [class.show]="faq.open" [attr.aria-labelledby]="'heading-' + faq.id" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body pb-0" ngbAccordionBody>
+                                {{ faq.answer }}
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

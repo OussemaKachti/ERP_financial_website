@@ -1,0 +1,129 @@
+<section class="bg-secondary position-relative overflow-hidden">
+  <span class="position-absolute top-0 start-0">
+    <svg
+      class="fill-body"
+      width="1920"
+      height="237"
+      viewBox="0 0 1920 237"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M1940.5 0H-9V164C708.2 295.2 1589.5 218.667 1940.5 164V0Z" />
+    </svg>
+  </span>
+
+  <div class="container position-relative z-index-9">
+    <div class="position-absolute top-0 start-50 translate-middle-x mt-n3">
+      <img
+        src="assets/images/elements/grad-shape/blur-decoration-2.svg"
+        class="opacity-2 blur-8"
+        alt="Grad shape"
+      />
+    </div>
+
+    <div
+      class="bg-body bg-opacity-10 bg-blur border border-white border-opacity-25 position-relative rounded-4 shadow-primary-lg p-4"
+    >
+      <span class="text-purple">
+        <svg
+          class="mt-n4"
+          width="40"
+          height="10"
+          viewBox="0 0 40 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 5C10 7.76142 7.76142 10 5 10C2.23858 10 0 7.76142 0 5C0 2.23858 2.23858 0 5 0C7.76142 0 10 2.23858 10 5Z"
+            fill="currentColor"
+          />
+          <path
+            d="M25 5C25 7.76142 22.7614 10 20 10C17.2386 10 15 7.76142 15 5C15 2.23858 17.2386 0 20 0C22.7614 0 25 2.23858 25 5Z"
+            fill="currentColor"
+          />
+          <path
+            d="M40 5C40 7.76142 37.7614 10 35 10C32.2386 10 30 7.76142 30 5C30 2.23858 32.2386 0 35 0C37.7614 0 40 2.23858 40 5Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+
+      <div class="row rounded-4 overflow-hidden g-0">
+        <div class="col-sm-5">
+          <div class="card card-body p-0 h-100">
+            <img src="assets/images/bg/02.jpg" alt="" />
+
+            <div class="card-img-overlay d-flex flex-column">
+              <ul class="list-inline d-flex gap-3 mb-1 mt-auto mx-auto">
+                <li class="list-inline-item me-0">
+                  <button
+                    class="btn btn-lg btn-white btn-icon rounded-circle mb-0"
+                    type="button"
+                  >
+                    <i class="bi bi-mic fa-sm"></i>
+                  </button>
+                </li>
+
+                <li class="list-inline-item me-0">
+                  <button
+                    class="btn btn-lg btn-white btn-icon rounded-circle mb-0"
+                    type="button"
+                  >
+                    <i class="bi bi-camera-reels fa-sm"></i>
+                  </button>
+                </li>
+
+                <li class="list-inline-item me-0">
+                  <button
+                    class="btn btn-lg btn-danger btn-icon rounded-circle mb-0"
+                    type="button"
+                  >
+                    <i class="bi bi-telephone-x fa-sm"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div
+            class="h-100"
+            style="
+              background: url(assets/images/bg/code.jpg) no-repeat;
+              background-size: cover;
+              background-position: left top;
+            "
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper mt-6">
+      <swiper-container
+        [config]="swiperConfig"
+        class="swiper-wrapper align-items-center"
+        init="false"
+      >
+        @for (item of softwareLogo; track $index) {
+        <swiper-slide class="swiper-slide">
+          <div class="swap-logo">
+            <img [src]="item.gray" alt="client-img" />
+            <div class="swap-item">
+              <img
+                [src]="item.light"
+                class="dark-mode-item"
+                alt="client logo"
+              />
+              <img
+                [src]="item.dark"
+                class="light-mode-item"
+                alt="client logo"
+              />
+            </div>
+          </div>
+        </swiper-slide>
+        }
+      </swiper-container>
+    </div>
+  </div>
+</section>

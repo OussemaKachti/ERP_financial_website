@@ -1,0 +1,64 @@
+<section class="price-wrap position-relative overflow-hidden pt-xl-8">
+
+    <div class="bg-primary-grad blur-9 h-300px w-100 opacity-2 position-absolute top-0 start-50 translate-middle-x mt-n7">
+    </div>
+    <div class="container position-relative z-index-2 pt-4 pb-6 pb-xl-8">
+
+        <nav class="mb-2" aria-label="breadcrumb">
+            <ol class="breadcrumb pt-0">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Pricing - v1</li>
+            </ol>
+                   </nav>
+
+
+        <h3>Pricing Plan For</h3>
+        <h1 class="fw-bold mb-4">Every <span class="text-primary-grad">Business</span> Needs</h1>
+        <form class="bg-body shadow-primary border border-primary d-inline-flex align-items-center rounded-3 p-3 px-sm-4 py-sm-3" style="--bs-border-opacity: 0.20;">
+            <span class="fw-semibold heading-color">Monthly</span>
+            <div class="form-check form-switch form-check-lg mx-2 mb-0">
+                <input class="form-check-input mt-0 price-toggle" (change)="onTogglePrice($event)" type="checkbox" id="flexSwitchCheckDefault">
+            </div>
+
+            <span class="fw-semibold heading-color">Yearly</span>
+            <span class="badge bg-success ms-2">20% save</span>
+        </form>
+    </div>
+
+    <div class="container-fluid">
+        <div class="max-width-1550">
+            <div class="row">
+                @for (item of pricingPlan; track $index) {
+                <div class="col-md-6 col-xl-3 mb-5 mb-xl-0">
+                    <div class="card shadow p-1">
+                        @if(item.extraclass){
+                        <div class="bg-primary-grad small text-white rounded position-absolute top-0 start-50 translate-middle px-3 py-1">{{item.extraclass}}</div>
+                        }
+                        <div class="{{item.cardColor}}">
+                            <div class="icon-lg shadow-primary rounded-circle mb-3" [class]="item.plan =='Enterprise plan'?'bg-pink':'bg-body'">
+                                <i class="{{item.icons}}"></i>
+                            </div>
+                            <h6 class="mb-3">{{item.plan}}</h6>
+                            @if(item.price){
+                            <h2>{{item.price}}</h2>
+                            }@else { <p class="mb-0"> <span class="h2 mb-0 plan-price" data-monthly-price="$25" data-annual-price="$20">{{ getPrice(item) }}</span> /month</p>}
+                            <small>{{item.description}}</small>
+
+                            <a  [routerLink]="[]" class="btn  btn-transition w-100 mt-4" [class]="item.plan == 'Enterprise plan'?'btn-white-shadow':'btn-dark'">{{item.buttonText}}</a>
+                        </div>
+                        <div class="card-footer bg-secondary bg-opacity-50 p-4">
+                            <ul class="list-group list-group-borderless mb-0">
+                                @for (data of item.features; track $index) {
+                                <li class="list-group-item d-flex heading-color mb-0"><i class="bi bi-check-lg text-primary me-1"></i>{{data}}</li>
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

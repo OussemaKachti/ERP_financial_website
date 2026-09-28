@@ -1,0 +1,31 @@
+<section class="bg-secondary pt-0 overflow-hidden">
+	<div class="container">
+		<div class="row g-4">
+			<div class="col-lg-5">
+				<h2 class="mb-2 mb-lg-4">Leading the future of software innovation</h2>
+				<p class="mb-2 mb-lg-4">Our expert team is dedicated to understanding your unique needs and delivering solutions that exceed expectations.</p>
+				<ul class="list-group list-group-borderless mb-3 mb-lg-4">
+					@for(item of aboutsData;track $index){
+					<li class="list-group-item d-flex heading-color fw-semibold pb-0"><i class="bi bi-check-circle text-primary me-2"></i>{{item}}</li>
+					}
+
+				</ul>
+				<div class="d-flex gap-3 flex-wrap">
+					<a routerLink="/about-v2" class="btn btn-primary mb-0">Learn more</a>
+					<a routerLink="/contact-v1" class="link-primary-grad icon-link icon-link-hover">Schedule a consultation <i class="bi bi-arrow-right"></i></a>
+				</div>
+			</div>
+			<div class="col-lg-6 position-relative ms-auto ps-lg-4">
+				<div class="position-absolute start-0 bottom-0 ms-n6 mb-5 d-none d-sm-block">
+					<img src="assets/images/elements/grad-shape/08.png" class="blur-1 z-index-9 position-relative" alt="shape decoration">
+				</div>
+				<div class="position-absolute top-50 start-0 translate-middle-y ms-n4 mt-n7">
+					<img src="assets/images/elements/grad-shape/blur-decoration.svg" class="blur-7 opacity-1" alt="Grad shape">
+				</div>
+
+				<img src="assets/images/about/04.jpg" class="rounded-4 position-relative z-index-2" alt="about image">
+			</div>
+
+		</div>
+	</div>
+</section>

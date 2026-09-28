@@ -1,0 +1,54 @@
+
+<section class="position-relative overflow-hidden py-0">
+        <div class="bg-body blur-6 h-300px w-100 position-absolute bottom-0 start-0 z-index-2 mb-n6"></div>
+
+    <div class="container position-relative mb-n5">
+        
+        <div class="text-center mb-4 mb-md-5">
+            <h2 class="mb-4">Trusted by industry leaders</h2>            
+            <ul class="avatar-group align-items-center justify-content-center mb-2">
+                @for(item of reviewicon;track $index){
+                <li class="avatar avatar-sm">
+                    <img class="avatar-img rounded-circle" [src]="item" alt="avatar">
+                </li>
+            }
+            </ul>
+            <p>Rated <span class="badge bg-primary">4.9/5.0</span> by over 100.000+ users</p>
+        </div>
+
+        <div class="row g-4 filter-container" appIsotope  [appIsotopeOptions]="{ layoutMode: 'masonry' }">
+            @for (item of reviewAbout; track $index) {
+          
+            <div class="col-md-6 col-lg-4 grid-item">
+                <div class="card border rounded-4 p-3 m-0">
+                    
+                    <div class="card-header d-flex justify-content-between pb-0">
+                        
+                        <div class="d-flex align-items-center">
+                            <div class="avatar flex-shrink-0">
+                                <img class="avatar-img rounded-circle" [src]="item.avatar" alt="avatar">
+                            </div>
+                            <div class="ms-3">
+                                <p class="heading-color fw-semibold mb-0">{{item.name}}</p>
+                                <small>{{item.username}}</small>
+                            </div>
+                        </div>
+                       
+                        <a  [routerLink]="[]" class="heading-color fs-5"><i class="bi bi-twitter-x"></i></a>
+                    </div>                 
+                    <div class="card-body">
+                        <blockquote>
+                            <p>{{item.review}}</p>
+                        </blockquote>
+                        <span class="small text-body-secondary">{{item.date}}</span>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>    
+    <div class="position-absolute bottom-0 start-50 translate-middle-x z-index-9 mb-4 mb-sm-7">
+        <a class="btn btn-primary-grad icon-link icon-link-hover text-nowrap"  [routerLink]="[]">View all reviews<i
+                class="bi bi-arrow-right"></i> </a>
+    </div>
+</section>

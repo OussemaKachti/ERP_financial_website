@@ -1,0 +1,24 @@
+
+<section class="pt-md-0 overflow-hidden">
+    <div class="container">
+        
+        <h2 class="text-center mb-6">Our workflow</h2>
+
+        <div class="row position-relative g-6 g-lg-7">
+        
+            @for (item of stepsData; track $index; let even =$even) {
+            <div class="col-md-4" [class]="{'mt-md-8':$even}">
+                <div class="card card-body bg-secondary bg-opacity-75 text-center rounded-4 p-4">
+                   
+                    <div
+                        class="icon-lg bg-{{item.color}} rounded-circle text-white mx-auto position-absolute top-0 start-50 translate-middle mt-n2">
+                        {{item.step}}</div>
+                    
+                    <h6 class="mt-4">{{item.title}}</h6>
+                    <p class="mb-0">{{item.description}}</p>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>
