@@ -366,7 +366,7 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
     hero: shot(
       'r-accueil.webp', 2000, 1250, 'rh.tagstream.com.tn',
       'Tableau de bord RH.',
-      'Effectif, présents du jour, congés en cours, actions rapides et liste « Qui est là ? ».'
+      'Effectif, présence du jour, masse salariale, demandes à traiter et pointage de chaque salarié, de l’arrivée au départ.'
     ),
     sections: [
       {
