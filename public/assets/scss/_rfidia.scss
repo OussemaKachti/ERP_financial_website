@@ -420,21 +420,6 @@
   padding-bottom: clamp(3rem, 2rem + 3vw, 5rem);
   overflow: hidden;
   isolation: isolate;
-
-  &::before {
-    // Trame discrète de papier millimétré, rappel des documents comptables
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background-image:
-      linear-gradient(var(--rf-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--rf-line) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 20%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 20%, transparent 75%);
-    opacity: .7;
-  }
 }
 
 .rf-hero-ring {

@@ -224,21 +224,10 @@
     <div class="row g-5 align-items-center">
       <div class="col-lg-6">
         <span class="rf-eyebrow">Pour qui</span>
-        <p class="rf-quote-xl mb-5">
+        <p class="rf-quote-xl mb-0">
           Les PME de négoce, de distribution et de services qui <em>facturent chaque semaine</em>, gèrent un stock,
           emploient de cinq à cinquante personnes et ont une équipe commerciale sur le terrain.
         </p>
-        <div class="row g-3">
-          @for (t of metiers; track t.titre) {
-            <div class="col-md-4 col-lg-12 col-xl-4">
-              <div class="rf-trade">
-                <i class="bi" [class]="t.icone"></i>
-                <h3>{{ t.titre }}</h3>
-                <p>{{ t.texte }}</p>
-              </div>
-            </div>
-          }
-        </div>
       </div>
 
       <div class="col-lg-6">
@@ -257,6 +246,18 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="row g-3 mt-5">
+      @for (t of metiers; track t.titre) {
+        <div class="col-md-4" data-aos="fade-up" [attr.data-aos-delay]="$index * 80">
+          <div class="rf-trade">
+            <i class="bi" [class]="t.icone"></i>
+            <h3>{{ t.titre }}</h3>
+            <p>{{ t.texte }}</p>
+          </div>
+        </div>
+      }
     </div>
   </div>
 </section>

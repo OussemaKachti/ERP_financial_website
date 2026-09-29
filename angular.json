@@ -27,7 +27,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "ignore": ["assets/images/**", "assets/images-blur/**", "assets/scss/**"]
               }
             ],
             "styles": [
@@ -95,7 +96,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "ignore": ["assets/images/**", "assets/images-blur/**", "assets/scss/**"]
               }
             ],
             "styles": ["src/styles.scss"],
