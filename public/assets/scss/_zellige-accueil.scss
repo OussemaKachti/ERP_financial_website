@@ -413,7 +413,7 @@
 .z-flow-marker {
   display: none;
 
-  // Un rail de la largeur du parcours : le traduire de 100 % le mène au bout
+  // Le rail reste immobile ; seul le losange le parcourt
   @media (min-width: 992px) {
     display: block;
     position: absolute;
@@ -422,7 +422,7 @@
     right: 2.5rem;
     height: 14px;
     pointer-events: none;
-    animation: z-voyage 9s var(--z-ease) infinite;
+    container-type: inline-size;
 
     &::before {
       content: "";
@@ -433,18 +433,21 @@
       height: 14px;
       background: #fff;
       border-radius: 2px;
-      transform: rotate(45deg);
       box-shadow: 0 0 0 4px rgba(255, 255, 255, .18);
+      animation: z-voyage 9s var(--z-ease) infinite;
     }
   }
 }
 
 @keyframes z-voyage {
-  0% { transform: translateX(0); opacity: 0; }
+  0% { transform: translateX(0) rotate(45deg); opacity: 0; }
   6% { opacity: 1; }
   88% { opacity: 1; }
-  100% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(calc(100cqw - 14px)) rotate(45deg); opacity: 0; }
 }
+
+// Ceinture de sécurité : la section ne peut jamais élargir la page
+.z-flow-section { overflow: clip; }
 
 .z-flow-note { display: block; margin-top: .75rem; font-size: .8rem; color: #8f97c2; }
 
@@ -632,6 +635,7 @@
   font-weight: 600;
   letter-spacing: 0;
   color: var(--z-rh);
+  text-align: left;
 }
 
 // Métiers : une liste, pas des cartes
