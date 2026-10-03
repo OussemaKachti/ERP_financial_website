@@ -45,3 +45,7 @@ Thumbs.db
 .vercel
 
 .vercel
+
+# Impeccable : sessions locales
+.impeccable/questions/
+.impeccable/review/
