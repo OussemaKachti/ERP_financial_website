@@ -4,19 +4,47 @@
 
 // ─────────────────────────── Fenêtre d'application ───────────────────────────
 
-.z-site .rf-window {
+.z-window {
   border-radius: calc(var(--z-radius) + 2px);
   background: var(--z-paper);
   box-shadow: 0 0 0 1px var(--z-grout), var(--z-lift);
   overflow: hidden;
 
-  .rf-window-bar {
-    background: var(--z-ground-2);
-    border-bottom: 1px solid var(--z-grout);
-  }
-
-  .rf-window-url { font-family: var(--z-body); }
   img { display: block; width: 100%; height: auto; }
+}
+
+.z-window-bar {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 2.4fr) 1fr;
+  align-items: center;
+  padding: .55rem .85rem;
+  background: var(--z-ground-2);
+  border-bottom: 1px solid var(--z-grout);
+}
+
+.z-window-dots {
+  display: flex;
+  gap: .35rem;
+
+  span { width: .6rem; height: .6rem; border-radius: 1px; transform: rotate(45deg); background: var(--z-grout); }
+}
+
+.z-window-url {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  min-width: 0;
+  padding: .25rem .8rem;
+  border-radius: var(--z-radius);
+  background: var(--z-paper);
+  font-size: .75rem;
+  color: var(--z-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  .bi { font-size: .65rem; }
 }
 
 // ─────────────────────────── Hero ───────────────────────────

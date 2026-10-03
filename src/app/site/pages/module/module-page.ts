@@ -49,7 +49,7 @@ export class ModulePage {
 
     // Onglet actif de la navigation secondaire selon la section visible
     afterNextRender(() => {
-      const cibles = Array.from(hote.nativeElement.querySelectorAll('.rf-feature')) as HTMLElement[];
+      const cibles = Array.from(hote.nativeElement.querySelectorAll('.z-feature')) as HTMLElement[];
       const obs = new IntersectionObserver(
         (entrees) => {
           const visible = entrees.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];

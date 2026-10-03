@@ -1,11 +1,12 @@
-<section class="rf-page-hero pb-0">
+<section class="z-page-hero pb-0">
   <div class="container">
-    <div class="text-center mx-auto mb-5" style="max-width: 46rem">
-      <span class="rf-eyebrow">Tarifs</span>
-      <h1 class="rf-display mb-4" style="font-size: clamp(2.2rem, 1.4rem + 2.8vw, 3.6rem)">
-        Payer uniquement ce que <span class="rf-serif-em">l’entreprise utilise</span>
-      </h1>
-      <p class="rf-lead mb-0">
+    <ol class="z-crumbs">
+      <li><a routerLink="/">Accueil</a></li>
+      <li aria-current="page">Tarifs</li>
+    </ol>
+    <div class="z-head">
+      <h1 class="z-h1">Payez les pièces dont vous avez besoin.</h1>
+      <p class="z-lead">
         La Finance et les RH se souscrivent seules ou ensemble ; la suite complète ajoute le CRM terrain.
         Sans installation, avec une période d’essai gratuite.
       </p>
@@ -14,17 +15,48 @@
   </div>
 </section>
 
-<section class="rf-section">
+<!-- ═══════════════ Simulateur ═══════════════ -->
+<section class="z-section">
   <div class="container">
-    <div class="row mb-4">
-      <div class="col-lg-8">
-        <span class="rf-eyebrow">Comparer</span>
-        <h2 class="rf-h2">Ce que contient chaque offre</h2>
+    <div class="z-sim z-tile">
+      <div class="z-sim-inputs">
+        <h2 class="z-h2">Combien vous coûte la ressaisie ?</h2>
+        <p class="z-muted mb-4">Une estimation à partir de vos propres chiffres : les documents recopiés d’un fichier
+          à l’autre, chaque mois.</p>
+
+        <label class="z-range">
+          <span>Documents ressaisis par mois <strong class="z-num">{{ documents() }}</strong></span>
+          <input type="range" min="10" max="600" step="10" [value]="documents()" (input)="documents.set(nombre($event))">
+        </label>
+        <label class="z-range">
+          <span>Minutes perdues par document <strong class="z-num">{{ minutes() }}</strong></span>
+          <input type="range" min="1" max="15" step="1" [value]="minutes()" (input)="minutes.set(nombre($event))">
+        </label>
+        <label class="z-range">
+          <span>Coût horaire chargé (DT) <strong class="z-num">{{ coutHoraire() }}</strong></span>
+          <input type="range" min="4" max="60" step="1" [value]="coutHoraire()" (input)="coutHoraire.set(nombre($event))">
+        </label>
+      </div>
+
+      <div class="z-sim-result" aria-live="polite">
+        <p class="z-sim-label">Chaque mois, la ressaisie représente</p>
+        <p class="z-sim-big"><span class="z-num">{{ heures().toFixed(0) }}</span> h</p>
+        <p class="z-sim-cost">soit environ <strong class="z-num">{{ cout() }} DT</strong> de temps de travail.</p>
+        <p class="z-sim-compare">
+          L’offre Finance démarre à <strong class="z-num">{{ prixFinance }} DT HT</strong> par mois.
+        </p>
+        <a routerLink="/demonstration" class="z-btn z-btn--light mt-2">Voir ce qui disparaît en démonstration</a>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="table-responsive">
-      <table class="rf-compare">
+<section class="z-section z-band">
+  <div class="container">
+    <h2 class="z-h2 mb-4">Ce que contient chaque offre.</h2>
+
+    <div class="z-compare-wrap">
+      <table class="z-compare">
         <caption class="visually-hidden">Fonctionnalités comprises dans chaque offre</caption>
         <thead>
           <tr>
@@ -36,9 +68,9 @@
         </thead>
         <tbody>
           @for (g of groupes; track g.titre) {
-            <tr class="rf-group">
+            <tr class="z-compare-group">
               <td [attr.colspan]="colonnes.length + 1">
-                <span class="d-inline-flex align-items-center gap-2"><span class="rf-dot" [style.--c]="g.couleur"></span>{{ g.titre }}</span>
+                <span class="d-inline-flex align-items-center gap-2"><span class="z-chip" [style.--c]="g.couleur"></span>{{ g.titre }}</span>
               </td>
             </tr>
             @for (l of g.lignes; track l.texte) {
@@ -62,14 +94,13 @@
   </div>
 </section>
 
-<section class="rf-section rf-surface">
+<section class="z-section">
   <div class="container">
     <div class="row g-5">
       <div class="col-lg-4">
-        <span class="rf-eyebrow">Questions</span>
-        <h2 class="rf-h2">Abonnement et facturation</h2>
-        <p class="rf-muted">Vous hésitez entre deux offres ? La démonstration sert aussi à ça.</p>
-        <a routerLink="/demonstration" class="rf-link">Demander une démonstration <i class="bi bi-arrow-right"></i></a>
+        <h2 class="z-h2">Abonnement et facturation.</h2>
+        <p class="z-muted">Vous hésitez entre deux offres ? La démonstration sert aussi à ça.</p>
+        <a routerLink="/demonstration" class="z-link">Demander une démonstration <i class="bi bi-arrow-right"></i></a>
       </div>
       <div class="col-lg-8">
         <rf-faq-list [questions]="faq" />
@@ -77,5 +108,3 @@
     </div>
   </div>
 </section>
-
-<rf-cta-band />

@@ -82,7 +82,9 @@ body {
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern";
 
-  :where(&) :where(h1, h2, h3, h4, h5, h6) {
+  // Spécificité (0,1,1) : passe devant la couleur des titres de Bootstrap,
+  // et reste derrière les murs et tesselles qui la redéfinissent ensuite.
+  :is(h1, h2, h3, h4, h5, h6) {
     font-family: var(--z-display);
     color: var(--z-ink);
     text-wrap: balance;
@@ -525,16 +527,15 @@ html {
   padding: clamp(3.5rem, 3rem + 3vw, 6rem) 0 2rem;
   position: relative;
 
-  // Frise de tesselles aux couleurs des trois applications
+  // Frise de losanges émaillés : cobalt, turquoise, grenade
   &::before {
     content: "";
     position: absolute;
-    top: 0;
+    top: -9px;
     left: 0;
     right: 0;
-    height: 6px;
-    background: linear-gradient(90deg,
-      #2338a8 0 33.33%, #12808f 33.33% 66.66%, #c3334f 66.66% 100%);
+    height: 18px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='18'%3E%3Cpath d='M12 1l8 8-8 8-8-8z' fill='%232338a8'/%3E%3Cpath d='M36 1l8 8-8 8-8-8z' fill='%2312808f'/%3E%3Cpath d='M60 1l8 8-8 8-8-8z' fill='%23c3334f'/%3E%3C/svg%3E") repeat-x center / 72px 18px;
   }
 
   .z-brand .name { color: #fff; }
@@ -666,3 +667,19 @@ html {
 }
 
 [data-bs-theme="dark"] .z-rosette .z-piece-glaze { opacity: .55; }
+
+// Petits écrans : des gouttières qui ne dépassent jamais de la page
+@media (max-width: 991.98px) {
+  .z-site .container { --bs-gutter-x: 2.5rem; }
+  .z-site .g-5, .z-site .gx-5 { --bs-gutter-x: 2rem; }
+}
+
+// Mode sombre : les émaux gardent leur profondeur sous le texte blanc
+[data-bs-theme="dark"] .z-tile--glazed,
+[data-bs-theme="dark"] .z-hero-app:hover,
+[data-bs-theme="dark"] .z-subnav a.active {
+  background: color-mix(in oklab, var(--t, var(--c)) 58%, #050a26);
+}
+
+[data-bs-theme="dark"] .z-flow-tile,
+[data-bs-theme="dark"] .z-film-play { background: color-mix(in oklab, var(--c, var(--z-ocre)) 75%, #050a26); }

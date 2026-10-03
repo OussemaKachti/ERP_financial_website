@@ -65,7 +65,7 @@
 
   <!-- ═══════════════ Sections ═══════════════ -->
   @for (s of mod.sections; track s.id; let impair = $odd) {
-    <section class="z-feature rf-feature" [id]="s.id" [class.z-band]="impair">
+    <section class="z-feature" [id]="s.id" [class.z-band]="impair">
       <div class="container">
         <div class="row g-5 align-items-center" [class.flex-lg-row-reverse]="impair">
           <div class="col-lg-5">
