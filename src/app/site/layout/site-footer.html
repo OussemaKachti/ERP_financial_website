@@ -41,20 +41,14 @@
           <li><a [href]="site.apps.crm">crm.tagstream.com.tn</a></li>
           <li><a [href]="site.apps.rh">rh.tagstream.com.tn</a></li>
         </ul>
-        @if (site.contact.email || site.contact.telephone) {
-          <h4 class="mt-4">Contact</h4>
-          <ul>
-            @if (site.contact.telephone) {
-              <li><a [href]="'tel:' + site.contact.telephone">{{ site.contact.telephone }}</a></li>
-            }
-            @if (site.contact.email) {
-              <li><a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a></li>
-            }
-            @if (site.contact.adresse) {
-              <li class="rf-muted">{{ site.contact.adresse }}</li>
-            }
-          </ul>
-        }
+        <h4 class="mt-4">Contact</h4>
+        <ul>
+          @for (t of site.contact.telephones; track t) {
+            <li><a [href]="'tel:' + t.replaceAll(' ', '')">{{ t }}</a></li>
+          }
+          <li><a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a></li>
+          <li class="rf-muted">{{ site.contact.adresse.join(', ') }}</li>
+        </ul>
       </div>
     </div>
 

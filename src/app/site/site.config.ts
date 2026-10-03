@@ -25,9 +25,32 @@ export const SITE = {
    * validées : les blocs correspondants ne s'affichent pas.
    */
   contact: {
-    email: '',
-    telephone: '',
-    adresse: '',
+    email: 'rfidia@rfidia.com',
+    /** Interlocutrice commerciale. */
+    emailCommercial: 'e.saoussen@rfidia.com',
+    telephones: ['+216 94 103 351', '+216 98 268 262'],
+    adresse: ['Hannibal Park, Africa Mall', 'Av. Mustapha Hjeij', 'Ariana 1002, Tunisie'],
+    /** Lien Google Maps de l'adresse. */
+    carte: 'https://www.google.com/maps/search/?api=1&query=Hannibal+Park+Africa+Mall+Ariana',
+    horaires: 'Du lundi au vendredi, de 8 h 30 à 17 h 30',
+  },
+
+  /**
+   * Chiffres affichés sur le site.
+   * ⚠ `entreprises` est PROVISOIRE (donné le 3 octobre 2026) : à vérifier
+   * avant toute campagne, il apparaît sur l'accueil et la page À propos.
+   */
+  preuves: {
+    entreprises: 600,
+  },
+
+  /** Film commercial (1 min 37) et extrait muet en boucle. */
+  film: {
+    hd: 'assets/rfidia/video/rfidia-film-1080.mp4',
+    sd: 'assets/rfidia/video/rfidia-film-720.mp4',
+    boucle: 'assets/rfidia/video/rfidia-boucle.mp4',
+    affiche: 'assets/rfidia/video/rfidia-film-poster.jpg',
+    duree: '1 min 37',
   },
 
   /**
