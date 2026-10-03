@@ -28,7 +28,7 @@ type Periode = 'mensuel' | 'annuel';
 
     <div class="row g-4 justify-content-center">
       @for (o of cartes(); track o.cle) {
-        <div class="col-md-6 col-xl-3" data-aos="fade-up" [attr.data-aos-delay]="$index * 60">
+        <div class="col-md-6 col-xl-3">
           <article class="rf-price-card" [class.is-featured]="o.miseEnAvant">
             @if (o.miseEnAvant) {
               <span class="rf-price-card-flag">Les trois applications</span>

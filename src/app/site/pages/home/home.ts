@@ -1,81 +1,54 @@
-import { Component, ChangeDetectionStrategy, DestroyRef, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SITE } from '../../site.config';
-import { MODULES, MODULE_ORDER } from '../../data/modules';
-import { ETAPES, FAQ_ACCUEIL, FLUX, GALERIE, METIERS, PILIERS, SITUATIONS } from '../../data/home';
+import { MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
+import { FAQ_ACCUEIL, SITUATIONS } from '../../data/home';
+import { BRICOLAGE, FAITS, PARCOURS, ROLES } from '../../data/accueil';
+import { OFFRES, promotionActive } from '../../data/pricing';
 import { AppWindow } from '../../shared/app-window';
 import { PricingGrid } from '../../shared/pricing-grid';
 import { FaqList } from '../../shared/faq-list';
-import { CtaBand } from '../../shared/cta-band';
+import { Rosette } from '../../shared/rosette';
+import { Film } from '../../shared/film';
 
-/** Durée d'affichage de chaque application dans le hero (ms). */
-const DUREE = 6000;
-const PAS = 100;
+/** Couleur CSS de chaque application. */
+export const EMAIL: Record<ModuleKey, string> = {
+  finance: 'var(--z-finance)',
+  crm: 'var(--z-crm)',
+  rh: 'var(--z-rh)',
+};
 
 @Component({
   selector: 'rf-home',
   standalone: true,
-  imports: [RouterLink, AppWindow, PricingGrid, FaqList, CtaBand],
+  imports: [RouterLink, AppWindow, PricingGrid, FaqList, Rosette, Film],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './home.html',
 })
 export class Home {
   protected readonly site = SITE;
-  protected readonly modules = MODULE_ORDER.map((k) => MODULES[k]);
   protected readonly m = MODULES;
+  protected readonly email = EMAIL;
+  protected readonly modules = MODULE_ORDER.map((k) => MODULES[k]);
   protected readonly situations = SITUATIONS;
-  protected readonly galerie = GALERIE;
-  protected readonly flux = FLUX;
-  protected readonly piliers = PILIERS;
-  protected readonly metiers = METIERS;
-  protected readonly etapes = ETAPES;
+  protected readonly bricolage = BRICOLAGE;
+  protected readonly parcours = PARCOURS;
+  protected readonly roles = ROLES;
+  protected readonly faits = FAITS;
   protected readonly faq = FAQ_ACCUEIL;
 
-  // Hero : rotation automatique entre les trois applications
-  protected readonly actif = signal(0);
-  protected readonly auto = signal(true);
-  protected readonly enPause = signal(false);
-  private ecoule = 0;
+  /** Application mise en avant dans la rosace (survol ou focus). */
+  protected readonly survol = signal<ModuleKey | null>(null);
 
-  // Galerie
-  private readonly piste = viewChild<ElementRef<HTMLElement>>('piste');
-  protected readonly debut = signal(true);
-  protected readonly fin = signal(false);
+  /** Écran affiché dans la section « lundi matin ». */
+  protected readonly ecran = signal<ModuleKey>('finance');
 
-  constructor() {
-    const reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduit) {
-      this.auto.set(false);
-      return;
-    }
-    const minuterie = setInterval(() => {
-      if (!this.auto() || this.enPause() || document.hidden) return;
-      this.ecoule += PAS;
-      if (this.ecoule >= DUREE) {
-        this.ecoule = 0;
-        this.actif.update((i) => (i + 1) % this.modules.length);
-      }
-    }, PAS);
-    inject(DestroyRef).onDestroy(() => clearInterval(minuterie));
-  }
+  /** Rôle affiché. */
+  protected readonly role = signal(ROLES[0].id);
+  protected readonly roleActif = computed(() => ROLES.find((r) => r.id === this.role())!);
 
-  choisir(i: number): void {
-    this.actif.set(i);
-    this.auto.set(false);
-  }
-
-  defiler(sens: 1 | -1): void {
-    const el = this.piste()?.nativeElement;
-    if (!el) return;
-    const item = el.querySelector<HTMLElement>('.rf-gallery-item');
-    const pas = item ? item.offsetWidth + 24 : el.clientWidth * 0.8;
-    el.scrollBy({ left: sens * pas, behavior: 'smooth' });
-  }
-
-  majGalerie(): void {
-    const el = this.piste()?.nativeElement;
-    if (!el) return;
-    this.debut.set(el.scrollLeft < 8);
-    this.fin.set(el.scrollLeft + el.clientWidth >= el.scrollWidth - 8);
-  }
+  /** Prix d'entrée, pour la ligne de réassurance du hero. */
+  protected readonly prixEntree = Math.min(
+    ...OFFRES.map((o) => (promotionActive() ? o.promo.mensuel : o.tarif.mensuel))
+  );
 }

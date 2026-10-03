@@ -49,3 +49,4 @@ Thumbs.db
 # Impeccable : sessions locales
 .impeccable/questions/
 .impeccable/review/
+.impeccable/tmp/

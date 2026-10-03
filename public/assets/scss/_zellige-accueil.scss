@@ -1,0 +1,577 @@
+//
+// _zellige-accueil.scss — sections de l'accueil
+//
+
+// ─────────────────────────── Fenêtre d'application ───────────────────────────
+
+.z-site .rf-window {
+  border-radius: calc(var(--z-radius) + 2px);
+  background: var(--z-paper);
+  box-shadow: 0 0 0 1px var(--z-grout), var(--z-lift);
+  overflow: hidden;
+
+  .rf-window-bar {
+    background: var(--z-ground-2);
+    border-bottom: 1px solid var(--z-grout);
+  }
+
+  .rf-window-url { font-family: var(--z-body); }
+  img { display: block; width: 100%; height: auto; }
+}
+
+// ─────────────────────────── Hero ───────────────────────────
+
+.z-hero {
+  padding: clamp(2rem, .5rem + 4vw, 4.5rem) 0 clamp(3rem, 2rem + 4vw, 5rem);
+  overflow: hidden;
+
+  .z-h1 { font-size: clamp(2.6rem, 1.4rem + 4.2vw, 4.6rem); }
+}
+
+.z-hero-tenant { color: var(--z-finance); }
+
+.z-hero-apps {
+  list-style: none;
+  margin: 0;
+  display: grid;
+  gap: var(--z-joint);
+  background: var(--z-grout);
+  padding: var(--z-joint);
+  border-radius: calc(var(--z-radius) + 3px);
+  max-width: 34rem;
+
+  @media (min-width: 576px) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.z-hero-app {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: .6rem;
+  height: 100%;
+  padding: .85rem .95rem;
+  background: var(--z-paper);
+  border-radius: var(--z-radius);
+  text-decoration: none;
+  box-shadow: var(--z-bevel);
+  transition: background-color .35s var(--z-ease), color .35s var(--z-ease), transform .35s var(--z-ease);
+
+  .z-chip { width: .62em; height: .62em; }
+  .nom { font-family: var(--z-display); font-weight: 600; color: var(--z-ink); }
+  .resume { grid-column: 1 / -1; font-size: .8rem; line-height: 1.35; color: var(--z-muted); margin-top: .3rem; }
+
+  &:hover, &:focus-visible {
+    background: var(--c);
+    transform: translateY(-2px);
+
+    .nom, .resume { color: #fff; }
+    .z-chip { background: #fff; }
+  }
+}
+
+.z-hero-note {
+  margin: 1.1rem 0 0;
+  font-size: .88rem;
+  color: var(--z-muted);
+
+  strong { color: var(--z-ink); font-weight: 600; }
+  a { color: var(--z-ink); }
+}
+
+// ─────────────────────────── Bande de faits (obi) ───────────────────────────
+
+.z-obi {
+  display: flex;
+  align-items: stretch;
+  background: var(--z-night);
+  color: #dfe3f7;
+  overflow: hidden;
+}
+
+.z-obi-lead {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-shrink: 0;
+  padding: 1.1rem clamp(1rem, 4vw, 3rem);
+  background: var(--z-ocre);
+  color: var(--z-night);
+  font-family: var(--z-display);
+
+  strong { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem); font-weight: 700; letter-spacing: -.03em; line-height: 1; }
+  span { font-size: .78rem; font-weight: 600; line-height: 1.15; }
+}
+
+.z-obi-track {
+  display: flex;
+  min-width: 0;
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+
+  &:hover .z-obi-list { animation-play-state: paused; }
+}
+
+.z-obi-list {
+  display: flex;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  animation: z-obi 70s linear infinite;
+
+  li {
+    display: flex;
+    align-items: center;
+    padding-left: 2.4rem;
+    font-family: var(--z-display);
+    font-size: .95rem;
+    font-weight: 500;
+    white-space: nowrap;
+
+    &::before {
+      content: "";
+      width: .45rem;
+      height: .45rem;
+      margin-right: 2.4rem;
+      background: var(--z-ocre);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+@keyframes z-obi { to { transform: translateX(-100%); } }
+
+// ─────────────────────────── Aujourd'hui ───────────────────────────
+
+.z-sticky {
+  @media (min-width: 992px) {
+    position: sticky;
+    top: calc(var(--z-header-h) + 2rem);
+  }
+}
+
+// La mosaïque cassée : des carreaux décollés, de travers
+.z-cracked {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .7rem;
+
+  li {
+    padding: .8rem .9rem;
+    background: var(--z-paper);
+    border-radius: var(--z-radius);
+    box-shadow: 0 0 0 1px var(--z-grout), 0 6px 14px -10px rgba(17, 23, 55, .4);
+    transform: rotate(calc((var(--i) - 2.5) * 1.3deg));
+    transition: transform .5s var(--z-ease);
+
+    &:nth-child(odd) { translate: 0 5px; }
+    &:nth-child(3n) { transform: rotate(-2.6deg); }
+    &:hover { transform: none; translate: 0 0; }
+  }
+
+  strong { display: block; font-family: var(--z-display); font-weight: 600; font-size: .88rem; color: var(--z-ink); line-height: 1.25; }
+  span { display: block; font-size: .8rem; color: var(--z-muted); margin-top: .2rem; line-height: 1.35; }
+}
+
+.z-swaps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.z-swap {
+  display: grid;
+  gap: .9rem 2rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--z-grout);
+
+  &:last-child { border-bottom: 1px solid var(--z-grout); }
+
+  @media (min-width: 768px) { grid-template-columns: 1fr 1.25fr; }
+
+  p { margin: 0; }
+}
+
+.z-swap-before {
+  color: var(--z-muted);
+  font-size: .98rem;
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in oklab, var(--z-rh) 55%, transparent);
+  text-decoration-thickness: 1.5px;
+}
+
+.z-swap-after p { color: var(--z-ink); margin-top: .55rem; }
+
+// ─────────────────────────── Trois pièces ───────────────────────────
+
+.z-apps {
+  @media (min-width: 992px) {
+    grid-template-columns: 1.25fr 1fr;
+
+    .z-app--finance { grid-row: span 2; }
+  }
+}
+
+.z-app {
+  padding: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  min-height: 21rem;
+  overflow: hidden;
+
+  .z-app-name { font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.8rem); letter-spacing: -.035em; margin-bottom: .75rem; }
+  .z-app-pitch { color: rgba(255, 255, 255, .88); max-width: 34rem; margin-bottom: 1.5rem; }
+
+  .z-app-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    display: grid;
+    gap: .45rem;
+
+    li {
+      display: flex;
+      gap: .65rem;
+      color: rgba(255, 255, 255, .92);
+      font-size: .97rem;
+
+      &::before {
+        content: "";
+        flex-shrink: 0;
+        width: .42rem;
+        height: .42rem;
+        margin-top: .58rem;
+        background: rgba(255, 255, 255, .75);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .z-link { margin-top: auto; align-self: flex-start; }
+
+  .z-app-piece {
+    position: absolute;
+    right: -1.5rem;
+    top: -1.5rem;
+    width: 9rem;
+    height: 9rem;
+    z-index: -1;
+
+    polygon { fill: rgba(255, 255, 255, .1); stroke: rgba(255, 255, 255, .24); stroke-width: 1.5; }
+  }
+}
+
+.z-app--finance .z-app-piece { width: 16rem; height: 16rem; right: -2.5rem; top: auto; bottom: -3rem; }
+
+// ─────────────────────────── Lundi matin ───────────────────────────
+
+.z-screens {
+  display: grid;
+  gap: 2rem;
+
+  @media (min-width: 992px) { grid-template-columns: 17rem 1fr; gap: 3rem; }
+}
+
+.z-screens-tabs {
+  display: flex;
+  gap: .5rem;
+  overflow-x: auto;
+
+  @media (min-width: 992px) { flex-direction: column; overflow: visible; }
+
+  button {
+    display: flex;
+    gap: .8rem;
+    align-items: flex-start;
+    text-align: left;
+    padding: 1rem 1.1rem;
+    background: transparent;
+    border: 0;
+    border-radius: var(--z-radius);
+    color: var(--z-text);
+    cursor: pointer;
+    min-width: 13rem;
+    transition: background-color .3s var(--z-ease), box-shadow .3s var(--z-ease);
+
+    .z-chip { margin-top: .45rem; }
+    strong { display: block; font-family: var(--z-display); font-weight: 600; color: var(--z-ink); }
+    small { display: block; font-size: .85rem; color: var(--z-muted); line-height: 1.4; }
+
+    &:hover { background: color-mix(in oklab, var(--z-ink) 4%, transparent); }
+
+    &.active {
+      background: var(--z-paper);
+      box-shadow: 0 0 0 1px var(--z-grout), var(--z-bevel);
+    }
+  }
+}
+
+.z-screens-stage {
+  display: grid;
+
+  figure {
+    grid-area: 1 / 1;
+    margin: 0;
+    transition: opacity .5s var(--z-ease), transform .6s var(--z-ease), visibility 0s;
+
+    &.is-hidden { opacity: 0; transform: translateY(12px); pointer-events: none; visibility: hidden; transition: opacity .3s, transform .3s, visibility 0s .3s; }
+  }
+
+  figcaption {
+    margin-top: 1rem;
+    font-size: .92rem;
+    color: var(--z-muted);
+
+    strong { color: var(--z-ink); font-weight: 600; }
+  }
+}
+
+// ─────────────────────────── Le joint ───────────────────────────
+
+.z-flow { margin-top: 3.5rem; }
+.z-flow + .z-flow { margin-top: 4.5rem; }
+
+.z-flow-title {
+  font-family: var(--z-body) !important;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #aab2db !important;
+  margin-bottom: 1.75rem;
+}
+
+.z-flow-track {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 2rem 0;
+
+  @media (min-width: 576px) { grid-template-columns: repeat(2, 1fr); }
+
+  @media (min-width: 992px) {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+}
+
+.z-flow-step {
+  position: relative;
+  padding-right: 1.5rem;
+
+  // Le joint qui relie cette étape à la suivante : les couleurs se mélangent
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 1.3rem;
+    left: 3.6rem;
+    right: .4rem;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--c), color-mix(in oklab, var(--c), var(--next)) 50%, var(--next));
+    transform-origin: left;
+
+    @media (max-width: 991.98px) { display: none; }
+  }
+
+  strong { display: block; font-family: var(--z-display); font-weight: 600; font-size: 1.15rem; color: #fff; margin-top: 1.1rem; }
+  p { font-size: .92rem; color: #b8c0e3; margin: .35rem 0 .75rem; max-width: 24ch; }
+}
+
+@supports (animation-timeline: view()) {
+  .z-flow-step:not(:last-child)::after {
+    animation: z-joint linear both;
+    animation-timeline: view();
+    animation-range: entry 40% cover 40%;
+  }
+}
+
+@keyframes z-joint { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.z-flow-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin: .1rem 0 0 .2rem;
+  background: var(--c);
+  border-radius: var(--z-radius);
+  transform: rotate(45deg);
+  box-shadow: var(--z-bevel);
+
+  span { transform: rotate(-45deg); font-family: var(--z-display); font-weight: 700; color: #fff; }
+}
+
+.z-flow-app {
+  font-size: .75rem;
+  font-weight: 600;
+  color: color-mix(in oklab, var(--c) 45%, #fff);
+}
+
+.z-flow-example {
+  display: inline-block;
+  font-size: .8rem;
+  color: #fff;
+  padding: .3rem .55rem;
+  border-radius: var(--z-radius);
+  background: rgba(255, 255, 255, .07);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+}
+
+// ─────────────────────────── Le film ───────────────────────────
+
+.z-film {
+  background: var(--z-night);
+  padding-top: clamp(4rem, 3rem + 4vw, 7rem);
+}
+
+.z-film-head {
+  display: grid;
+  gap: 1.5rem 4rem;
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+
+  @media (min-width: 992px) { grid-template-columns: 1.1fr 1fr; }
+
+  .z-h2 { color: #fff; margin: 0; max-width: 15ch; }
+  .z-lead { color: #c9cfea; margin-bottom: 1.5rem; }
+}
+
+// Le film tient toute la largeur, sans boîte autour
+.z-film-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-height: 88vh;
+  margin-inline: auto;
+  background: #000;
+  overflow: hidden;
+}
+
+.z-film-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.z-film-play {
+  position: absolute;
+  left: clamp(2rem, 4vw, 4rem);
+  bottom: clamp(2rem, 4vw, 4rem);
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 0;
+  border-radius: var(--z-radius);
+  background: var(--z-ocre);
+  color: var(--z-night);
+  font-size: 2.4rem;
+  cursor: pointer;
+  transform: rotate(45deg);
+  box-shadow: var(--z-bevel), 0 18px 40px -12px rgba(0, 0, 0, .5);
+  transition: transform .4s var(--z-ease), background-color .3s;
+
+  .bi { display: inline-block; transform: rotate(-45deg) translateX(2px); }
+
+  &:hover { transform: rotate(45deg) scale(1.08); background: #fff; }
+}
+
+// ─────────────────────────── Rôles ───────────────────────────
+
+.z-roles {
+  display: grid;
+  gap: 1.5rem;
+
+  @media (min-width: 992px) { grid-template-columns: 16rem 1fr; gap: 3rem; }
+}
+
+.z-roles-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  align-content: start;
+
+  @media (min-width: 992px) { flex-direction: column; }
+
+  button {
+    padding: .8rem 1.1rem;
+    text-align: left;
+    border: 0;
+    border-radius: var(--z-radius);
+    background: transparent;
+    font-family: var(--z-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--z-muted);
+    cursor: pointer;
+    transition: background-color .25s, color .25s;
+
+    &:hover { color: var(--z-ink); }
+    &.active { color: var(--z-ground); background: var(--z-ink); box-shadow: var(--z-bevel); }
+  }
+}
+
+.z-roles-panel {
+  padding: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+  box-shadow: 0 0 0 1px var(--z-grout), var(--z-bevel);
+}
+
+.z-roles-question {
+  font-family: var(--z-display);
+  font-weight: 600;
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  line-height: 1.25;
+  letter-spacing: -.02em;
+  color: var(--z-ink);
+  max-width: 30ch;
+  margin-bottom: 1.75rem;
+}
+
+.z-roles-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  display: grid;
+  gap: .9rem;
+
+  @media (min-width: 768px) { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  li {
+    padding-top: .9rem;
+    border-top: 2px solid var(--z-grout);
+    color: var(--z-text);
+  }
+}
+
+.z-roles-apps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+
+  .z-tag { text-decoration: none; }
+}
+
+// ─────────────────────────── Maghreb ───────────────────────────
+
+.z-arabic {
+  font-family: var(--z-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+  color: var(--z-rh);
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.z-facts {
+  margin: 2rem 0 0;
+
+  div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; padding: .9rem 0; border-top: 1px solid var(--z-grout); }
+  dt { font-family: var(--z-display); font-weight: 600; color: var(--z-ink); }
+  dd { margin: 0; font-size: .95rem; }
+}
+
+.z-rtl-shot {
+  @media (min-width: 992px) { margin-right: -14vw; }
+}
