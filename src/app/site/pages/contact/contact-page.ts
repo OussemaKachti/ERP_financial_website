@@ -53,7 +53,7 @@ import { SITE } from '../../site.config';
             <span class="z-link mt-3">Ouvrir le plan <i class="bi bi-arrow-up-right"></i></span>
           </a>
 
-          <div class="z-tile z-tile--glazed z-contact-demo" style="--t: var(--z-finance)">
+          <div class="z-tile z-tile--glazed z-contact-demo" style="--t: var(--z-glaze-finance)">
             <h2 class="z-h3">Voir l’application sur vos cas</h2>
             <p>Une démonstration avec vos documents, vos circuits de validation et les modules qui vous concernent.</p>
             <a routerLink="/demonstration" class="z-btn z-btn--light mt-auto">Demander une démonstration</a>

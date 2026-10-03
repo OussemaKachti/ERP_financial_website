@@ -12,7 +12,7 @@
         <ul class="z-hero-apps" aria-label="Les trois applications">
           @for (mod of modules; track mod.key) {
             <li>
-              <a [routerLink]="'/' + mod.key" class="z-hero-app" [style.--c]="email[mod.key]"
+              <a [routerLink]="'/' + mod.key" class="z-hero-app" [style.--c]="email[mod.key]" [style.--g]="glaze[mod.key]"
                 (mouseenter)="survol.set(mod.key)" (mouseleave)="survol.set(null)"
                 (focus)="survol.set(mod.key)" (blur)="survol.set(null)">
                 <span class="z-chip"></span>
@@ -112,7 +112,7 @@
 
     <div class="z-mosaic z-apps">
       @for (mod of modules; track mod.key) {
-        <article class="z-tile z-tile--glazed z-app" [class]="'z-app--' + mod.key" [style.--t]="email[mod.key]">
+        <article class="z-tile z-tile--glazed z-app" [class]="'z-app--' + mod.key" [style.--t]="glaze[mod.key]">
           <svg class="z-app-piece" viewBox="-60 -60 120 120" aria-hidden="true">
             @switch (mod.key) {
               @case ('finance') { <polygon points="0,-50 20,0 0,50 -20,0" /> }
@@ -182,6 +182,7 @@
       <p class="z-lead">
         Là où deux applications se passent la main, leurs couleurs se mélangent : c’est la donnée partagée.
         Personne ne la ressaisit.
+        <small class="z-flow-note">Exemples tirés de la société de démonstration.</small>
       </p>
     </div>
 
@@ -189,9 +190,10 @@
       <div class="z-flow" [attr.aria-label]="p.titre">
         <h3 class="z-flow-title">{{ p.titre }}</h3>
         <ol class="z-flow-track">
+          <li class="z-flow-marker" aria-hidden="true"></li>
           @for (e of p.etapes; track e.titre; let i = $index; let dernier = $last) {
-            <li class="z-flow-step" [style.--c]="email[e.module]"
-              [style.--next]="dernier ? email[e.module] : email[p.etapes[i + 1].module]">
+            <li class="z-flow-step" [style.--c]="email[e.module]" [style.--g]="glaze[e.module]"
+              [style.--next]="dernier ? glaze[e.module] : glaze[p.etapes[i + 1].module]">
               <span class="z-flow-tile"><span class="z-num">{{ i + 1 }}</span></span>
               <strong>{{ e.titre }}</strong>
               <span class="z-flow-app">{{ m[e.module].nom }}</span>
@@ -250,15 +252,22 @@
       <p class="z-lead">Les mêmes trois applications, assemblées selon la façon dont vous travaillez.
         <a routerLink="/solutions" class="z-link ms-1">Toutes les solutions <i class="bi bi-arrow-right"></i></a></p>
     </div>
-    <div class="z-mosaic z-sol-grid z-sol-grid--4">
+    <ul class="z-trades">
       @for (a of solutions; track a.slug) {
-        <a [routerLink]="'/solutions/' + a.slug" class="z-tile z-sol">
-          <i class="bi" [class]="a.icone"></i>
-          <strong>{{ a.nom }}</strong>
-          <span>{{ a.accroche }}</span>
-        </a>
+        <li>
+          <a [routerLink]="'/solutions/' + a.slug">
+            <strong>{{ a.nom }}</strong>
+            <span class="z-trades-pitch">{{ a.accroche }}</span>
+            <span class="z-trades-apps">
+              @for (k of a.modules; track k) {
+                <span class="z-chip" [style.--c]="email[k]" [attr.title]="m[k].nom"></span>
+              }
+            </span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </li>
       }
-    </div>
+    </ul>
   </div>
 </section>
 
@@ -267,8 +276,8 @@
   <div class="container">
     <div class="row g-5 align-items-center">
       <div class="col-lg-5">
-        <p class="z-arabic" lang="ar" dir="rtl">إدارة شركتك في مكان واحد</p>
-        <h2 class="z-h2">Bilingue jusqu’au sens de lecture.</h2>
+        <h2 class="z-h2">Bilingue jusqu’au sens de lecture.
+          <span class="z-h2-ar" lang="ar" dir="rtl">ثنائية اللغة حتى في اتجاه القراءة</span></h2>
         <p class="z-lead">
           La Finance et les RH s’utilisent en français ou en arabe, de droite à gauche. Chaque utilisateur choisit sa
           langue ; les factures envoyées aux clients restent en français.

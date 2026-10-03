@@ -9,7 +9,6 @@
 
       <div class="row g-4 align-items-end">
         <div class="col-lg-7">
-          <p class="z-module-name"><span class="z-chip"></span>{{ mod.nomLong }}</p>
           <h1 class="z-h1">{{ mod.titre }}</h1>
           <p class="z-lead mb-0">{{ mod.intro }}</p>
         </div>
@@ -36,7 +35,7 @@
   </section>
 
   <!-- ═══════════════ La question ═══════════════ -->
-  <section class="z-section-sm z-tile z-tile--glazed z-pain" [style.--t]="couleur">
+  <section class="z-section-sm z-tile z-tile--glazed z-pain" [style.--t]="emailPlein">
     <div class="container">
       <div class="row g-4 align-items-center">
         <div class="col-lg-6">
@@ -67,35 +66,44 @@
   @for (s of mod.sections; track s.id; let impair = $odd) {
     <section class="z-feature" [id]="s.id" [class.z-band]="impair">
       <div class="container">
-        <div class="row g-5 align-items-center" [class.flex-lg-row-reverse]="impair">
-          <div class="col-lg-5">
+        @if (captures.includes(s.id)) {
+          <div class="row g-5 align-items-center" [class.flex-lg-row-reverse]="impair">
+            <div class="col-lg-5">
+              <h2 class="z-h2">{{ s.titre }}</h2>
+              <p class="mb-4">{{ s.intro }}</p>
+              @for (p of s.points ?? []; track p.titre) {
+                <div class="z-point"><h3>{{ p.titre }}</h3><p>{{ p.texte }}</p></div>
+              }
+              @if (s.puces) {
+                <ul class="z-ticks">
+                  @for (p of s.puces; track p) {
+                    <li>{{ p }}</li>
+                  }
+                </ul>
+              }
+            </div>
+            <div class="col-lg-7">
+              <figure class="m-0">
+                <rf-app-window [src]="s.shot.src" [alt]="s.shot.alt" [url]="s.shot.url"
+                  [largeur]="s.shot.largeur" [hauteur]="s.shot.hauteur" />
+                <figcaption class="z-caption"><strong>{{ s.shot.titre }}</strong> {{ s.shot.legende }}</figcaption>
+              </figure>
+            </div>
+          </div>
+        } @else {
+          <div class="z-split-head mb-4">
             <h2 class="z-h2">{{ s.titre }}</h2>
-            <p class="mb-4">{{ s.intro }}</p>
-
+            <p class="z-lead">{{ s.intro }}</p>
+          </div>
+          <div class="z-points-grid">
             @for (p of s.points ?? []; track p.titre) {
-              <div class="z-point">
-                <h3>{{ p.titre }}</h3>
-                <p>{{ p.texte }}</p>
-              </div>
+              <div class="z-point"><h3>{{ p.titre }}</h3><p>{{ p.texte }}</p></div>
             }
-
-            @if (s.puces) {
-              <ul class="z-ticks">
-                @for (p of s.puces; track p) {
-                  <li>{{ p }}</li>
-                }
-              </ul>
+            @for (p of s.puces ?? []; track p) {
+              <div class="z-point"><p class="z-ink">{{ p }}</p></div>
             }
           </div>
-
-          <div class="col-lg-7">
-            <figure class="m-0">
-              <rf-app-window [src]="s.shot.src" [alt]="s.shot.alt" [url]="s.shot.url"
-                [largeur]="s.shot.largeur" [hauteur]="s.shot.hauteur" />
-              <figcaption class="z-caption"><strong>{{ s.shot.titre }}</strong> {{ s.shot.legende }}</figcaption>
-            </figure>
-          </div>
-        </div>
+        }
       </div>
     </section>
   }
@@ -112,7 +120,7 @@
       @if (flux.length) {
         <ul class="z-links">
           @for (f of flux; track f.texte) {
-            <li [style.--from]="email[f.de]" [style.--to]="email[f.vers]">
+            <li [style.--from]="glaze[f.de]" [style.--to]="glaze[f.vers]">
               <span class="z-links-route">
                 <span>{{ f.deLabel }}</span>
                 <span class="z-links-joint" aria-hidden="true"></span>
@@ -126,7 +134,7 @@
 
       <div class="z-mosaic z-others">
         @for (a of autres; track a.key) {
-          <a [routerLink]="'/' + a.key" class="z-tile z-tile--glazed z-other" [style.--t]="email[a.key]">
+          <a [routerLink]="'/' + a.key" class="z-tile z-tile--glazed z-other" [style.--t]="glaze[a.key]">
             <h3 class="z-h3">{{ a.nomLong }}</h3>
             <p>{{ a.accroche }}</p>
             <span class="z-link" style="--c: #fff">Découvrir <i class="bi bi-arrow-right"></i></span>

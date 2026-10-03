@@ -116,7 +116,7 @@
       width: .4rem;
       height: .4rem;
       margin-top: .55rem;
-      background: var(--z-ocre);
+      background: var(--z-ink);
       transform: rotate(45deg);
     }
   }
@@ -165,7 +165,7 @@
     transition: transform .4s var(--z-ease), background-color .3s;
   }
 
-  details[open] .z-faq-mark { transform: rotate(225deg); background: var(--z-ocre); border-color: var(--z-ocre); }
+  details[open] .z-faq-mark { transform: rotate(225deg); background: var(--z-ink); }
 
   .z-faq-body {
     padding: 0 3rem 1.4rem 0;
@@ -205,7 +205,7 @@
 
 .z-form {
   padding: clamp(1.5rem, 1rem + 2vw, 2.75rem);
-  box-shadow: 0 0 0 1px var(--z-grout), var(--z-lift);
+  box-shadow: 0 0 0 var(--z-joint) var(--z-grout);
 
   label, .form-label {
     font-family: var(--z-display);

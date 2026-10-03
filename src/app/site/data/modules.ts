@@ -535,7 +535,14 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
 
 export const MODULE_ORDER: ModuleKey[] = ['finance', 'crm', 'rh'];
 
-/** Couleur d'émail de chaque application (variables CSS de l'univers zellige). */
+/** Émail plein de chaque application, pour les aplats (reste saturé en mode sombre). */
+export const GLAZE: Record<ModuleKey, string> = {
+  finance: 'var(--z-glaze-finance)',
+  crm: 'var(--z-glaze-crm)',
+  rh: 'var(--z-glaze-rh)',
+};
+
+/** Couleur d'émail de chaque application pour le texte et les traits (variables CSS de l'univers zellige). */
 export const EMAIL: Record<ModuleKey, string> = {
   finance: 'var(--z-finance)',
   crm: 'var(--z-crm)',

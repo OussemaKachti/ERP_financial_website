@@ -130,7 +130,7 @@
       width: .42rem;
       height: .42rem;
       margin-top: .62rem;
-      background: var(--c, var(--z-ocre));
+      background: var(--c, var(--z-ink));
       transform: rotate(45deg);
     }
   }
@@ -329,7 +329,7 @@
   color: #fff;
   text-decoration: none;
 
-  &:hover { color: var(--z-ocre); }
+  &:hover { color: #fff; text-decoration: underline; }
 }
 
 .z-contact-cell {
@@ -339,7 +339,7 @@
   color: var(--z-text);
   text-decoration: none;
 
-  > .bi { font-size: 1.5rem; color: var(--z-ocre); margin-bottom: 1rem; }
+  > .bi { font-size: 1.5rem; color: var(--z-finance); margin-bottom: 1rem; }
   a { color: var(--z-ink); font-weight: 500; }
 }
 
@@ -492,7 +492,7 @@ a.z-contact-cell:hover { background: var(--z-ground); }
 .z-sim {
   display: grid;
   overflow: hidden;
-  box-shadow: 0 0 0 1px var(--z-grout), var(--z-lift);
+  box-shadow: 0 0 0 var(--z-joint) var(--z-grout);
 
   @media (min-width: 992px) { grid-template-columns: 1.2fr 1fr; }
 }
@@ -544,7 +544,7 @@ a.z-contact-cell:hover { background: var(--z-ground); }
   margin: .5rem 0 !important;
 }
 
-.z-sim-cost { font-size: 1.1rem; strong { color: var(--z-ocre); } }
+.z-sim-cost { font-size: 1.1rem; strong { color: #fff; } }
 .z-sim-compare { margin: 1.25rem 0 1.25rem !important; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, .12); strong { color: #fff; } }
 
 // ─────────────────────────── Tarifs : comparatif ───────────────────────────
@@ -602,3 +602,12 @@ a.z-contact-cell:hover { background: var(--z-ground); }
 
 .z-compare-wrap { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
 .z-compare { min-width: 44rem; }
+
+// Sections sans capture : les points sur toute la largeur
+.z-points-grid {
+  display: grid;
+  gap: 0 2.5rem;
+
+  @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 1200px) { grid-template-columns: repeat(3, 1fr); }
+}

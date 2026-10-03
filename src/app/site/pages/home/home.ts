@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SITE } from '../../site.config';
-import { EMAIL, MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
+import { EMAIL, GLAZE, MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
 import { FAQ_ACCUEIL, SITUATIONS } from '../../data/home';
 import { BRICOLAGE, FAITS, PARCOURS, ROLES } from '../../data/accueil';
 import { OFFRES, promotionActive } from '../../data/pricing';
@@ -23,6 +23,7 @@ export class Home {
   protected readonly site = SITE;
   protected readonly m = MODULES;
   protected readonly email = EMAIL;
+  protected readonly glaze = GLAZE;
   protected readonly modules = MODULE_ORDER.map((k) => MODULES[k]);
   protected readonly situations = SITUATIONS;
   protected readonly bricolage = BRICOLAGE;

@@ -20,7 +20,7 @@ type Periode = 'mensuel' | 'annuel';
       @if (pricing.promotion()) {
         <p class="z-launch">
           <span class="z-tag" style="--c: var(--z-rh)">{{ promotion.libelle }}</span>
-          Prix réduits pour toute signature jusqu’au <strong>{{ promotion.finLisible }}</strong>.
+          <span>Prix réduits pour toute signature jusqu’au <strong>{{ promotion.finLisible }}</strong>.</span>
         </p>
       }
     </div>

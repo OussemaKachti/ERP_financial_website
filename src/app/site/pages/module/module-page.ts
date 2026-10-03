@@ -10,11 +10,21 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SITE } from '../../site.config';
-import { EMAIL, MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
+import { EMAIL, GLAZE, MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
 import { FLUX } from '../../data/home';
 import { OFFRES, promotionActive } from '../../data/pricing';
 import { AppWindow } from '../../shared/app-window';
 import { FaqList } from '../../shared/faq-list';
+
+/**
+ * Sections illustrées par une capture : avec celle de l'en-tête, trois
+ * captures par application. Les autres sections restent en texte.
+ */
+const CAPTURES: Record<ModuleKey, string[]> = {
+  finance: ['ventes', 'comptabilite'],
+  crm: ['visites', 'pilotage'],
+  rh: ['temps', 'paie'],
+};
 
 /** Offre d'entrée mise en avant sur chaque page d'application. */
 const OFFRE_ENTREE: Record<ModuleKey, string> = { finance: 'erp', crm: 'bundle', rh: 'rh' };
@@ -32,7 +42,10 @@ export class ModulePage {
   protected readonly mod = MODULES[inject(ActivatedRoute).snapshot.data['module'] as ModuleKey];
   protected readonly section = signal(this.mod.sections[0].id);
   protected readonly email = EMAIL;
+  protected readonly glaze = GLAZE;
   protected readonly couleur = EMAIL[this.mod.key];
+  protected readonly emailPlein = GLAZE[this.mod.key];
+  protected readonly captures = CAPTURES[this.mod.key];
 
   protected readonly autres = MODULE_ORDER.filter((k) => k !== this.mod.key).map((k) => MODULES[k]);
   protected readonly flux = FLUX.filter((f) => f.de === this.mod.key || (f.vers === this.mod.key && f.de !== f.vers));

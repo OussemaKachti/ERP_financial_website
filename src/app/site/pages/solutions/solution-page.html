@@ -9,7 +9,6 @@
       </ol>
       <div class="row g-5 align-items-end">
         <div class="col-lg-7">
-          <p class="z-module-name" style="--c: var(--z-ocre)"><i class="bi" [class]="s.icone"></i>{{ s.nom }}</p>
           <h1 class="z-h1">{{ s.titre }}</h1>
           <p class="z-lead mb-0">{{ s.intro }}</p>
         </div>
@@ -79,7 +78,7 @@
           <a routerLink="/tarifs" class="z-link" style="--c: #fff">Comparer les offres <i class="bi bi-arrow-right"></i></a>
         </div>
         @for (k of s.modules; track k) {
-          <a class="z-tile z-tile--glazed z-reco-app" [routerLink]="'/' + k" [style.--t]="email[k]">
+          <a class="z-tile z-tile--glazed z-reco-app" [routerLink]="'/' + k" [style.--t]="glaze[k]">
             <strong>{{ m[k].nomLong }}</strong>
             <span>{{ m[k].resume }}</span>
             <i class="bi bi-arrow-right"></i>
@@ -92,15 +91,22 @@
   <section class="z-section-sm z-band">
     <div class="container">
       <h2 class="z-h3 mb-4">Autres métiers</h2>
-      <div class="z-mosaic z-sol-grid">
+      <ul class="z-trades">
         @for (a of autres(); track a.slug) {
-          <a [routerLink]="'/solutions/' + a.slug" class="z-tile z-sol">
-            <i class="bi" [class]="a.icone"></i>
-            <strong>{{ a.nom }}</strong>
-            <span>{{ a.accroche }}</span>
-          </a>
+          <li>
+            <a [routerLink]="'/solutions/' + a.slug">
+              <strong>{{ a.nom }}</strong>
+              <span class="z-trades-pitch">{{ a.accroche }}</span>
+              <span class="z-trades-apps">
+                @for (k of a.modules; track k) {
+                  <span class="z-chip" [style.--c]="email[k]" [attr.title]="m[k].nom"></span>
+                }
+              </span>
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </a>
+          </li>
         }
-      </div>
+      </ul>
     </div>
   </section>
 } @else {
@@ -117,20 +123,22 @@
   </section>
   <section class="z-section-sm pt-0">
     <div class="container">
-      <div class="z-mosaic z-sol-grid is-large">
+      <ul class="z-trades">
         @for (a of solutions; track a.slug) {
-          <a [routerLink]="'/solutions/' + a.slug" class="z-tile z-sol">
-            <i class="bi" [class]="a.icone"></i>
-            <strong>{{ a.nom }}</strong>
-            <span>{{ a.accroche }}</span>
-            <span class="z-sol-apps">
-              @for (k of a.modules; track k) {
-                <span class="z-tag" [style.--c]="email[k]"><span class="z-chip"></span>{{ m[k].nom }}</span>
-              }
-            </span>
-          </a>
+          <li>
+            <a [routerLink]="'/solutions/' + a.slug">
+              <strong>{{ a.nom }}</strong>
+              <span class="z-trades-pitch">{{ a.accroche }}</span>
+              <span class="z-trades-apps">
+                @for (k of a.modules; track k) {
+                  <span class="z-chip" [style.--c]="email[k]" [attr.title]="m[k].nom"></span>
+                }
+              </span>
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </a>
+          </li>
         }
-      </div>
+      </ul>
     </div>
   </section>
 }

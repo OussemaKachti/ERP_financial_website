@@ -26,9 +26,14 @@
   --z-finance: #2338a8;
   --z-crm: #12808f;
   --z-rh: #c3334f;
-  --z-ocre: #e8875a;
+  --z-ocre: #f0a080; // le corail du logo RFIDIA, réservé à la bande de faits et au focus
   --z-night: #0e1540;
   --z-night-2: #18215a;
+
+  // Émaux pleins pour les aplats : identiques en clair et en sombre
+  --z-glaze-finance: #2338a8;
+  --z-glaze-crm: #12808f;
+  --z-glaze-rh: #c3334f;
 
   // Couleur née du partage entre deux applications
   --z-mix-crm-finance: color-mix(in oklab, var(--z-crm), var(--z-finance));
@@ -94,7 +99,7 @@ body {
 
   :where(&) :where(a) { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px; }
 
-  ::selection { background: color-mix(in oklab, var(--z-ocre) 45%, transparent); color: var(--z-ink); }
+  ::selection { background: color-mix(in oklab, var(--z-finance) 22%, transparent); color: var(--z-ink); }
 
   :focus-visible {
     outline: 2px solid var(--z-ocre);
@@ -290,7 +295,7 @@ html {
   background: var(--bg);
   border: 0;
   border-radius: var(--z-radius);
-  box-shadow: var(--z-bevel), 0 10px 22px -12px color-mix(in oklab, var(--bg) 70%, transparent);
+  box-shadow: var(--z-bevel);
   text-decoration: none;
   cursor: pointer;
   transition: transform .25s var(--z-ease), box-shadow .25s var(--z-ease);
@@ -309,7 +314,6 @@ html {
   &:hover {
     color: var(--fg);
     transform: translateY(-2px);
-    box-shadow: var(--z-bevel), 0 16px 28px -14px color-mix(in oklab, var(--bg) 80%, transparent);
   }
 
   &:hover::after { transform: translateX(110%); }
@@ -609,9 +613,9 @@ html {
       opacity .5s ease var(--delai);
   }
 
-  .z-piece[data-module="finance"] { --c: var(--z-finance); }
-  .z-piece[data-module="crm"] { --c: var(--z-crm); }
-  .z-piece[data-module="rh"] { --c: var(--z-rh); }
+  .z-piece[data-module="finance"] { --c: var(--z-glaze-finance); }
+  .z-piece[data-module="crm"] { --c: var(--z-glaze-crm); }
+  .z-piece[data-module="rh"] { --c: var(--z-glaze-rh); }
 
   .z-piece-fill {
     // Chaque tesselle a son émail, un peu plus clair ou plus sombre
@@ -674,15 +678,8 @@ html {
   .z-site .g-5, .z-site .gx-5 { --bs-gutter-x: 2rem; }
 }
 
-// Mode sombre : les émaux gardent leur profondeur sous le texte blanc
-[data-bs-theme="dark"] .z-tile--glazed,
-[data-bs-theme="dark"] .z-hero-app:hover,
-[data-bs-theme="dark"] .z-subnav a.active {
-  background: color-mix(in oklab, var(--t, var(--c)) 58%, #050a26);
-}
-
-[data-bs-theme="dark"] .z-flow-tile,
-[data-bs-theme="dark"] .z-film-play { background: color-mix(in oklab, var(--c, var(--z-ocre)) 75%, #050a26); }
+// Mode sombre : les aplats prennent l'émail plein, le texte garde la teinte claire
+[data-bs-theme="dark"] .z-subnav a.active { background: var(--z-glaze, var(--c)); }
 
 // Rogne sans devenir une zone de defilement (contrairement a overflow: hidden)
 .z-clip { overflow: clip; }

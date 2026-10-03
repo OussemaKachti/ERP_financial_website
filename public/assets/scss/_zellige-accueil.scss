@@ -7,7 +7,7 @@
 .z-window {
   border-radius: calc(var(--z-radius) + 2px);
   background: var(--z-paper);
-  box-shadow: 0 0 0 1px var(--z-grout), var(--z-lift);
+  box-shadow: 0 0 0 var(--z-joint) var(--z-grout);
   overflow: hidden;
 
   img { display: block; width: 100%; height: auto; }
@@ -89,7 +89,7 @@
   .resume { grid-column: 1 / -1; font-size: .8rem; line-height: 1.35; color: var(--z-muted); margin-top: .3rem; }
 
   &:hover, &:focus-visible {
-    background: var(--c);
+    background: var(--g, var(--c));
     transform: translateY(-2px);
 
     .nom, .resume { color: #fff; }
@@ -190,7 +190,7 @@
     padding: .8rem .9rem;
     background: var(--z-paper);
     border-radius: var(--z-radius);
-    box-shadow: 0 0 0 1px var(--z-grout), 0 6px 14px -10px rgba(17, 23, 55, .4);
+    box-shadow: 0 0 0 1px var(--z-grout), var(--z-bevel);
     transform: rotate(calc((var(--i) - 2.5) * 1.3deg));
     transition: transform .5s var(--z-ease);
 
@@ -398,8 +398,7 @@
     right: .4rem;
     height: 4px;
     border-radius: 2px;
-    background: linear-gradient(90deg, var(--c), color-mix(in oklab, var(--c), var(--next)) 50%, var(--next));
-    transform-origin: left;
+    background: linear-gradient(90deg, var(--g), color-mix(in oklab, var(--g), var(--next)) 50%, var(--next));
 
     @media (max-width: 991.98px) { display: none; }
   }
@@ -408,15 +407,46 @@
   p { font-size: .92rem; color: #b8c0e3; margin: .35rem 0 .75rem; max-width: 24ch; }
 }
 
-@supports (animation-timeline: view()) {
-  .z-flow-step:not(:last-child)::after {
-    animation: z-joint linear both;
-    animation-timeline: view();
-    animation-range: entry 40% cover 40%;
+// Le repère qui voyage le long du joint : où en est le document
+.z-flow-track { position: relative; }
+
+.z-flow-marker {
+  display: none;
+
+  // Un rail de la largeur du parcours : le traduire de 100 % le mène au bout
+  @media (min-width: 992px) {
+    display: block;
+    position: absolute;
+    top: calc(1.3rem - 7px);
+    left: 1rem;
+    right: 2.5rem;
+    height: 14px;
+    pointer-events: none;
+    animation: z-voyage 9s var(--z-ease) infinite;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border-radius: 2px;
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, .18);
+    }
   }
 }
 
-@keyframes z-joint { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes z-voyage {
+  0% { transform: translateX(0); opacity: 0; }
+  6% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+.z-flow-note { display: block; margin-top: .75rem; font-size: .8rem; color: #8f97c2; }
 
 .z-flow-tile {
   display: inline-flex;
@@ -425,7 +455,7 @@
   width: 2.6rem;
   height: 2.6rem;
   margin: .1rem 0 0 .2rem;
-  background: var(--c);
+  background: var(--g, var(--c));
   border-radius: var(--z-radius);
   transform: rotate(45deg);
   box-shadow: var(--z-bevel);
@@ -473,6 +503,9 @@
   position: relative;
   aspect-ratio: 16 / 9;
   max-height: 88vh;
+
+  @media (max-width: 767.98px) { aspect-ratio: 4 / 3; }
+
   margin-inline: auto;
   background: #000;
   overflow: hidden;
@@ -493,17 +526,26 @@
   height: 5.5rem;
   border: 0;
   border-radius: var(--z-radius);
-  background: var(--z-ocre);
+  background: #fff;
   color: var(--z-night);
   font-size: 2.4rem;
   cursor: pointer;
   transform: rotate(45deg);
-  box-shadow: var(--z-bevel), 0 18px 40px -12px rgba(0, 0, 0, .5);
+  box-shadow: var(--z-bevel), 0 0 0 var(--z-joint) rgba(14, 21, 64, .35);
   transition: transform .4s var(--z-ease), background-color .3s;
 
   .bi { display: inline-block; transform: rotate(-45deg) translateX(2px); }
 
-  &:hover { transform: rotate(45deg) scale(1.08); background: #fff; }
+  &:hover { transform: rotate(45deg) scale(1.08); background: var(--z-ground); }
+
+  @media (max-width: 767.98px) {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.4rem;
+    left: auto;
+    right: 1.25rem;
+    bottom: 1.25rem;
+  }
 }
 
 // ─────────────────────────── Rôles ───────────────────────────
@@ -582,6 +624,49 @@
 }
 
 // ─────────────────────────── Maghreb ───────────────────────────
+
+.z-h2-ar {
+  display: block;
+  margin-top: .6rem;
+  font-size: .62em;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--z-rh);
+}
+
+// Métiers : une liste, pas des cartes
+.z-trades {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--z-grout);
+
+  li { border-bottom: 1px solid var(--z-grout); }
+
+  a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: .35rem 2rem;
+    align-items: center;
+    padding: 1.4rem .25rem;
+    color: var(--z-text);
+    text-decoration: none;
+    transition: background-color .3s var(--z-ease);
+
+    > * { transition: transform .35s var(--z-ease); }
+
+    @media (min-width: 992px) { grid-template-columns: 19rem 1fr auto auto; }
+
+    &:hover { background: var(--z-paper); }
+    &:hover > * { transform: translateX(.75rem); }
+    &:hover .bi { transform: translateX(.25rem); }
+  }
+
+  strong { font-family: var(--z-display); font-weight: 600; font-size: 1.3rem; letter-spacing: -.015em; color: var(--z-ink); }
+  .z-trades-pitch { grid-column: 1 / -1; font-size: .97rem; @media (min-width: 992px) { grid-column: auto; } }
+  .z-trades-apps { display: none; gap: .5rem; @media (min-width: 992px) { display: flex; } }
+  .bi { grid-row: 1; grid-column: 2; font-size: 1.2rem; color: var(--z-ink); transition: transform .3s var(--z-ease); @media (min-width: 992px) { grid-column: auto; } }
+}
 
 .z-arabic {
   font-family: var(--z-display);
