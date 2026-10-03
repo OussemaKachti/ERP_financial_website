@@ -6,11 +6,11 @@ import { Question } from '../data/home';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="rf-faq">
+    <div class="z-faq">
       @for (item of questions(); track item.q; let premier = $first) {
         <details [open]="premier && ouvrirPremiere()">
-          <summary>{{ item.q }} <i class="bi bi-plus-lg" aria-hidden="true"></i></summary>
-          <div class="rf-faq-body">
+          <summary>{{ item.q }} <span class="z-faq-mark" aria-hidden="true"></span></summary>
+          <div class="z-faq-body">
             @for (p of item.r; track p) {
               <p>{{ p }}</p>
             }

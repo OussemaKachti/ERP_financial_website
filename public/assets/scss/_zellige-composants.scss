@@ -1,0 +1,238 @@
+//
+// _zellige-composants.scss — composants partagés : tarifs, questions,
+// en-têtes de page, formulaires
+//
+
+// ─────────────────────────── Tarifs ───────────────────────────
+
+.z-price-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.z-seg {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--z-grout);
+  border-radius: calc(var(--z-radius) + 3px);
+
+  button {
+    min-width: 7.5rem;
+    padding: .6rem 1.1rem;
+    border: 0;
+    border-radius: var(--z-radius);
+    background: transparent;
+    font-family: var(--z-display);
+    font-weight: 600;
+    font-size: .95rem;
+    color: var(--z-text);
+    cursor: pointer;
+    transition: background-color .25s, color .25s;
+
+    &.active { background: var(--z-paper); color: var(--z-ink); box-shadow: var(--z-bevel); }
+  }
+}
+
+.z-launch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  margin: 0;
+  font-size: .92rem;
+
+  strong { color: var(--z-rh); font-weight: 600; }
+}
+
+.z-prices {
+  @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 1200px) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.z-price {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.5rem;
+
+  &.is-featured {
+    --t: var(--z-night);
+    color: #c9cfea;
+    --z-ink: #fff;
+    --z-text: #c9cfea;
+    --z-muted: #9aa3cc;
+    --z-grout: rgba(255, 255, 255, .12);
+  }
+}
+
+.z-price-mods {
+  display: flex;
+  gap: .55rem;
+  margin-bottom: 1.25rem;
+
+  .z-chip { width: .75rem; height: .75rem; }
+}
+
+.z-price-name { font-size: 1.45rem; letter-spacing: -.02em; margin-bottom: .25rem; }
+.z-price-tagline { font-size: .9rem; color: var(--z-muted); min-height: 2.8em; margin-bottom: 1.25rem; }
+
+.z-price-amount {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  margin: 0;
+
+  .z-num { font-family: var(--z-display); font-weight: 700; font-size: 3.2rem; line-height: 1; letter-spacing: -.04em; color: var(--z-ink); }
+  .unit { font-size: .85rem; color: var(--z-muted); }
+}
+
+.z-price-was {
+  font-size: .82rem;
+  color: var(--z-muted);
+  margin: .5rem 0 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--z-grout);
+}
+
+.z-price-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  display: grid;
+  gap: .55rem;
+  font-size: .92rem;
+
+  li {
+    display: flex;
+    gap: .6rem;
+
+    &::before {
+      content: "";
+      flex-shrink: 0;
+      width: .4rem;
+      height: .4rem;
+      margin-top: .55rem;
+      background: var(--z-ocre);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.z-price .z-btn { margin-top: auto; }
+
+.z-price-cond {
+  text-align: center;
+  font-size: .85rem;
+  color: var(--z-muted);
+  margin: 1.5rem 0 0;
+}
+
+// ─────────────────────────── Questions ───────────────────────────
+
+.z-faq {
+  border-top: 1px solid var(--z-grout);
+
+  details { border-bottom: 1px solid var(--z-grout); }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.3rem 0;
+    font-family: var(--z-display);
+    font-weight: 600;
+    font-size: 1.08rem;
+    color: var(--z-ink);
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker { display: none; }
+    &:hover .z-faq-mark { background: var(--z-ink); }
+  }
+
+  // Une tesselle qui se retourne à l'ouverture
+  .z-faq-mark {
+    flex-shrink: 0;
+    width: .8rem;
+    height: .8rem;
+    border: 1.5px solid var(--z-ink);
+    transform: rotate(45deg);
+    transition: transform .4s var(--z-ease), background-color .3s;
+  }
+
+  details[open] .z-faq-mark { transform: rotate(225deg); background: var(--z-ocre); border-color: var(--z-ocre); }
+
+  .z-faq-body {
+    padding: 0 3rem 1.4rem 0;
+    max-width: 64ch;
+
+    p { margin-bottom: .75rem; }
+    p:last-child { margin-bottom: 0; }
+  }
+}
+
+// ─────────────────────────── En-tête de page ───────────────────────────
+
+.z-page-hero {
+  padding: clamp(2.5rem, 1.5rem + 4vw, 5.5rem) 0 clamp(2.5rem, 2rem + 2vw, 4rem);
+  position: relative;
+  overflow: hidden;
+
+  .z-h1 { font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.2rem); max-width: 18ch; }
+}
+
+// Fil d'Ariane discret
+.z-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  font-size: .85rem;
+  color: var(--z-muted);
+
+  li + li::before { content: "/"; margin-right: .5rem; opacity: .5; }
+  a { color: var(--z-muted); text-decoration: none; &:hover { color: var(--z-ink); } }
+}
+
+// ─────────────────────────── Formulaires ───────────────────────────
+
+.z-form {
+  padding: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  box-shadow: 0 0 0 1px var(--z-grout), var(--z-lift);
+
+  label, .form-label {
+    font-family: var(--z-display);
+    font-weight: 600;
+    font-size: .88rem;
+    color: var(--z-ink);
+    margin-bottom: .4rem;
+  }
+
+  .form-control, .form-select {
+    min-height: 3rem;
+    border-radius: var(--z-radius);
+    border: 1.5px solid var(--z-grout);
+    background-color: var(--z-ground);
+    color: var(--z-ink);
+    font-family: var(--z-body);
+
+    &::placeholder { color: color-mix(in oklab, var(--z-muted) 80%, transparent); }
+
+    &:focus {
+      border-color: var(--z-finance);
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--z-finance) 18%, transparent);
+      background-color: var(--z-paper);
+    }
+
+    &.is-invalid { border-color: var(--z-rh); }
+  }
+
+  .invalid-feedback { color: var(--z-rh); font-size: .85rem; }
+}

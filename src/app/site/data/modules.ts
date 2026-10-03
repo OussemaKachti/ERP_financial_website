@@ -5,6 +5,8 @@
  * MEDIMEX (distributeur d'équipements de traçabilité pour cliniques).
  */
 
+import type { Question } from './home';
+
 export type ModuleKey = 'finance' | 'crm' | 'rh';
 
 export interface Shot {
@@ -51,6 +53,9 @@ export interface ModuleContent {
   apercu: string[];
   hero: Shot;
   sections: ModuleSection[];
+  /** La question qui fait mal, et ce que l'application y répond. */
+  douleur: { question: string; reponse: string };
+  faq: Question[];
   seo: { titre: string; description: string };
 }
 
@@ -208,7 +213,26 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
         ),
       },
     ],
-    seo: {
+    douleur: {
+      question: 'Combien vous doit-on, ce soir ?',
+      reponse:
+        'Si la réponse demande d’ouvrir trois fichiers et d’appeler le comptable, la Finance vous la donne à l’ouverture : ce qui est facturé, ce qui est encaissé et ce qui reste dû, au millime.',
+    },
+    faq: [
+      {
+        q: 'Les factures peuvent-elles partir par WhatsApp ?',
+        r: ['Oui. La facture sort en PDF à vos couleurs, avec votre logo et vos mentions, et part par e-mail ou WhatsApp depuis sa fiche. Sept modèles sont proposés.'],
+      },
+      {
+        q: 'Comment les factures fournisseur sont-elles saisies ?',
+        r: ['Déposez le PDF ou prenez la facture en photo depuis le téléphone : fournisseur, numéro, date, lignes et montants sont lus automatiquement. Il ne reste qu’à vérifier. La plateforme signale aussi une facture qui ressemble à une facture déjà saisie, ou un prix qui s’écarte nettement de vos derniers achats.'],
+      },
+      {
+        q: 'Mon expert-comptable peut-il y travailler ?',
+        r: ['Oui. Le plan comptable est prêt et personnalisable ; journaux, grand livre, balance générale, balance des tiers, TVA et états financiers sont à jour. Vous l’invitez comme collaborateur, avec les droits que vous choisissez.'],
+      },
+    ],
+        seo: {
       titre: 'Finance — facturation, stock et comptabilité',
       description:
         'Devis, factures, achats, stock par dépôt, trésorerie, TVA et comptabilité générale pour les PME de Tunisie et d’Algérie.',
@@ -331,7 +355,30 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
         ),
       },
     ],
-    seo: {
+    douleur: {
+      question: 'Que s’est-il vraiment passé chez le client mardi ?',
+      reponse:
+        'Les visites se saisissent sur place, confirmées par la position GPS du commercial. Le devis rédigé pendant le rendez-vous arrive dans la facturation, et l’activité de l’équipe se lit par commercial et par gouvernorat.',
+    },
+    faq: [
+      {
+        q: 'Le CRM s’utilise-t-il depuis le téléphone ?',
+        r: ['Oui, dans le navigateur du téléphone, sans application à installer. La visite se crée sur place en trois étapes ; sa création est confirmée par la position GPS du commercial.'],
+      },
+      {
+        q: 'Comment un devis passe-t-il en facturation ?',
+        r: ['Chaque devis accepté issu d’une visite est aussi créé dans la Finance. Il devient facture ou bon de livraison sans ressaisie.'],
+      },
+      {
+        q: 'Peut-on retrouver une visite rapidement ?',
+        r: ['Il suffit d’écrire « visites Nabeul cette semaine » ou « visites terminées Sousse ». Les résultats s’exportent vers Excel.'],
+      },
+      {
+        q: 'Peut-on acheter le CRM seul ?',
+        r: ['Non. Le CRM terrain prend tout son sens relié à la facturation : il est proposé dans la suite complète, avec la Finance et les RH.'],
+      },
+    ],
+        seo: {
       titre: 'CRM terrain — visites, prospects et devis',
       description:
         'Visites terrain confirmées par GPS, prospects, devis transmis à la facturation et pilotage par gouvernorat pour les équipes commerciales.',
@@ -455,7 +502,30 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
         ),
       },
     ],
-    seo: {
+    douleur: {
+      question: 'La paie de ce mois est-elle juste ?',
+      reponse:
+        'Le bulletin se calcule à partir du contrat, des absences et des avances en cours. Vous voyez chaque décision avant de générer, puis la paie se comptabilise en une seule opération.',
+    },
+    faq: [
+      {
+        q: 'Les cotisations et l’impôt sont-ils calculés ?',
+        r: ['Oui. Le bulletin calcule les cotisations CNSS et la retenue d’impôt sur le salaire, à partir du contrat, des absences, des heures supplémentaires et des avances en cours.'],
+      },
+      {
+        q: 'Les congés se gèrent-ils en ligne ?',
+        r: ['Oui. Congés et autorisations se saisissent et se valident en ligne, avec des soldes toujours à jour. Les types de congés usuels se mettent en place en une seule opération.'],
+      },
+      {
+        q: 'La paie est-elle reliée à la comptabilité ?',
+        r: ['Oui, si vous avez aussi la Finance : la paie validée produit son écriture comptable — charges de personnel, cotisations et salaires dus — sans ressaisie.'],
+      },
+      {
+        q: 'L’application RH existe-t-elle en arabe ?',
+        r: ['Oui. Chaque utilisateur choisit le français ou l’arabe ; l’interface passe alors de droite à gauche.'],
+      },
+    ],
+        seo: {
       titre: 'RH — personnel, congés et paie',
       description:
         'Dossiers salariés, contrats, pointage, congés, autorisations et paie comptabilisée automatiquement, en français ou en arabe.',
@@ -464,3 +534,10 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
 };
 
 export const MODULE_ORDER: ModuleKey[] = ['finance', 'crm', 'rh'];
+
+/** Couleur d'émail de chaque application (variables CSS de l'univers zellige). */
+export const EMAIL: Record<ModuleKey, string> = {
+  finance: 'var(--z-finance)',
+  crm: 'var(--z-crm)',
+  rh: 'var(--z-rh)',
+};

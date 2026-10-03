@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SITE } from '../../site.config';
-import { MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
+import { EMAIL, MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
 import { FAQ_ACCUEIL, SITUATIONS } from '../../data/home';
 import { BRICOLAGE, FAITS, PARCOURS, ROLES } from '../../data/accueil';
 import { OFFRES, promotionActive } from '../../data/pricing';
@@ -10,13 +10,6 @@ import { PricingGrid } from '../../shared/pricing-grid';
 import { FaqList } from '../../shared/faq-list';
 import { Rosette } from '../../shared/rosette';
 import { Film } from '../../shared/film';
-
-/** Couleur CSS de chaque application. */
-export const EMAIL: Record<ModuleKey, string> = {
-  finance: 'var(--z-finance)',
-  crm: 'var(--z-crm)',
-  rh: 'var(--z-rh)',
-};
 
 @Component({
   selector: 'rf-home',
