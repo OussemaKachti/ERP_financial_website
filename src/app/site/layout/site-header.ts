@@ -3,6 +3,7 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/ro
 import { filter } from 'rxjs/operators';
 import { SITE } from '../site.config';
 import { ThemeService } from '../services/theme.service';
+import { NAV_PRINCIPALE } from '../data/navigation';
 
 @Component({
   selector: 'rf-site-header',
@@ -17,12 +18,7 @@ export class SiteHeader {
   protected readonly scrolled = signal(false);
   protected readonly open = signal(false);
 
-  protected readonly liens = [
-    { lien: '/finance', label: 'Finance', couleur: 'var(--rf-finance)' },
-    { lien: '/crm', label: 'CRM', couleur: 'var(--rf-crm)' },
-    { lien: '/rh', label: 'RH', couleur: 'var(--rf-rh)' },
-    { lien: '/tarifs', label: 'Tarifs', couleur: '' },
-  ];
+  protected readonly liens = NAV_PRINCIPALE;
 
   constructor() {
     inject(Router)

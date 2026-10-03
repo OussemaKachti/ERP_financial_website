@@ -1,0 +1,587 @@
+//
+// _zellige.scss — univers visuel du site RFIDIA
+//
+// Le site est pensé comme un panneau de zellige : trois couleurs de tesselles
+// émaillées (Finance cobalt, CRM turquoise, RH grenade) qui ne prennent leur
+// sens qu'assemblées. Les joints remplacent les bordures et les ombres ; les
+// murs « nuit de cobalt » rythment la page. Préfixe des classes : `z-`.
+//
+
+// ─────────────────────────── Jetons ───────────────────────────
+
+:root {
+  --z-display: 'Alexandria', 'Segoe UI', system-ui, sans-serif;
+  --z-body: 'Readex Pro', 'Segoe UI', system-ui, sans-serif;
+
+  // Chaux, encre, joints
+  --z-ground: #f3f5f7;
+  --z-ground-2: #e9edf2;
+  --z-paper: #ffffff;
+  --z-ink: #111737;
+  --z-text: #3d4360;
+  --z-muted: #646a85;
+  --z-grout: #d8dde6;
+
+  // Émaux : une couleur par application
+  --z-finance: #2338a8;
+  --z-crm: #12808f;
+  --z-rh: #c3334f;
+  --z-ocre: #e8875a;
+  --z-night: #0e1540;
+  --z-night-2: #18215a;
+
+  // Couleur née du partage entre deux applications
+  --z-mix-crm-finance: color-mix(in oklab, var(--z-crm), var(--z-finance));
+  --z-mix-rh-finance: color-mix(in oklab, var(--z-rh), var(--z-finance));
+
+  --z-radius: 3px;
+  --z-joint: 6px;
+  --z-header-h: 76px;
+  --z-ease: cubic-bezier(.16, 1, .3, 1);
+  --z-lift: 0 1px 1px rgba(17, 23, 55, .05), 0 14px 30px -14px rgba(17, 23, 55, .28);
+  --z-bevel: inset 0 1px 0 rgba(255, 255, 255, .32), inset 0 -2px 0 rgba(0, 0, 0, .1);
+}
+
+[data-bs-theme="dark"] {
+  --z-ground: #0a0f2e;
+  --z-ground-2: #10173d;
+  --z-paper: #141c47;
+  --z-ink: #eef1f8;
+  --z-text: #bcc2db;
+  --z-muted: #9097b6;
+  --z-grout: rgba(255, 255, 255, .09);
+
+  --z-finance: #7487ff;
+  --z-crm: #3ec0d0;
+  --z-rh: #f26d86;
+  --z-ocre: #f2a07a;
+  --z-night: #060a22;
+  --z-night-2: #0d1335;
+  --z-lift: 0 1px 1px rgba(0, 0, 0, .3), 0 18px 40px -16px rgba(0, 0, 0, .75);
+  --z-bevel: inset 0 1px 0 rgba(255, 255, 255, .12), inset 0 -2px 0 rgba(0, 0, 0, .25);
+
+  --bs-body-bg: var(--z-ground);
+  --bs-body-bg-rgb: 10, 15, 46;
+}
+
+// ─────────────────────────── Base ───────────────────────────
+
+html { scroll-padding-top: calc(var(--z-header-h) + 1rem); }
+
+body {
+  background: var(--z-ground);
+}
+
+.z-site {
+  font-family: var(--z-body);
+  color: var(--z-text);
+  background: var(--z-ground);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern";
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--z-display);
+    color: var(--z-ink);
+    text-wrap: balance;
+  }
+
+  :where(p) { text-wrap: pretty; }
+
+  :where(a) { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px; }
+
+  ::selection { background: color-mix(in oklab, var(--z-ocre) 45%, transparent); color: var(--z-ink); }
+
+  :focus-visible {
+    outline: 2px solid var(--z-ocre);
+    outline-offset: 3px;
+    border-radius: var(--z-radius);
+  }
+
+  img { max-width: 100%; height: auto; }
+
+  caret-color: var(--z-finance);
+}
+
+// Barre de défilement aux couleurs du site
+html {
+  scrollbar-color: color-mix(in oklab, var(--z-ink) 28%, transparent) var(--z-ground);
+}
+
+.z-num { font-variant-numeric: tabular-nums; }
+
+// ─────────────────────────── Typographie ───────────────────────────
+
+.z-h1 {
+  font-family: var(--z-display);
+  font-weight: 600;
+  font-size: clamp(2.7rem, 1.5rem + 4.6vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+  margin: 0 0 1.5rem;
+}
+
+.z-h2 {
+  font-family: var(--z-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 1.35rem + 2.5vw, 3.35rem);
+  line-height: 1.06;
+  letter-spacing: -.03em;
+  margin: 0 0 1.25rem;
+}
+
+.z-h3 {
+  font-family: var(--z-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1.1rem + .5vw, 1.55rem);
+  line-height: 1.2;
+  letter-spacing: -.015em;
+  margin: 0 0 .6rem;
+}
+
+.z-lead {
+  font-size: clamp(1.1rem, 1.02rem + .35vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--z-text);
+  max-width: 38rem;
+}
+
+.z-muted { color: var(--z-muted); }
+.z-ink { color: var(--z-ink); }
+.z-small { font-size: .9rem; }
+
+// Mot mis en émail dans un titre
+.z-glaze {
+  color: var(--c, var(--z-finance));
+}
+
+// ─────────────────────────── Sections ───────────────────────────
+
+.z-section { padding: clamp(4.5rem, 3rem + 6vw, 8.5rem) 0; position: relative; }
+.z-section-sm { padding: clamp(3rem, 2rem + 3vw, 5rem) 0; position: relative; }
+
+.z-band { background: var(--z-ground-2); }
+
+// Mur « nuit de cobalt »
+.z-wall {
+  background: var(--z-night);
+  color: #c9cfea;
+  --z-ink: #ffffff;
+  --z-text: #c9cfea;
+  --z-muted: #9aa3cc;
+  --z-grout: rgba(255, 255, 255, .1);
+  --z-paper: var(--z-night-2);
+
+  h1, h2, h3, h4 { color: #fff; }
+}
+
+[data-bs-theme="dark"] .z-wall {
+  --z-finance: #8193ff;
+}
+
+.z-head {
+  max-width: 46rem;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+
+  &.is-center { margin-inline: auto; text-align: center; }
+  &.is-center .z-lead { margin-inline: auto; }
+}
+
+.z-split-head {
+  display: grid;
+  gap: 1.5rem 4rem;
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+
+  @media (min-width: 992px) { grid-template-columns: 1.15fr 1fr; }
+
+  .z-h2, .z-lead { margin-bottom: 0; }
+}
+
+// ─────────────────────────── Tesselles ───────────────────────────
+
+// Un carreau émaillé : aplat, reflet en haut à gauche, biseau léger.
+.z-tile {
+  position: relative;
+  background: var(--t, var(--z-paper));
+  border-radius: var(--z-radius);
+  box-shadow: var(--z-bevel);
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0) 38%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+.z-tile--glazed {
+  color: #fff;
+  --z-ink: #fff;
+  --z-text: rgba(255, 255, 255, .86);
+  --z-muted: rgba(255, 255, 255, .72);
+
+  h2, h3, h4 { color: #fff; }
+}
+
+// Panneau de tesselles séparées par des joints
+.z-mosaic {
+  display: grid;
+  gap: var(--z-joint);
+  background: var(--z-grout);
+  padding: var(--z-joint);
+  border-radius: calc(var(--z-radius) + 3px);
+}
+
+// Petit carré de couleur (pastille d'application)
+.z-chip {
+  display: inline-block;
+  width: .7em;
+  height: .7em;
+  background: var(--c, var(--z-finance));
+  border-radius: 1px;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  box-shadow: var(--z-bevel);
+}
+
+.z-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--z-display);
+  font-weight: 600;
+  font-size: .8rem;
+  letter-spacing: .01em;
+  padding: .3rem .65rem .3rem .55rem;
+  border-radius: var(--z-radius);
+  color: var(--c, var(--z-finance));
+  background: color-mix(in oklab, var(--c, var(--z-finance)) 11%, transparent);
+  white-space: nowrap;
+}
+
+// ─────────────────────────── Boutons ───────────────────────────
+
+.z-btn {
+  --bg: var(--z-ink);
+  --fg: var(--z-ground);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  min-height: 3.25rem;
+  padding: .85rem 1.5rem;
+  font-family: var(--z-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -.005em;
+  line-height: 1.2;
+  color: var(--fg);
+  background: var(--bg);
+  border: 0;
+  border-radius: var(--z-radius);
+  box-shadow: var(--z-bevel), 0 10px 22px -12px color-mix(in oklab, var(--bg) 70%, transparent);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .25s var(--z-ease), box-shadow .25s var(--z-ease);
+
+  // Reflet qui traverse le carreau au survol
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .28) 48%, transparent 66%);
+    transform: translateX(-110%);
+    transition: transform .7s var(--z-ease);
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: var(--fg);
+    transform: translateY(-2px);
+    box-shadow: var(--z-bevel), 0 16px 28px -14px color-mix(in oklab, var(--bg) 80%, transparent);
+  }
+
+  &:hover::after { transform: translateX(110%); }
+  &:active { transform: translateY(0); }
+
+  .bi { font-size: 1.05em; }
+}
+
+.z-btn--ghost {
+  --bg: transparent;
+  --fg: var(--z-ink);
+  box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--z-ink) 30%, transparent);
+
+  &::after { display: none; }
+
+  &:hover {
+    box-shadow: inset 0 0 0 1.5px var(--z-ink);
+    background: color-mix(in oklab, var(--z-ink) 4%, transparent);
+  }
+}
+
+.z-btn--light {
+  --bg: #fff;
+  --fg: var(--z-night);
+}
+
+.z-btn--sm { min-height: 2.6rem; padding: .55rem 1.05rem; font-size: .92rem; }
+.z-btn--lg { min-height: 3.6rem; padding: 1rem 1.8rem; font-size: 1.05rem; }
+
+[data-bs-theme="dark"] .z-btn:not(.z-btn--ghost):not(.z-btn--light) {
+  --bg: #f1f3fb;
+  --fg: #0a0f2e;
+}
+
+.z-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-family: var(--z-display);
+  font-weight: 600;
+  color: var(--c, var(--z-ink));
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+  transition: background-size .35s var(--z-ease);
+  padding-bottom: 2px;
+
+  .bi { transition: transform .3s var(--z-ease); }
+  &:hover { color: var(--c, var(--z-ink)); background-size: 100% 1.5px; }
+  &:hover .bi { transform: translateX(3px); }
+}
+
+// ─────────────────────────── En-tête ───────────────────────────
+
+.z-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  height: var(--z-header-h);
+  display: flex;
+  align-items: center;
+  background: color-mix(in oklab, var(--z-ground) 92%, transparent);
+  transition: box-shadow .3s ease, background-color .3s ease;
+
+  &.is-scrolled {
+    background: var(--z-ground);
+    box-shadow: 0 1px 0 var(--z-grout);
+  }
+
+  > .container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.z-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  text-decoration: none;
+  color: var(--z-ink);
+  flex-shrink: 0;
+
+  img { width: 34px; height: 34px; }
+
+  .name {
+    display: block;
+    font-family: var(--z-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: .02em;
+    line-height: 1;
+    color: var(--z-ink);
+  }
+
+  .sub {
+    display: block;
+    font-family: var(--z-display);
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .34em;
+    color: var(--z-rh);
+    margin-top: .3rem;
+  }
+
+  &:hover { color: var(--z-ink); }
+}
+
+.z-nav {
+  display: none;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  gap: .25rem;
+
+  @media (min-width: 1200px) { display: flex; }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .55rem .8rem;
+    border-radius: var(--z-radius);
+    font-family: var(--z-display);
+    font-weight: 500;
+    font-size: .95rem;
+    color: var(--z-text);
+    text-decoration: none;
+    transition: color .2s, background-color .2s;
+
+    &:hover { color: var(--z-ink); background: color-mix(in oklab, var(--z-ink) 5%, transparent); }
+    &.active { color: var(--z-ink); }
+    &.active .z-chip { transform: rotate(45deg) scale(1.2); }
+    .z-chip { width: .55em; height: .55em; transition: transform .3s var(--z-ease); }
+  }
+}
+
+.z-header-actions {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-left: auto;
+
+  @media (min-width: 1200px) { margin-left: 0; }
+}
+
+.z-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 0;
+  border-radius: var(--z-radius);
+  background: transparent;
+  color: var(--z-ink);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background-color .2s;
+
+  &:hover { background: color-mix(in oklab, var(--z-ink) 7%, transparent); }
+}
+
+.z-burger { @media (min-width: 1200px) { display: none; } }
+.z-hide-mobile { @media (max-width: 767.98px) { display: none !important; } }
+
+.z-mobile-nav {
+  position: fixed;
+  inset: var(--z-header-h) 0 0 0;
+  z-index: 1029;
+  background: var(--z-ground);
+  padding: 1.5rem 1.25rem 2rem;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity .25s ease, transform .35s var(--z-ease), visibility 0s .35s;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity .25s ease, transform .35s var(--z-ease);
+  }
+
+  @media (min-width: 1200px) { display: none; }
+
+  a.z-mobile-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--z-grout);
+    font-family: var(--z-display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    color: var(--z-ink);
+    text-decoration: none;
+  }
+
+  .z-mobile-group {
+    font-family: var(--z-display);
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--z-muted);
+    margin: 1.75rem 0 .25rem;
+  }
+}
+
+// ─────────────────────────── Pied de page ───────────────────────────
+
+.z-footer {
+  background: var(--z-night);
+  color: #aeb5d6;
+  padding: clamp(3.5rem, 3rem + 3vw, 6rem) 0 2rem;
+  position: relative;
+
+  // Frise de tesselles aux couleurs des trois applications
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg,
+      #2338a8 0 33.33%, #12808f 33.33% 66.66%, #c3334f 66.66% 100%);
+  }
+
+  .z-brand .name { color: #fff; }
+
+  h4 {
+    font-family: var(--z-display);
+    font-size: .85rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin-bottom: .55rem; }
+
+  a {
+    color: #c9cfea;
+    text-decoration: none;
+    &:hover { color: #fff; text-decoration: underline; }
+  }
+
+  .z-footer-cta {
+    font-family: var(--z-display);
+    font-weight: 600;
+    font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+    letter-spacing: -.03em;
+    line-height: 1.1;
+    color: #fff;
+    max-width: 22ch;
+  }
+
+  .z-footer-bottom {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    font-size: .85rem;
+    color: #8f97bd;
+  }
+}
+
+// ─────────────────────────── Mouvement réduit ───────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .z-site *, .z-site *::before, .z-site *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

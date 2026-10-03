@@ -1,19 +1,19 @@
-<header class="rf-header" [class.is-scrolled]="scrolled()" [class.is-open]="open()">
+<header class="z-header" [class.is-scrolled]="scrolled()">
   <div class="container">
-    <a class="rf-brand" routerLink="/" [attr.aria-label]="site.nom + ', accueil'">
+    <a class="z-brand" routerLink="/" [attr.aria-label]="site.nom + ', accueil'">
       <img src="assets/rfidia/brand/ring.png" alt="" width="34" height="34">
       <span>
-        <span class="rf-brand-name">{{ site.nom }}</span>
-        <span class="rf-brand-sub">TECHNOLOGY</span>
+        <span class="name">{{ site.nom }}</span>
+        <span class="sub">TECHNOLOGY</span>
       </span>
     </a>
 
-    <ul class="rf-nav" aria-label="Navigation principale">
+    <ul class="z-nav" aria-label="Navigation principale">
       @for (l of liens; track l.lien) {
         <li>
           <a [routerLink]="l.lien" routerLinkActive="active">
             @if (l.couleur) {
-              <span class="rf-dot" [style.--c]="l.couleur"></span>
+              <span class="z-chip" [style.--c]="l.couleur"></span>
             }
             {{ l.label }}
           </a>
@@ -21,27 +21,27 @@
       }
     </ul>
 
-    <div class="rf-header-actions">
-      <button type="button" class="rf-icon-btn" (click)="themeService.basculer()"
+    <div class="z-header-actions">
+      <button type="button" class="z-icon-btn" (click)="themeService.basculer()"
         [attr.aria-label]="themeService.theme() === 'dark' ? 'Passer en thème clair' : 'Passer en thème sombre'">
         <i class="bi" [class.bi-sun]="themeService.theme() === 'dark'" [class.bi-moon-stars]="themeService.theme() !== 'dark'"></i>
       </button>
-      <a [href]="site.connexion" class="btn btn-rf-ghost btn-sm px-3 py-2 mb-0 rf-hide-mobile">Connexion</a>
-      <a routerLink="/demonstration" class="btn btn-primary btn-sm px-3 py-2 mb-0 rf-hide-mobile">Demander une démo</a>
-      <button type="button" class="rf-icon-btn rf-burger" (click)="basculerMenu()" [attr.aria-expanded]="open()"
-        aria-controls="rf-mobile-nav" [attr.aria-label]="open() ? 'Fermer le menu' : 'Ouvrir le menu'">
+      <a [href]="site.connexion" class="z-btn z-btn--ghost z-btn--sm z-hide-mobile">Connexion</a>
+      <a routerLink="/demonstration" class="z-btn z-btn--sm z-hide-mobile">Demander une démo</a>
+      <button type="button" class="z-icon-btn z-burger" (click)="basculerMenu()" [attr.aria-expanded]="open()"
+        aria-controls="z-mobile-nav" [attr.aria-label]="open() ? 'Fermer le menu' : 'Ouvrir le menu'">
         <i class="bi" [class.bi-list]="!open()" [class.bi-x-lg]="open()"></i>
       </button>
     </div>
   </div>
 </header>
 
-<nav class="rf-mobile-nav" id="rf-mobile-nav" [class.is-open]="open()" [attr.aria-hidden]="!open()" aria-label="Menu mobile">
+<nav class="z-mobile-nav" id="z-mobile-nav" [class.is-open]="open()" [attr.aria-hidden]="!open()" aria-label="Menu mobile">
   @for (l of liens; track l.lien) {
-    <a class="rf-mobile-link" [routerLink]="l.lien" [attr.tabindex]="open() ? 0 : -1">
-      <span class="d-inline-flex align-items-center gap-2">
+    <a class="z-mobile-link" [routerLink]="l.lien" [attr.tabindex]="open() ? 0 : -1">
+      <span class="d-inline-flex align-items-center gap-3">
         @if (l.couleur) {
-          <span class="rf-dot" [style.--c]="l.couleur"></span>
+          <span class="z-chip" [style.--c]="l.couleur"></span>
         }
         {{ l.label }}
       </span>
@@ -49,7 +49,12 @@
     </a>
   }
   <div class="d-grid gap-2 mt-4">
-    <a routerLink="/demonstration" class="btn btn-primary btn-lg" [attr.tabindex]="open() ? 0 : -1">Demander une démonstration</a>
-    <a [href]="site.connexion" class="btn btn-rf-ghost btn-lg" [attr.tabindex]="open() ? 0 : -1">Connexion</a>
+    <a routerLink="/demonstration" class="z-btn z-btn--lg" [attr.tabindex]="open() ? 0 : -1">Demander une démonstration</a>
+    <a [href]="site.connexion" class="z-btn z-btn--ghost z-btn--lg" [attr.tabindex]="open() ? 0 : -1">Connexion</a>
   </div>
+  <p class="z-muted z-small mt-4 mb-0">
+    @for (t of site.contact.telephones; track t; let dernier = $last) {
+      <a [href]="'tel:' + t.replaceAll(' ', '')" [attr.tabindex]="open() ? 0 : -1">{{ t }}</a>@if (!dernier) { · }
+    }
+  </p>
 </nav>

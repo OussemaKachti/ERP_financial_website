@@ -1,58 +1,59 @@
-<footer class="rf-footer">
+<footer class="z-footer">
   <div class="container">
     <div class="row g-5">
-      <div class="col-lg-4">
-        <a class="rf-brand mb-3" routerLink="/">
+      <div class="col-lg-5">
+        <p class="z-footer-cta mb-4">Votre entreprise, d’un seul tenant.</p>
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <a routerLink="/demonstration" class="z-btn z-btn--light">Demander une démonstration</a>
+          <a [href]="site.inscription" class="z-btn z-btn--ghost" style="--z-ink: #fff">Essayer gratuitement</a>
+        </div>
+        <a class="z-brand" routerLink="/" [attr.aria-label]="site.nom + ', accueil'">
           <img src="assets/rfidia/brand/ring.png" alt="" width="34" height="34">
           <span>
-            <span class="rf-brand-name">{{ site.nom }}</span>
-            <span class="rf-brand-sub">TECHNOLOGY</span>
+            <span class="name">{{ site.nom }}</span>
+            <span class="sub">TECHNOLOGY</span>
           </span>
         </a>
-        <p class="rf-muted mb-0 pe-lg-5">
-          Facturation, stock, comptabilité, prospection terrain et paie pour les PME de Tunisie et d’Algérie,
-          avec un seul compte.
-        </p>
       </div>
 
       <div class="col-6 col-md-3 col-lg-2">
         <h4>Applications</h4>
         <ul>
-          <li><a routerLink="/finance">Finance</a></li>
-          <li><a routerLink="/crm">CRM terrain</a></li>
-          <li><a routerLink="/rh">Ressources humaines</a></li>
-          <li><a routerLink="/tarifs">Tarifs</a></li>
+          @for (l of applications; track l.lien) {
+            <li><a [routerLink]="l.lien">{{ l.label }}</a></li>
+          }
         </ul>
       </div>
 
       <div class="col-6 col-md-3 col-lg-2">
-        <h4>Commencer</h4>
+        <h4>Découvrir</h4>
         <ul>
-          <li><a routerLink="/demonstration">Demander une démonstration</a></li>
-          <li><a [href]="site.inscription">Essayer gratuitement</a></li>
+          @for (l of decouvrir; track l.lien) {
+            <li><a [routerLink]="l.lien">{{ l.label }}</a></li>
+          }
           <li><a [href]="site.connexion">Connexion</a></li>
         </ul>
       </div>
 
-      <div class="col-md-6 col-lg-4">
-        <h4>Accès directs</h4>
-        <ul>
-          <li><a [href]="site.apps.finance">finances.tagstream.com.tn</a></li>
-          <li><a [href]="site.apps.crm">crm.tagstream.com.tn</a></li>
-          <li><a [href]="site.apps.rh">rh.tagstream.com.tn</a></li>
-        </ul>
-        <h4 class="mt-4">Contact</h4>
+      <div class="col-md-6 col-lg-3">
+        <h4>Nous joindre</h4>
         <ul>
           @for (t of site.contact.telephones; track t) {
-            <li><a [href]="'tel:' + t.replaceAll(' ', '')">{{ t }}</a></li>
+            <li><a [href]="'tel:' + t.replaceAll(' ', '')" class="z-num">{{ t }}</a></li>
           }
           <li><a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a></li>
-          <li class="rf-muted">{{ site.contact.adresse.join(', ') }}</li>
+          <li class="mt-3">
+            <a [href]="site.contact.carte" target="_blank" rel="noopener">
+              @for (ligne of site.contact.adresse; track ligne) {
+                {{ ligne }}<br>
+              }
+            </a>
+          </li>
         </ul>
       </div>
     </div>
 
-    <div class="rf-footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+    <div class="z-footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
       <span>© {{ annee }} {{ site.editeur }}. Tous droits réservés.</span>
       <span>Prix hors taxes · TVA 19 % et timbre fiscal en sus.</span>
     </div>
