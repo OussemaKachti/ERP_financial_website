@@ -12,6 +12,7 @@ export const NAV_PRINCIPALE: Lien[] = [
   { lien: '/rh', label: 'RH', couleur: 'var(--z-rh)' },
   { lien: '/solutions', label: 'Solutions' },
   { lien: '/tarifs', label: 'Tarifs' },
+  { lien: '/contact', label: 'Contact' },
 ];
 
 export const NAV_APPLICATIONS: Lien[] = [
@@ -23,5 +24,7 @@ export const NAV_APPLICATIONS: Lien[] = [
 
 export const NAV_DECOUVRIR: Lien[] = [
   { lien: '/solutions', label: 'Solutions par métier' },
+  { lien: '/questions', label: 'Questions fréquentes' },
+  { lien: '/contact', label: 'Contact' },
   { lien: '/demonstration', label: 'Demander une démonstration' },
 ];

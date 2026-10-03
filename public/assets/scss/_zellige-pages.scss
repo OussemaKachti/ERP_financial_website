@@ -305,3 +305,184 @@
 .is-large .z-sol strong { font-size: 1.6rem; letter-spacing: -.02em; }
 
 .z-sol-grid--4 { @media (min-width: 992px) { grid-template-columns: repeat(4, 1fr); } }
+
+// ─────────────────────────── Contact ───────────────────────────
+
+.z-contact {
+  @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 1200px) { grid-template-columns: 1.3fr 1fr 1fr 1.2fr; }
+}
+
+.z-contact-main {
+  padding: 2rem;
+  color: #c9cfea;
+
+  h2 { color: #fff; margin-bottom: 1rem; }
+}
+
+.z-contact-big {
+  display: block;
+  font-family: var(--z-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  letter-spacing: -.02em;
+  color: #fff;
+  text-decoration: none;
+
+  &:hover { color: var(--z-ocre); }
+}
+
+.z-contact-cell {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  color: var(--z-text);
+  text-decoration: none;
+
+  > .bi { font-size: 1.5rem; color: var(--z-ocre); margin-bottom: 1rem; }
+  a { color: var(--z-ink); font-weight: 500; }
+}
+
+a.z-contact-cell:hover { background: var(--z-ground); }
+
+.z-contact-demo {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+
+  p { color: rgba(255, 255, 255, .88); }
+}
+
+.z-direct {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: grid;
+    grid-template-columns: auto 6rem 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--z-grout);
+    font-family: var(--z-display);
+    font-weight: 600;
+    color: var(--z-ink);
+  }
+
+  a { font-family: var(--z-body); font-weight: 400; color: var(--z-text); }
+}
+
+// ─────────────────────────── Questions ───────────────────────────
+
+.z-faq-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+
+  @media (min-width: 992px) {
+    position: sticky;
+    top: calc(var(--z-header-h) + 2rem);
+    flex-direction: column;
+  }
+
+  a {
+    padding: .55rem .9rem;
+    border-radius: var(--z-radius);
+    font-family: var(--z-display);
+    font-weight: 500;
+    color: var(--z-text);
+    text-decoration: none;
+
+    &:hover { background: var(--z-ground-2); color: var(--z-ink); }
+  }
+}
+
+.z-faq-theme {
+  scroll-margin-top: calc(var(--z-header-h) + 2rem);
+  margin-bottom: 3.5rem;
+
+  .z-h3 { margin-bottom: 1rem; }
+}
+
+.z-faq-more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 0 0 1px var(--z-grout), var(--z-bevel);
+
+  a.z-num { color: var(--z-ink); font-weight: 600; }
+}
+
+// ─────────────────────────── Démonstration ───────────────────────────
+
+.z-pick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+
+  label {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .6rem .95rem;
+    border-radius: var(--z-radius);
+    background: var(--z-ground);
+    box-shadow: inset 0 0 0 1.5px var(--z-grout);
+    font-family: var(--z-display);
+    font-weight: 500;
+    font-size: .92rem;
+    color: var(--z-ink);
+    cursor: pointer;
+    margin: 0;
+    transition: box-shadow .2s, background-color .2s;
+
+    &:has(input:checked) { background: color-mix(in oklab, var(--c) 10%, var(--z-paper)); box-shadow: inset 0 0 0 1.5px var(--c); }
+    input { accent-color: var(--c); }
+  }
+}
+
+.z-after {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0 0;
+  counter-reset: apres;
+
+  li {
+    position: relative;
+    padding: 0 0 1.4rem 3rem;
+    counter-increment: apres;
+
+    &::before {
+      content: counter(apres);
+      position: absolute;
+      left: .35rem;
+      top: .15rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      display: grid;
+      place-items: center;
+      background: var(--z-ink);
+      color: var(--z-ground);
+      font-family: var(--z-display);
+      font-weight: 700;
+      font-size: .8rem;
+      transform: rotate(45deg);
+      border-radius: 2px;
+    }
+
+    strong { display: block; font-family: var(--z-display); color: var(--z-ink); font-weight: 600; }
+    span { font-size: .95rem; }
+  }
+}
+
+.z-success {
+  text-align: center;
+  padding: 2rem 0;
+
+  .bi { display: inline-grid; place-items: center; width: 3.5rem; height: 3.5rem; font-size: 1.8rem; color: #fff; background: var(--z-crm); border-radius: var(--z-radius); transform: rotate(45deg); margin-bottom: 1.5rem; }
+  .bi::before { transform: rotate(-45deg); }
+}

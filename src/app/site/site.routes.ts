@@ -54,6 +54,22 @@ export const SITE_ROUTES: Routes = [
         },
       },
       {
+        path: 'contact',
+        loadComponent: () => import('./pages/contact/contact-page').then((m) => m.ContactPage),
+        data: {
+          titre: 'Contact',
+          description: 'Appelez, écrivez ou passez nous voir à Ariana : l’équipe RFIDIA répond aux PME de Tunisie et d’Algérie.',
+        },
+      },
+      {
+        path: 'questions',
+        loadComponent: () => import('./pages/faq/faq-page').then((m) => m.FaqPage),
+        data: {
+          titre: 'Questions fréquentes',
+          description: 'Démarrage, applications, données, langues, devises et tarifs : les réponses aux questions fréquentes sur RFIDIA.',
+        },
+      },
+      {
         path: '**',
         loadComponent: () => import('./pages/not-found/not-found').then((m) => m.NotFound),
         data: { titre: 'Page introuvable' },

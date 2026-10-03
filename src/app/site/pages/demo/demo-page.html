@@ -1,50 +1,59 @@
-<section class="rf-page-hero">
+<section class="z-page-hero">
   <div class="container">
+    <ol class="z-crumbs">
+      <li><a routerLink="/">Accueil</a></li>
+      <li aria-current="page">Démonstration</li>
+    </ol>
     <div class="row g-5 align-items-start">
       <div class="col-lg-5">
-        <span class="rf-eyebrow">Démonstration</span>
-        <h1 class="rf-display mb-4" style="font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.4rem)">
-          Voyons ensemble comment {{ site.nom }} s’adapte à <span class="rf-serif-em">votre entreprise.</span>
-        </h1>
-        <p class="rf-lead mb-5">
+        <h1 class="z-h1">Montrez-nous une facture. On vous montre la suite.</h1>
+        <p class="z-lead mb-4">
           Une démonstration sur vos propres cas — vos documents, vos circuits de validation, votre équipe —
           vaut mieux qu’une longue description.
         </p>
 
-        <div class="rf-feature-point">
+        <div class="z-point">
           <h3>Sur vos documents</h3>
           <p>Une facture, un devis, un bulletin de paie : nous partons de ce que vous faites aujourd’hui.</p>
         </div>
-        <div class="rf-feature-point">
-          <h3>Avec les modules qui vous concernent</h3>
+        <div class="z-point">
+          <h3>Avec les applications qui vous concernent</h3>
           <p>Finance, CRM terrain ou RH : la démonstration suit vos priorités, pas un script.</p>
         </div>
-        <div class="rf-feature-point border-bottom" style="border-color: var(--rf-line) !important">
+        <div class="z-point">
           <h3>Et la reprise de l’existant</h3>
           <p>Clients, articles, salariés : nous regardons comment démarrer sans repartir de zéro.</p>
         </div>
 
-        <p class="rf-muted small mt-4 mb-0">
-          Vous préférez essayer seul ?
-          <a [href]="site.inscription" class="fw-semibold">Créez votre compte</a> et démarrez la période d’essai gratuite.
+        <h2 class="z-h3 mt-5">Après votre demande</h2>
+        <ol class="z-after">
+          <li><strong>Nous vous rappelons</strong><span>pour convenir d’un créneau et des documents à préparer.</span></li>
+          <li><strong>Nous vous montrons l’application</strong><span>sur vos cas, avec les applications qui vous concernent.</span></li>
+          <li><strong>Vous décidez, sans engagement</strong><span>période d’essai gratuite, puis abonnement mensuel ou annuel.</span></li>
+        </ol>
+
+        <p class="z-muted z-small mb-0">
+          Pressé ? Appelez le
+          <a [href]="'tel:' + site.contact.telephones[0].replaceAll(' ', '')" class="z-num z-ink">{{ site.contact.telephones[0] }}</a>,
+          ou <a [href]="site.inscription" class="z-ink">créez votre compte</a> et démarrez seul.
         </p>
       </div>
 
       <div class="col-lg-7">
-        <div class="rf-form ms-lg-4">
+        <div class="z-tile z-form ms-lg-4">
           @switch (etat()) {
             @case ('envoye') {
-              <div class="rf-success" role="status">
+              <div class="z-success" role="status">
                 <i class="bi bi-check2"></i>
-                <h2 class="rf-h3">Merci, votre demande est bien partie.</h2>
-                <p class="rf-muted mb-4">Nous vous rappelons pour convenir d’un créneau.</p>
-                <a routerLink="/" class="btn btn-rf-ghost mb-0">Retour à l’accueil</a>
+                <h2 class="z-h3">Merci, votre demande est bien partie.</h2>
+                <p class="z-muted mb-4">Nous vous rappelons pour convenir d’un créneau.</p>
+                <a routerLink="/" class="z-btn z-btn--ghost">Retour à l’accueil</a>
               </div>
             }
             @default {
               <form [formGroup]="form" (ngSubmit)="envoyer()" novalidate>
-                <h2 class="rf-h3 mb-1">Demander une démonstration</h2>
-                <p class="rf-muted small mb-4">Trois champs obligatoires, moins d’une minute.</p>
+                <h2 class="z-h3 mb-1">Demander une démonstration</h2>
+                <p class="z-muted z-small mb-4">Trois champs obligatoires, moins d’une minute.</p>
 
                 <div class="row g-3">
                   <div class="col-sm-6">
@@ -94,9 +103,9 @@
                   <div class="col-12">
                     <fieldset>
                       <legend class="form-label">Modules qui vous intéressent</legend>
-                      <div class="rf-module-pick">
+                      <div class="z-pick">
                         @for (mod of modules; track mod.key) {
-                          <label [style.--c]="mod.couleur">
+                          <label [style.--c]="email[mod.key]">
                             <input type="checkbox" [formControlName]="mod.key">
                             {{ mod.nomLong }}
                           </label>
@@ -106,26 +115,26 @@
                   </div>
 
                   <div class="col-12">
-                    <label class="form-label" for="message">Votre contexte <span class="rf-muted fw-normal">(facultatif)</span></label>
+                    <label class="form-label" for="message">Votre contexte <span class="z-muted fw-normal">(facultatif)</span></label>
                     <textarea id="message" class="form-control" rows="4" formControlName="message"
                       placeholder="Votre activité, vos outils actuels, ce que vous voulez voir en priorité…"></textarea>
                   </div>
                 </div>
 
                 @if (etat() === 'erreur') {
-                  <div class="alert alert-danger small mt-4 mb-0" role="alert">
+                  <div class="alert alert-danger z-small mt-4 mb-0" role="alert">
                     La demande n’a pas pu être envoyée. Réessayez dans un instant.
                   </div>
                 }
 
-                <button type="submit" class="btn btn-primary btn-lg w-100 mt-4 mb-0" [disabled]="etat() === 'envoi'">
+                <button type="submit" class="z-btn z-btn--lg w-100 mt-4" [disabled]="etat() === 'envoi'">
                   @if (etat() === 'envoi') {
                     <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Envoi…
                   } @else {
                     Envoyer la demande
                   }
                 </button>
-                <p class="rf-muted small text-center mt-3 mb-0">
+                <p class="z-muted z-small text-center mt-3 mb-0">
                   Vos coordonnées servent uniquement à organiser la démonstration.
                 </p>
               </form>

@@ -4,7 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { SITE } from '../../site.config';
-import { MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
+import { EMAIL, MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
 
 type Etat = 'saisie' | 'envoi' | 'envoye' | 'erreur';
 
@@ -21,6 +21,7 @@ export class DemoPage {
 
   protected readonly site = SITE;
   protected readonly modules = MODULE_ORDER.map((k) => MODULES[k]);
+  protected readonly email = EMAIL;
   protected readonly etat = signal<Etat>('saisie');
   protected readonly tente = signal(false);
 
@@ -51,7 +52,7 @@ export class DemoPage {
     this.tente.set(true);
     if (this.form.invalid) {
       this.form.markAllAsTouched();
-      document.querySelector<HTMLElement>('.rf-form .is-invalid')?.focus();
+      document.querySelector<HTMLElement>('.z-form .is-invalid')?.focus();
       return;
     }
 
