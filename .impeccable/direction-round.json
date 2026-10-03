@@ -1,0 +1,130 @@
+{
+  "title": "Choisir l'univers visuel du site RFIDIA",
+  "question": "Le tirage a désigné « Zellige ». Gardez-le, prenez une alternative, ou relancez.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Zellige",
+      "kicker": "THE ROLL",
+      "lineage": "Le zellige maghrébin : tesselles émaillées taillées à la main, assemblées en étoiles",
+      "thesis": "Trois applications taillées comme les tesselles d'un zellige : chacune a sa couleur, ensemble elles forment l'étoile.",
+      "palette": ["#F2F4F6", "#1B2B7A", "#2BA6B4", "#D7425E", "#F0A080"],
+      "materials": ["émail brillant, chaque tesselle d'une teinte légèrement différente", "joints fins qui servent de grille", "géométrie de l'étoile à huit branches"],
+      "viewport": "Titre à gauche et bouton démo ; à droite une étoile de zellige vivante où les tesselles Finance (cobalt), CRM (turquoise) et RH (rose) s'emboîtent autour de l'anneau RFIDIA.",
+      "risk": "Bascule dans la carte postale orientaliste si l'ornement décore au lieu de structurer : la géométrie doit rester une grille, jamais un papier peint.",
+      "raised": [
+        { "from": "challenger-riso", "raise": "Là où deux modules se recouvrent naît une troisième couleur : la donnée partagée a sa propre teinte." },
+        { "from": "challenger-steprow", "raise": "Un seul joint parcourt la page comme une ligne de temps ; un repère lumineux montre où en est le document (devis → facture → encaissement)." },
+        { "from": "challenger-obi", "raise": "Une bande dense de faits réels (TVA, timbre, CNSS, millime, DZD…) traverse une surface calme." },
+        { "from": "challenger-flagship", "raise": "La vidéo commerciale tient l'écran en plein cadre, lentement, sans boîte autour." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Le plan de réseau",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Plans de métro et du TGM : lignes de couleur et stations",
+      "thesis": "Les trois applications dessinées comme les lignes d'un réseau : les documents voyagent de station en station.",
+      "palette": ["#FFFFFF", "#1F2553", "#5D6CF0", "#3BAFC2", "#E04D68"],
+      "materials": ["traits épais aux angles à 45°", "pastilles de station", "signalétique de quai"],
+      "viewport": "Un grand plan où les lignes Finance, CRM et RH se croisent à la station « un seul compte » ; le titre posé comme un panneau de quai.",
+      "risk": "Familier : le plan de métro est la métaphore « produits connectés » où aboutissent la plupart des sites de la catégorie."
+    },
+    {
+      "id": "challenger-riso",
+      "label": "Risographie",
+      "verdict": "declined",
+      "lineage": "Impression riso, encres spot qui se décalent",
+      "thesis": "Le site imprimé en deux encres fluo mal repérées sur papier.",
+      "palette": ["#F1ECE2", "#FF48B0", "#0078BF", "#FFE800"],
+      "materials": ["grain", "surimpression multiply"],
+      "viewport": "Formes découpées roses et bleues décalées sous le titre.",
+      "risk": "Fanzine : peu crédible pour un DAF qui confie sa comptabilité.",
+      "case": "Le dirigeant de PME ne s'y reconnaît pas ; la clarté produit tient mal.",
+      "kept": "Le mélange des encres là où deux modules se recouvrent.",
+      "hero": "https://impeccable.style/worlds/cards/risograph-web-system-hero.webp"
+    },
+    {
+      "id": "challenger-steprow",
+      "label": "Boîte à rythmes",
+      "verdict": "declined",
+      "lineage": "Séquenceur 16 pas des années 80",
+      "thesis": "Le cycle devis, facture, encaissement comme une rangée de pas qui s'allument.",
+      "palette": ["#26262A", "#E2442F", "#F28C28", "#F5D23C", "#F2F2EE"],
+      "materials": ["touches plastique", "LED", "sérigraphie"],
+      "viewport": "Une rangée de 16 touches où chaque étape du document s'allume au tempo.",
+      "risk": "Ludique au point de faire douter du sérieux comptable.",
+      "case": "Rien dans le quotidien d'une PME maghrébine ne passe par cet objet.",
+      "kept": "Une seule ligne ininterrompue et un repère qui dit « où on en est ».",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-drum-machine-step-row-hero.webp"
+    },
+    {
+      "id": "challenger-obi",
+      "label": "Pochette à obi",
+      "verdict": "declined",
+      "lineage": "Pochettes de disques japonaises et leur bande obi",
+      "thesis": "Une face presque vide, une bande saturée de crédits qui la traverse.",
+      "palette": ["#F4F1EA", "#E8432E", "#111111"],
+      "materials": ["papier couché", "bande imprimée dense"],
+      "viewport": "L'anneau RFIDIA seul sur la face, la bande dense de fonctionnalités en bas.",
+      "risk": "Référence étrangère au public, lecture difficile sur mobile.",
+      "case": "Forte en caractère mais sans ancrage chez le public visé.",
+      "kept": "La collision entre une bande dense de faits et une surface calme.",
+      "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-shibuya-boutique-sleeve-hero.webp"
+    },
+    {
+      "id": "challenger-flagship",
+      "label": "Vitrine de maison de mode",
+      "verdict": "declined",
+      "lineage": "Sites des grandes maisons, lookbooks plein cadre",
+      "thesis": "Chaque application montrée comme un look, en plein cadre et en silence.",
+      "palette": ["#F5F3EE", "#111111", "#8C6A43"],
+      "materials": ["photographie plein cadre", "grand serif"],
+      "viewport": "Une capture plein écran, un seul mot immense en bas.",
+      "risk": "Luxe distant : contredit la proximité attendue par une PME.",
+      "case": "Belle, mais elle cache l'offre et l'action.",
+      "kept": "La vidéo tenue en plein cadre, sans boîte.",
+      "hero": "https://impeccable.style/worlds/cards/luxury-fashion-flagship-hero.webp"
+    },
+    {
+      "id": "challenger-cloud",
+      "label": "Nuage irisé",
+      "verdict": "declined",
+      "lineage": "Irisation au bord des nuages",
+      "thesis": "Une page blanche dont seules les arêtes s'irisent.",
+      "palette": ["#FFFFFF", "#5B6573", "#9FE3C9", "#F3A6C0", "#A88BEB"],
+      "materials": ["bords spectraux", "sans humaniste fin"],
+      "viewport": "Un grand blanc, une frange colorée autour de l'écran produit.",
+      "risk": "Trop éthéré pour vendre une suite de gestion.",
+      "case": "Ni l'identification ni la clarté ne s'améliorent.",
+      "kept": "La couleur réservée aux bords, le texte toujours achromatique.",
+      "hero": "https://impeccable.style/worlds/cards/clouds-storms-auroras-iridescent-cloud-edge-hero.webp"
+    },
+    {
+      "id": "challenger-quilt",
+      "label": "Courtepointe",
+      "verdict": "declined",
+      "lineage": "Patchwork de tissus et de mémoires",
+      "thesis": "Chaque fonction comme un carré de tissu cousu aux autres.",
+      "palette": ["#7C93B5", "#1C1C1C", "#C8102E", "#6B4A2B"],
+      "materials": ["tissu usé", "point de couture"],
+      "viewport": "Une grille de carrés inégaux reliés par des coutures rouges.",
+      "risk": "Domestique et nostalgique, loin d'un logiciel de gestion.",
+      "case": "Le public ne s'y projette pas.",
+      "kept": "Chaque légende cousue à son image : la provenance visible.",
+      "hero": "https://impeccable.style/worlds/cards/textiles-weave-drape-fashion-memory-quilt-atlas-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "label": "Le standard de la catégorie",
+    "thesis": "Le site SaaS d'ERP que tout le monde publie, exécuté sans faute.",
+    "palette": ["#FFFFFF", "#111827", "#6D4AFF"],
+    "materials": ["grille propre", "tableau de bord flottant"],
+    "viewport": "Titre à gauche, maquette de tableau de bord à droite, logos clients dessous.",
+    "risk": "Indiscernable de Swifto et des autres, par construction."
+  },
+  "steer": true
+}

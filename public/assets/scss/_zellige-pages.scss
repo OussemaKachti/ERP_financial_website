@@ -277,34 +277,8 @@
   &:hover .bi { transform: translateX(4px); }
 }
 
-.z-sol-grid {
-  @media (min-width: 768px) { grid-template-columns: repeat(3, 1fr); }
 
-  &.is-large { @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); } }
-}
 
-.z-sol {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  padding: 1.75rem;
-  text-decoration: none;
-  color: var(--z-text);
-  transition: background-color .3s var(--z-ease);
-
-  .bi { font-size: 1.6rem; color: var(--z-ocre); margin-bottom: .5rem; }
-  strong { font-family: var(--z-display); font-size: 1.25rem; color: var(--z-ink); }
-  span { font-size: .95rem; }
-
-  &:hover { background: var(--z-ground); }
-
-  .z-sol-apps { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
-}
-
-.is-large .z-sol { padding: 2.5rem; min-height: 16rem; }
-.is-large .z-sol strong { font-size: 1.6rem; letter-spacing: -.02em; }
-
-.z-sol-grid--4 { @media (min-width: 992px) { grid-template-columns: repeat(4, 1fr); } }
 
 // ─────────────────────────── Contact ───────────────────────────
 

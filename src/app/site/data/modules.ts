@@ -29,7 +29,6 @@ export interface Point {
 export interface ModuleSection {
   id: string;
   nav: string;
-  kicker: string;
   titre: string;
   intro: string;
   points?: Point[];
@@ -108,7 +107,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'pilotage',
         nav: 'Pilotage',
-        kicker: 'Pilotage',
         titre: 'Savoir où en est l’entreprise, sans attendre la clôture',
         intro:
           'Dès l’ouverture, le dirigeant voit ce qui est entré, ce qui est sorti et ce qu’il reste. Chaque indicateur est comparé à la période précédente pour repérer tout de suite une tendance qui se dégrade.',
@@ -130,7 +128,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'ventes',
         nav: 'Ventes',
-        kicker: 'Ventes et facturation',
         titre: 'Des documents commerciaux justes, envoyés à temps',
         intro:
           'Devis, factures, avoirs, bons de livraison, bons de sortie et notes de débours sont réunis. Un devis accepté devient facture ou bon de livraison sans rien ressaisir, et chaque type de document suit sa propre numérotation.',
@@ -148,7 +145,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'achats',
         nav: 'Achats',
-        kicker: 'Achats et fournisseurs',
         titre: 'Moins de saisie, moins d’erreurs sur les dépenses',
         intro:
           'Déposez le PDF ou prenez la facture en photo depuis le téléphone : fournisseur, numéro, date, lignes et montants sont lus automatiquement. Il ne reste qu’à vérifier.',
@@ -171,7 +167,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'stock',
         nav: 'Stock',
-        kicker: 'Stock',
         titre: 'Un stock que l’on peut enfin croire',
         intro:
           'Les quantités se suivent dépôt par dépôt. Une facture ou un bon de livraison retire la marchandise du dépôt choisi ; une réception l’y ajoute.',
@@ -193,7 +188,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'comptabilite',
         nav: 'Comptabilité',
-        kicker: 'Rapports et comptabilité',
         titre: 'Des chiffres prêts pour votre expert-comptable',
         intro:
           'Compte de résultat, synthèse de TVA, encaissements : les rapports se lisent sur la période de votre choix et s’exportent.',
@@ -273,7 +267,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'visites',
         nav: 'Visites terrain',
-        kicker: 'Visites terrain',
         titre: 'Ce qui se passe chez le client, visible le jour même',
         intro:
           'Une nouvelle visite se crée en trois étapes : le client et les personnes rencontrées, le déroulé de la visite, puis la suite à donner. La création est confirmée par la position GPS du commercial.',
@@ -291,7 +284,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'prospects',
         nav: 'Prospects et devis',
-        kicker: 'Prospects et devis',
         titre: 'Un portefeuille suivi, des devis qui aboutissent',
         intro:
           'Chaque prospect avance d’un statut à l’autre : à contacter, contacté, rendez-vous pris, préqualifié. Passer à « rendez-vous pris » propose de planifier la visite correspondante.',
@@ -313,7 +305,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'organisation',
         nav: 'Organisation',
-        kicker: 'Organisation de l’équipe',
         titre: 'Un planning partagé, des tâches qui ne se perdent pas',
         intro:
           'Rendez-vous planifiés, confirmés ou reportés, filtrables par période et par statut, avec des rappels avant chaque visite et des notifications dans l’application.',
@@ -335,7 +326,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'pilotage',
         nav: 'Pilotage',
-        kicker: 'Pilotage commercial',
         titre: 'Voir où l’on vend, et où l’on pourrait vendre',
         intro:
           'Visites, rendez-vous, prospects, montants engagés, probabilité moyenne de signature et actions acceptées sont recalculés à chaque ouverture. Les graphiques montrent l’activité mensuelle, la charge par jour et les entreprises les plus visitées.',
@@ -419,7 +409,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'personnel',
         nav: 'Personnel',
-        kicker: 'Personnel',
         titre: 'Un dossier à jour pour chaque salarié',
         intro:
           'Code, poste, département, coordonnées, date d’embauche et statut : l’équipe se consulte d’un coup d’œil, et chaque contrat reste attaché au salarié.',
@@ -441,7 +430,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'temps',
         nav: 'Temps de travail',
-        kicker: 'Temps de travail et absences',
         titre: 'Qui est là, qui est absent, qui part en congé',
         intro:
           'Effectif, présents, absents et taux de présence du jour : l’arrivée et le départ se pointent depuis la liste.',
@@ -464,7 +452,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'paie',
         nav: 'Paie',
-        kicker: 'Paie',
         titre: 'Vous gardez la main sur chaque décision',
         intro:
           'Choix du salarié et de la période, décisions de paie, puis aperçu du bulletin : salaire de base, brut imposable, cotisation CNSS, retenue d’impôt et net à payer.',
@@ -481,7 +468,6 @@ export const MODULES: Record<ModuleKey, ModuleContent> = {
       {
         id: 'bulletins',
         nav: 'Bulletins et comptabilité',
-        kicker: 'Bulletins, avances et comptabilité',
         titre: 'Du bulletin au virement, puis à la comptabilité',
         intro:
           'Le tableau de bord de paie donne la masse salariale, les cotisations retenues et le net versé du mois. Le bouton « Comptabiliser » génère l’écriture de paie.',

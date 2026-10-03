@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-03T12:00:00Z",
+  "title": "Design System: RFIDIA",
+  "extensions": {
+    "colorMeta": {
+      "finance-cobalt": { "role": "primary", "displayName": "Finance Cobalt", "canonical": "oklch(40.5% 0.180 268.3)", "tonalRamp": ["#02042c", "#0d185f", "#1d3096", "#3450c1", "#5172e7", "#7a99f5", "#abc2ff", "#e3eeff"] },
+      "crm-turquoise": { "role": "secondary", "displayName": "CRM Turquoise", "canonical": "oklch(55.1% 0.091 209.7)", "tonalRamp": ["#00111d", "#002e3c", "#004c5a", "#006b7a", "#268c9b", "#4faebe", "#77d5e5", "#d1f7fd"] },
+      "rh-grenade": { "role": "secondary", "displayName": "RH Grenade", "canonical": "oklch(54.9% 0.180 14.6)", "tonalRamp": ["#230002", "#500010", "#810022", "#ab163c", "#d2425b", "#e87783", "#faacb1", "#ffe4e6"] },
+      "logo-coral": { "role": "tertiary", "displayName": "Logo Coral", "canonical": "oklch(77.7% 0.106 42.6)", "tonalRamp": ["#230000", "#4a0500", "#6b2705", "#8e4729", "#b16748", "#d68869", "#f8b195", "#ffe7da"] },
+      "cobalt-night": { "role": "neutral", "displayName": "Cobalt Night", "canonical": "oklch(22.1% 0.082 271.0)", "tonalRamp": ["#04042c", "#161f4b", "#303c6b", "#4d5b8c", "#6b7bae", "#8b9cd2", "#b0c2fa", "#e4eeff"] },
+      "cobalt-night-raised": { "role": "neutral", "displayName": "Raised Night", "canonical": "oklch(27.9% 0.102 271.3)", "tonalRamp": ["#04042c", "#141c54", "#2d3a75", "#495997", "#6779ba", "#879bde", "#aec1ff", "#e4eeff"] },
+      "ink-navy": { "role": "neutral", "displayName": "Ink Navy", "canonical": "oklch(22.0% 0.062 272.3)", "tonalRamp": ["#050725", "#1a2142", "#343d61", "#515b81", "#707ba3", "#919dc6", "#b6c2ee", "#e5eeff"] },
+      "slate-text": { "role": "neutral", "displayName": "Slate Text", "canonical": "oklch(39.0% 0.050 274.9)", "tonalRamp": ["#060820", "#1d223c", "#383e5a", "#555c7a", "#747b9c", "#959dbe", "#bac2e5", "#e6edff"] },
+      "muted-slate": { "role": "neutral", "displayName": "Muted Slate", "canonical": "oklch(52.9% 0.043 275.0)", "tonalRamp": ["#07091d", "#1e2239", "#393e57", "#565c76", "#757c97", "#969dba", "#bcc3e1", "#e6edff"] },
+      "lime-plaster": { "role": "neutral", "displayName": "Lime Plaster", "canonical": "oklch(96.9% 0.003 247.9)", "tonalRamp": ["#0a0b0d", "#232426", "#3e4041", "#5c5e5f", "#7c7d7f", "#9d9fa0", "#c2c4c6", "#edeff1"] },
+      "lime-plaster-deep": { "role": "neutral", "displayName": "Deep Plaster", "canonical": "oklch(94.4% 0.008 253.9)", "tonalRamp": ["#090b0f", "#212428", "#3d4044", "#5b5e62", "#7a7e82", "#9b9fa3", "#c1c4c9", "#ebeff4"] },
+      "glaze-white": { "role": "neutral", "displayName": "Glaze White", "canonical": "oklch(100% 0 0)" },
+      "grout": { "role": "neutral", "displayName": "Grout", "canonical": "oklch(89.6% 0.013 262.4)", "tonalRamp": ["#080b11", "#21242b", "#3c4047", "#5a5e65", "#797d86", "#9a9fa7", "#bfc4cd", "#eaeff8"] },
+      "wall-text": { "role": "neutral", "displayName": "Wall Text" },
+      "dark-ground": { "role": "neutral", "displayName": "Dark Plaster (dark theme ground)" },
+      "dark-paper": { "role": "neutral", "displayName": "Dark Tile (dark theme paper)" },
+      "finance-cobalt-on-dark": { "role": "primary", "displayName": "Finance Cobalt, dark-theme text accent" },
+      "crm-turquoise-on-dark": { "role": "secondary", "displayName": "CRM Turquoise, dark-theme text accent" },
+      "rh-grenade-on-dark": { "role": "secondary", "displayName": "RH Grenade, dark-theme text accent" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page h1; hero tightens to clamp(2.6rem, 1.4rem + 4.2vw, 4.6rem)." },
+      "headline": { "displayName": "Headline", "purpose": "Section h2." },
+      "title": { "displayName": "Title", "purpose": "h3, tile names, trade rows." },
+      "lead": { "displayName": "Lead", "purpose": "Standfirst under a headline, max 38rem." },
+      "body": { "displayName": "Body", "purpose": "Running text; pretty-wrapped paragraphs." },
+      "label": { "displayName": "Label", "purpose": "Tags, nav, form labels, buttons; sentence case." },
+      "figure": { "displayName": "Figure", "purpose": "Prices and amounts in tabular figures." }
+    },
+    "shadows": [
+      { "name": "bevel", "value": "inset 0 1px 0 rgba(255,255,255,.32), inset 0 -2px 0 rgba(0,0,0,.1)", "purpose": "Glazed edge on every tile, button, chip and active segment. Dark theme: .12 / .25." },
+      { "name": "grout-ring", "value": "0 0 0 6px var(--z-grout)", "purpose": "Sets a standalone tile (window, form, simulator) in plaster." },
+      { "name": "grout-hairline", "value": "0 0 0 1px var(--z-grout)", "purpose": "Lighter frame for active tabs, roles panel, comparison table." },
+      { "name": "header-rule", "value": "0 1px 0 var(--z-grout)", "purpose": "Scrolled header and sticky sub-nav." },
+      { "name": "focus-ring", "value": "outline: 2px solid var(--z-ocre); outline-offset: 3px", "purpose": "Global keyboard focus in logo coral." },
+      { "name": "input-focus", "value": "0 0 0 3px color-mix(in oklab, var(--z-finance) 18%, transparent)", "purpose": "Field focus halo with cobalt border." }
+    ],
+    "motion": [
+      { "name": "ease-settle", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Default easing for every transition: tiles settling into place." },
+      { "name": "button-rise", "value": "transform .25s", "purpose": "Buttons and hero tiles rise 2px on hover." },
+      { "name": "sheen-sweep", "value": "transform .7s", "purpose": "One diagonal sheen crosses a button on hover." },
+      { "name": "rosette-assemble", "value": "transform 1.1s, staggered 120ms + 260ms per crown + 38ms per piece", "purpose": "Rosette pieces settle ring by ring; logo ring follows at 1.1s; sheen loops every 9s." },
+      { "name": "flow-voyage", "value": "9s loop", "purpose": "White diamond marker travels the flow joint." },
+      { "name": "obi-marquee", "value": "70s linear infinite", "purpose": "Facts band scroll; pauses on hover." },
+      { "name": "reduced-motion", "value": "durations .01ms", "purpose": "All motion collapses under prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "576px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "992px" },
+      { "name": "xl", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink tile with bevel; rises and catches a sheen on hover.",
+      "html": "<button class=\"ds-btn\">Demander une démonstration</button>",
+      "css": ".ds-btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 3.25rem; padding: .85rem 1.5rem; font-family: 'Alexandria', 'Segoe UI', system-ui, sans-serif; font-weight: 600; font-size: 1rem; letter-spacing: -.005em; line-height: 1.2; color: #f3f5f7; background: #111737; border: 0; border-radius: 3px; box-shadow: inset 0 1px 0 rgba(255,255,255,.32), inset 0 -2px 0 rgba(0,0,0,.1); cursor: pointer; transition: transform .25s cubic-bezier(.16,1,.3,1); } .ds-btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.28) 48%, transparent 66%); transform: translateX(-110%); transition: transform .7s cubic-bezier(.16,1,.3,1); pointer-events: none; } .ds-btn:hover { transform: translateY(-2px); } .ds-btn:hover::after { transform: translateX(110%); } .ds-btn:active { transform: translateY(0); } .ds-btn:focus-visible { outline: 2px solid #f0a080; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent with an inset ink ring; no sheen.",
+      "html": "<button class=\"ds-btn-ghost\">Voir les tarifs</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: .85rem 1.5rem; font-family: 'Alexandria', 'Segoe UI', system-ui, sans-serif; font-weight: 600; font-size: 1rem; color: #111737; background: transparent; border: 0; border-radius: 3px; box-shadow: inset 0 0 0 1.5px rgba(17,23,55,.3); cursor: pointer; transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s; } .ds-btn-ghost:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.5px #111737; background: rgba(17,23,55,.04); } .ds-btn-ghost:focus-visible { outline: 2px solid #f0a080; outline-offset: 3px; }"
+    },
+    {
+      "name": "Module Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Module name in its glaze on an 11% wash, led by a diamond chip.",
+      "html": "<span class=\"ds-tag\"><i class=\"ds-chip\"></i>Finance</span> <span class=\"ds-tag\" style=\"--c:#12808f\"><i class=\"ds-chip\"></i>CRM</span> <span class=\"ds-tag\" style=\"--c:#c3334f\"><i class=\"ds-chip\"></i>RH</span>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Alexandria', 'Segoe UI', system-ui, sans-serif; font-weight: 600; font-size: .8rem; letter-spacing: .01em; padding: .3rem .65rem .3rem .55rem; border-radius: 3px; color: var(--c, #2338a8); background: color-mix(in oklab, var(--c, #2338a8) 11%, transparent); white-space: nowrap; } .ds-chip { display: inline-block; width: .7em; height: .7em; background: var(--c, #2338a8); border-radius: 1px; transform: rotate(45deg); box-shadow: inset 0 1px 0 rgba(255,255,255,.32), inset 0 -2px 0 rgba(0,0,0,.1); }"
+    },
+    {
+      "name": "Mosaic of Tiles",
+      "kind": "card",
+      "refersTo": "tile-paper",
+      "description": "Tiles separated by a 6px grout gap; one glazed, with top-left sheen and bevel.",
+      "html": "<div class=\"ds-mosaic\"><div class=\"ds-tile ds-tile-glazed\"><h3>Finance</h3><p>Devis, factures, stock, TVA.</p></div><div class=\"ds-tile\"><h3>Un seul compte</h3><p>Les données circulent entre les trois applications.</p></div></div>",
+      "css": ".ds-mosaic { display: grid; grid-template-columns: 1.25fr 1fr; gap: 6px; padding: 6px; background: #d8dde6; border-radius: 6px; } .ds-tile { position: relative; isolation: isolate; padding: 1.75rem; background: #ffffff; color: #3d4360; border-radius: 3px; box-shadow: inset 0 1px 0 rgba(255,255,255,.32), inset 0 -2px 0 rgba(0,0,0,.1); font-family: 'Readex Pro', system-ui, sans-serif; } .ds-tile::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,0) 38%); pointer-events: none; z-index: -1; } .ds-tile h3 { margin: 0 0 .6rem; font-family: 'Alexandria', system-ui, sans-serif; font-weight: 600; font-size: 1.4rem; letter-spacing: -.015em; color: #111737; } .ds-tile p { margin: 0; } .ds-tile-glazed { background: #2338a8; color: rgba(255,255,255,.86); } .ds-tile-glazed h3 { color: #fff; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Plaster field with grout border; cobalt border and halo on focus.",
+      "html": "<label class=\"ds-label\">Société<input class=\"ds-input\" placeholder=\"Nom de votre entreprise\"></label>",
+      "css": ".ds-label { display: grid; gap: .4rem; font-family: 'Alexandria', system-ui, sans-serif; font-weight: 600; font-size: .88rem; color: #111737; } .ds-input { min-height: 3rem; padding: .5rem .85rem; border-radius: 3px; border: 1.5px solid #d8dde6; background: #f3f5f7; color: #111737; font-family: 'Readex Pro', system-ui, sans-serif; font-size: 1rem; outline: none; transition: border-color .2s, box-shadow .2s, background-color .2s; } .ds-input::placeholder { color: rgba(100,106,133,.8); } .ds-input:focus { border-color: #2338a8; box-shadow: 0 0 0 3px color-mix(in oklab, #2338a8 18%, transparent); background: #fff; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Alexandria links with module diamonds; active chip scales up.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"is-active\"><i class=\"ds-nchip\"></i>Finance</a><a href=\"#\"><i class=\"ds-nchip\" style=\"--c:#12808f\"></i>CRM</a><a href=\"#\"><i class=\"ds-nchip\" style=\"--c:#c3334f\"></i>RH</a><a href=\"#\">Tarifs</a></nav>",
+      "css": ".ds-nav { display: flex; gap: .25rem; padding: .75rem; background: #f3f5f7; } .ds-nav a { display: inline-flex; align-items: center; gap: .5rem; padding: .55rem .8rem; border-radius: 3px; font-family: 'Alexandria', system-ui, sans-serif; font-weight: 500; font-size: .95rem; color: #3d4360; text-decoration: none; transition: color .2s, background-color .2s; } .ds-nav a:hover { color: #111737; background: rgba(17,23,55,.05); } .ds-nav a.is-active { color: #111737; } .ds-nav a:focus-visible { outline: 2px solid #f0a080; outline-offset: 3px; } .ds-nchip { width: .55em; height: .55em; background: var(--c, #2338a8); border-radius: 1px; transform: rotate(45deg); transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-nav a.is-active .ds-nchip { transform: rotate(45deg) scale(1.2); }"
+    },
+    {
+      "name": "Flow Joint",
+      "kind": "custom",
+      "refersTo": "wall",
+      "description": "Signature: glaze diamonds on a cobalt-night wall linked by a joint that mixes one glaze into the next.",
+      "html": "<ol class=\"ds-flow\"><li style=\"--g:#12808f;--next:#2338a8\"><span class=\"ds-ftile\"><b>1</b></span><strong>Devis CRM</strong></li><li style=\"--g:#2338a8;--next:#c3334f\"><span class=\"ds-ftile\"><b>2</b></span><strong>Facture Finance</strong></li><li style=\"--g:#c3334f\"><span class=\"ds-ftile\"><b>3</b></span><strong>Prime RH</strong></li></ol>",
+      "css": ".ds-flow { list-style: none; margin: 0; padding: 2.5rem 2rem; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; background: #0e1540; font-family: 'Alexandria', system-ui, sans-serif; } .ds-flow li { position: relative; padding-right: 1.5rem; } .ds-flow li:not(:last-child)::after { content: ''; position: absolute; top: 1.3rem; left: 3.6rem; right: .4rem; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--g), color-mix(in oklab, var(--g), var(--next)) 50%, var(--next)); } .ds-ftile { display: inline-flex; align-items: center; justify-content: center; width: 2.6rem; height: 2.6rem; margin: .1rem 0 0 .2rem; background: var(--g); border-radius: 3px; transform: rotate(45deg); box-shadow: inset 0 1px 0 rgba(255,255,255,.32), inset 0 -2px 0 rgba(0,0,0,.1); } .ds-ftile b { transform: rotate(-45deg); color: #fff; font-weight: 700; } .ds-flow strong { display: block; margin-top: 1.1rem; font-weight: 600; font-size: 1.15rem; color: #fff; }"
+    },
+    {
+      "name": "FAQ Row",
+      "kind": "custom",
+      "refersTo": "tile-paper",
+      "description": "Grout-ruled disclosure rows; the diamond mark turns and fills on open.",
+      "html": "<div class=\"ds-faq\"><details open><summary>Puis-je commencer par la Finance seule ?<i class=\"ds-mark\"></i></summary><p>Oui. Ajoutez le CRM ou les RH plus tard, sans migration.</p></details><details><summary>Mes données restent-elles en Tunisie ?<i class=\"ds-mark\"></i></summary><p>Réponse.</p></details></div>",
+      "css": ".ds-faq { border-top: 1px solid #d8dde6; font-family: 'Readex Pro', system-ui, sans-serif; color: #3d4360; } .ds-faq details { border-bottom: 1px solid #d8dde6; } .ds-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.3rem 0; font-family: 'Alexandria', system-ui, sans-serif; font-weight: 600; font-size: 1.08rem; color: #111737; cursor: pointer; list-style: none; } .ds-faq summary::-webkit-details-marker { display: none; } .ds-mark { flex-shrink: 0; width: .8rem; height: .8rem; border: 1.5px solid #111737; transform: rotate(45deg); transition: transform .4s cubic-bezier(.16,1,.3,1), background-color .3s; } .ds-faq summary:hover .ds-mark, .ds-faq details[open] .ds-mark { background: #111737; } .ds-faq details[open] .ds-mark { transform: rotate(225deg); } .ds-faq p { margin: 0 3rem 1.4rem 0; max-width: 64ch; } .ds-faq summary:focus-visible { outline: 2px solid #f0a080; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Zellige Panel",
+    "overview": "The site is a panel of glazed tiles laid on cool lime plaster. Each of the three applications has its own glaze: Finance cobalt, CRM turquoise, RH grenade. A colour means little on its own and only makes sense once it sits in the assembled star. The panel shows this literally in the hero rosette, whose 25 tesserae arrive scattered and lock together ring by ring. Elsewhere it shows it structurally: content blocks are tiles separated by grout, not cards floating on shadows. Drenched cobalt-night walls break the plaster at regular intervals and set the page's rhythm.\n\nThe surface is flat and glazed, not lifted. Depth comes from three things: the grout gap between tiles, a soft top-left sheen across each glaze, and a thin bevel inset. Corners are cut sharp (3px), and small markers are diamonds: a square tile turned 45°. Where two applications share data, their glazes mix into a third colour, and that mix is how the visuals show \"integration\". Type pairs Alexandria for display (Latin and Arabic) with Readex Pro for text. Display weight is a firm 600 with tight negative tracking, and amounts use tabular figures.\n\nDensity is calm and editorial. Sections breathe on a fluid 4.5–8.5rem rhythm. Lists stay lists: trades, FAQ and swaps are rows ruled by grout lines, not grids of cards.",
+    "keyCharacteristics": [
+      "Three module glazes plus cobalt night; every accent belongs to a module or to the logo.",
+      "Grout gaps (6px) instead of borders and shadows.",
+      "Sharp 3px corners; diamonds (squares turned 45°) as the universal marker.",
+      "Glaze sheen: a 135° white gradient fading out by 38% of the tile.",
+      "Shared data is drawn as a colour mix of the two module glazes.",
+      "Alexandria 600 display with negative tracking; Readex Pro body at 1.0625rem / 1.65."
+    ],
+    "rules": [
+      { "name": "The One Glaze Per App Rule", "body": "Cobalt is Finance, turquoise is CRM, grenade is RH, everywhere. A module glaze never decorates something that does not belong to that module.", "section": "colors" },
+      { "name": "The Mixed Joint Rule", "body": "When two applications share data, draw the link as an `oklab` mix of their glazes (`color-mix(in oklab, crm, finance)`), usually as a 4px gradient joint that runs from one glaze through the mix to the other.", "section": "colors" },
+      { "name": "The Coral Reserve Rule", "body": "Logo coral appears only in the facts band and the focus ring. Nothing else may use it, including icons, hovers and highlights.", "section": "colors" },
+      { "name": "The Fixed Glaze Rule", "body": "Solid fills (rosette pieces, glazed tiles, active sub-nav) use the `--z-glaze-*` tokens, which stay identical in light and dark themes. Only text-level accents switch to the brighter `-on-dark` values.", "section": "colors" },
+      { "name": "The Tabular Amount Rule", "body": "Every amount, price or count that can change or be compared uses tabular figures (`.z-num`).", "section": "typography" },
+      { "name": "The Display Carries Arabic Rule", "body": "Arabic headings and lines set in Alexandria 600 in RH grenade, never in a fallback face.", "section": "typography" },
+      { "name": "The Grout Not Shadow Rule", "body": "Separation is a grout gap or a grout ring, and nothing else. The `--z-lift` drop shadow defined in the token block is unused and is not part of the system.", "section": "elevation" },
+      { "name": "The Sheen Rule", "body": "Glazed surfaces carry a 135° white gradient (20% to 0 by 38%) from the top-left. Buttons add a one-time sheen sweep on hover (0.7s).", "section": "elevation" }
+    ],
+    "dos": [
+      "Do separate tiles with a 6px grout gap (`--z-joint` on a `--z-grout` ground) or frame a lone tile with a 6px grout ring.",
+      "Do give every glazed surface the bevel inset and the 135° top-left sheen.",
+      "Do colour anything module-specific in that module's glaze, and draw shared data as an oklab mix of the two glazes.",
+      "Do use diamonds (squares turned 45°, 1–2px radius) for bullets, chips, step markers and toggles, with upright counter-rotated contents.",
+      "Do use `--z-glaze-*` for solid fills so they hold the same value in light and dark themes.",
+      "Do set amounts in tabular figures and Arabic lines in Alexandria 600.",
+      "Do break long plaster runs with a cobalt-night wall, and switch to wall text, white headings and 10% white grout on it.",
+      "Do honour reduced motion: every transition and animation collapses to near zero."
+    ],
+    "donts": [
+      "Don't use drop shadows or blurred elevation; depth is grout, bevel and sheen only.",
+      "Don't use logo coral outside the facts band and the focus ring.",
+      "Don't round corners beyond 3px on tiles or 6px on the outer frame.",
+      "Don't put kicker or eyebrow labels above headings, and don't uppercase-track labels.",
+      "Don't turn list content (trades, FAQ, facts) into card grids.",
+      "Don't use a module glaze for something that does not belong to that module.",
+      "Don't show more than three screenshots on one application page."
+    ]
+  }
+}
