@@ -683,3 +683,6 @@ html {
 
 [data-bs-theme="dark"] .z-flow-tile,
 [data-bs-theme="dark"] .z-film-play { background: color-mix(in oklab, var(--c, var(--z-ocre)) 75%, #050a26); }
+
+// Rogne sans devenir une zone de defilement (contrairement a overflow: hidden)
+.z-clip { overflow: clip; }
