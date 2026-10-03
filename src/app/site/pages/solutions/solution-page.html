@@ -1,0 +1,136 @@
+@if (sol(); as s) {
+  <!-- ═══════════════ Un métier ═══════════════ -->
+  <section class="z-page-hero">
+    <div class="container">
+      <ol class="z-crumbs">
+        <li><a routerLink="/">Accueil</a></li>
+        <li><a routerLink="/solutions">Solutions</a></li>
+        <li aria-current="page">{{ s.nom }}</li>
+      </ol>
+      <div class="row g-5 align-items-end">
+        <div class="col-lg-7">
+          <p class="z-module-name" style="--c: var(--z-ocre)"><i class="bi" [class]="s.icone"></i>{{ s.nom }}</p>
+          <h1 class="z-h1">{{ s.titre }}</h1>
+          <p class="z-lead mb-0">{{ s.intro }}</p>
+        </div>
+        <div class="col-lg-5 d-flex flex-column flex-sm-row flex-lg-column align-items-lg-end gap-2">
+          <a routerLink="/demonstration" class="z-btn z-btn--lg">Demander une démonstration <i class="bi bi-arrow-right"></i></a>
+          <a [href]="site.inscription" class="z-btn z-btn--ghost z-btn--lg">Essayer gratuitement</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="z-section-sm z-band">
+    <div class="container">
+      <h2 class="z-h3 z-muted mb-4">Ce qui coince aujourd’hui</h2>
+      <ul class="z-cracked z-cracked--row">
+        @for (d of s.douleurs; track d.titre; let i = $index) {
+          <li [style.--i]="i + 1">
+            <strong>{{ d.titre }}</strong>
+            <span>{{ d.texte }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="z-section">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <h2 class="z-h2">Ce que RFIDIA change.</h2>
+          <ol class="z-answers">
+            @for (r of s.reponses; track r.titre) {
+              <li [style.--c]="email[r.module]">
+                <span class="z-tag"><span class="z-chip"></span>{{ m[r.module].nom }}</span>
+                <h3>{{ r.titre }}</h3>
+                <p>{{ r.texte }}</p>
+              </li>
+            }
+          </ol>
+        </div>
+        <div class="col-lg-7">
+          <div class="z-sticky">
+            <figure class="m-0" [class.z-shot-portrait]="s.shot.hauteur > s.shot.largeur">
+              <rf-app-window [src]="s.shot.src" [alt]="s.shot.titre + ' ' + s.shot.legende" [url]="s.shot.url"
+                [largeur]="s.shot.largeur" [hauteur]="s.shot.hauteur" [prioritaire]="true" />
+              <figcaption class="z-caption"><strong>{{ s.shot.titre }}</strong> {{ s.shot.legende }}</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="z-section-sm">
+    <div class="container">
+      <div class="z-mosaic z-reco" [style.--n]="s.modules.length">
+        <div class="z-tile z-tile--glazed z-reco-main" style="--t: var(--z-night)">
+          <h2 class="z-h3">Les pièces à poser</h2>
+          <p class="mb-3">
+            @for (k of s.modules; track k; let dernier = $last) {
+              {{ m[k].nomLong }}@if (!dernier) { · }
+            }
+          </p>
+          @if (offre(); as o) {
+            <p class="z-reco-price">Offre {{ o.nom }}, dès <strong class="z-num">{{ o.prix }} DT HT</strong> par mois.</p>
+          }
+          <a routerLink="/tarifs" class="z-link" style="--c: #fff">Comparer les offres <i class="bi bi-arrow-right"></i></a>
+        </div>
+        @for (k of s.modules; track k) {
+          <a class="z-tile z-tile--glazed z-reco-app" [routerLink]="'/' + k" [style.--t]="email[k]">
+            <strong>{{ m[k].nomLong }}</strong>
+            <span>{{ m[k].resume }}</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="z-section-sm z-band">
+    <div class="container">
+      <h2 class="z-h3 mb-4">Autres métiers</h2>
+      <div class="z-mosaic z-sol-grid">
+        @for (a of autres(); track a.slug) {
+          <a [routerLink]="'/solutions/' + a.slug" class="z-tile z-sol">
+            <i class="bi" [class]="a.icone"></i>
+            <strong>{{ a.nom }}</strong>
+            <span>{{ a.accroche }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+} @else {
+  <!-- ═══════════════ Index des métiers ═══════════════ -->
+  <section class="z-page-hero">
+    <div class="container">
+      <ol class="z-crumbs">
+        <li><a routerLink="/">Accueil</a></li>
+        <li aria-current="page">Solutions</li>
+      </ol>
+      <h1 class="z-h1">Taillé pour la façon dont vous travaillez.</h1>
+      <p class="z-lead">Les mêmes trois applications, assemblées différemment selon votre métier.</p>
+    </div>
+  </section>
+  <section class="z-section-sm pt-0">
+    <div class="container">
+      <div class="z-mosaic z-sol-grid is-large">
+        @for (a of solutions; track a.slug) {
+          <a [routerLink]="'/solutions/' + a.slug" class="z-tile z-sol">
+            <i class="bi" [class]="a.icone"></i>
+            <strong>{{ a.nom }}</strong>
+            <span>{{ a.accroche }}</span>
+            <span class="z-sol-apps">
+              @for (k of a.modules; track k) {
+                <span class="z-tag" [style.--c]="email[k]"><span class="z-chip"></span>{{ m[k].nom }}</span>
+              }
+            </span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+}

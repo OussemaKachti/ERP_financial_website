@@ -219,3 +219,89 @@
 @media (min-width: 992px) {
   .z-page-hero .col-lg-5 .z-btn { width: auto; min-width: 19rem; }
 }
+
+// ─────────────────────────── Solutions ───────────────────────────
+
+.z-cracked--row {
+  margin: 0;
+
+  @media (min-width: 768px) { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+
+  li { padding: 1.25rem 1.3rem; }
+  strong { font-size: 1.02rem; }
+  span { font-size: .9rem; }
+}
+
+.z-answers {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+
+  li {
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--z-grout);
+
+    h3 { font-size: 1.15rem; font-weight: 600; margin: .75rem 0 .35rem; }
+    p { margin: 0; }
+  }
+}
+
+.z-shot-portrait { max-width: 30rem; margin-inline: auto !important; }
+
+.z-reco {
+  @media (min-width: 992px) { grid-template-columns: 1.4fr repeat(var(--n, 3), 1fr); }
+}
+
+.z-reco-main {
+  padding: 2rem;
+
+  p { color: #c9cfea; }
+}
+
+.z-reco-price strong { color: #fff; font-family: var(--z-display); font-size: 1.15rem; }
+
+.z-reco-app {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  padding: 1.75rem;
+  text-decoration: none;
+  min-height: 11rem;
+  transition: filter .3s;
+
+  strong { font-family: var(--z-display); font-size: 1.25rem; color: #fff; }
+  span { font-size: .9rem; color: rgba(255, 255, 255, .85); }
+  .bi { margin-top: auto; font-size: 1.2rem; transition: transform .3s var(--z-ease); }
+
+  &:hover { filter: brightness(1.08); }
+  &:hover .bi { transform: translateX(4px); }
+}
+
+.z-sol-grid {
+  @media (min-width: 768px) { grid-template-columns: repeat(3, 1fr); }
+
+  &.is-large { @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); } }
+}
+
+.z-sol {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 1.75rem;
+  text-decoration: none;
+  color: var(--z-text);
+  transition: background-color .3s var(--z-ease);
+
+  .bi { font-size: 1.6rem; color: var(--z-ocre); margin-bottom: .5rem; }
+  strong { font-family: var(--z-display); font-size: 1.25rem; color: var(--z-ink); }
+  span { font-size: .95rem; }
+
+  &:hover { background: var(--z-ground); }
+
+  .z-sol-apps { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+}
+
+.is-large .z-sol { padding: 2.5rem; min-height: 16rem; }
+.is-large .z-sol strong { font-size: 1.6rem; letter-spacing: -.02em; }
+
+.z-sol-grid--4 { @media (min-width: 992px) { grid-template-columns: repeat(4, 1fr); } }

@@ -10,6 +10,7 @@ export const NAV_PRINCIPALE: Lien[] = [
   { lien: '/finance', label: 'Finance', couleur: 'var(--z-finance)' },
   { lien: '/crm', label: 'CRM', couleur: 'var(--z-crm)' },
   { lien: '/rh', label: 'RH', couleur: 'var(--z-rh)' },
+  { lien: '/solutions', label: 'Solutions' },
   { lien: '/tarifs', label: 'Tarifs' },
 ];
 
@@ -20,4 +21,7 @@ export const NAV_APPLICATIONS: Lien[] = [
   { lien: '/tarifs', label: 'Tarifs' },
 ];
 
-export const NAV_DECOUVRIR: Lien[] = [{ lien: '/demonstration', label: 'Demander une démonstration' }];
+export const NAV_DECOUVRIR: Lien[] = [
+  { lien: '/solutions', label: 'Solutions par métier' },
+  { lien: '/demonstration', label: 'Demander une démonstration' },
+];

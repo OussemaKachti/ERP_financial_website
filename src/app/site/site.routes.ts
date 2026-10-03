@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { SiteLayout } from './layout/site-layout';
 import { MODULES } from './data/modules';
+import { SOLUTIONS } from './data/solutions';
 
 export const SITE_ROUTES: Routes = [
   {
@@ -20,6 +21,20 @@ export const SITE_ROUTES: Routes = [
         path: key,
         loadComponent: () => import('./pages/module/module-page').then((m) => m.ModulePage),
         data: { module: key, titre: MODULES[key].seo.titre, description: MODULES[key].seo.description },
+      })),
+      {
+        path: 'solutions',
+        loadComponent: () => import('./pages/solutions/solution-page').then((m) => m.SolutionPage),
+        data: {
+          titre: 'Solutions par métier',
+          description:
+            'Négoce et distribution, sociétés de services, équipes commerciales terrain, cabinets comptables : RFIDIA selon votre métier.',
+        },
+      },
+      ...SOLUTIONS.map((s) => ({
+        path: `solutions/${s.slug}`,
+        loadComponent: () => import('./pages/solutions/solution-page').then((m) => m.SolutionPage),
+        data: { solution: s.slug, titre: s.nom, description: s.seo },
       })),
       {
         path: 'tarifs',

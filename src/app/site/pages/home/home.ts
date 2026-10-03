@@ -5,6 +5,7 @@ import { EMAIL, MODULES, MODULE_ORDER, ModuleKey } from '../../data/modules';
 import { FAQ_ACCUEIL, SITUATIONS } from '../../data/home';
 import { BRICOLAGE, FAITS, PARCOURS, ROLES } from '../../data/accueil';
 import { OFFRES, promotionActive } from '../../data/pricing';
+import { SOLUTIONS } from '../../data/solutions';
 import { AppWindow } from '../../shared/app-window';
 import { PricingGrid } from '../../shared/pricing-grid';
 import { FaqList } from '../../shared/faq-list';
@@ -29,6 +30,7 @@ export class Home {
   protected readonly roles = ROLES;
   protected readonly faits = FAITS;
   protected readonly faq = FAQ_ACCUEIL;
+  protected readonly solutions = SOLUTIONS;
 
   /** Application mise en avant dans la rosace (survol ou focus). */
   protected readonly survol = signal<ModuleKey | null>(null);

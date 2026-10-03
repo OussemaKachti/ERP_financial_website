@@ -242,6 +242,26 @@
   </div>
 </section>
 
+<!-- ═══════════════ Métiers ═══════════════ -->
+<section class="z-section-sm pt-0">
+  <div class="container">
+    <div class="z-split-head">
+      <h2 class="z-h2">Taillé pour votre métier.</h2>
+      <p class="z-lead">Les mêmes trois applications, assemblées selon la façon dont vous travaillez.
+        <a routerLink="/solutions" class="z-link ms-1">Toutes les solutions <i class="bi bi-arrow-right"></i></a></p>
+    </div>
+    <div class="z-mosaic z-sol-grid z-sol-grid--4">
+      @for (a of solutions; track a.slug) {
+        <a [routerLink]="'/solutions/' + a.slug" class="z-tile z-sol">
+          <i class="bi" [class]="a.icone"></i>
+          <strong>{{ a.nom }}</strong>
+          <span>{{ a.accroche }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════ Maghreb ═══════════════ -->
 <section class="z-section z-band overflow-hidden">
   <div class="container">
